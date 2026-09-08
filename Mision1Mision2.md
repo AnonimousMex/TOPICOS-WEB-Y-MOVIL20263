@@ -11,7 +11,7 @@
 
 <br>
 
-# Misión 2: El viaje del pago (paso a paso sencillo)
+# Misión 2: El viaje del pago 
 
 1. **La Recepcionista (Front Controller):** El alumno da clic en pagar. El sistema recibe esa petición en un solo lugar central y decide a qué parte del código mandarla.
 2. **El de Seguridad (Intercepting Filter):** Antes de hacer cualquier cosa, un filtro revisa rápido si el alumno tiene su sesión activa. Si todo está bien, lo deja pasar.
