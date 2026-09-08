@@ -1,6 +1,6 @@
 # Misión 1
 
-| El problema en corto | Capa | Patrón que lo arregla | Por qué este y no el vecino más fácil de confundir | Cuándo no aplicaría (aunque suene bonito) |
+| El problema en corto | Capa | Patrón que lo arregla | Por qué este y no el vecino más fácil de confundir | Cuándo no aplicaría |
 | :--- | :--- | :--- | :--- | :--- |
 | **1. El mismo código de sesión pegado en 40 archivos.** | Políticas Transversales / Presentación | **Intercepting Filter** | Rechazamos **Template** porque no estamos armando una estructura visual base, sino interceptando la petición como un "cadenero" para validar seguridad antes de entrar a la lógica. | No aplica si la regla es de negocio específica de un solo módulo (ej. validar si el alumno tiene saldo). Esto solo es para reglas que aplican a *todas* las peticiones. |
 | **2. Un código de 200 líneas lleno de "IFs" para cobrar.** | Aplicación / Dominio | **Strategy** | Rechazamos **State** porque el pago no está cambiando de estado (de 'pendiente' a 'pagado'), sino que estamos eligiendo el algoritmo o "caja de cobro" (SPEI vs Tarjeta) desde el inicio. | No aplica si la diferencia entre métodos es mínima (ej. solo cambia una variable como el correo de destino). Strategy es para cuando toda la *lógica/algoritmo* cambia. |
