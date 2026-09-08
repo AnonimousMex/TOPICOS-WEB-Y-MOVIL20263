@@ -5,7 +5,7 @@
 * **Problema Arquitectónico:** Veo que no hay capas. Es un código "spaghetti" total (mezcla conexión, HTML, SQL y negocio en un solo script ejecutado de arriba a abajo).
 * **Sobreingeniería:** Rechazo por completo la propuesta del proveedor (Event Sourcing, CQRS, Microservicios, Redux) para tareas tan simples como descargar un PDF.
 
-## 2. Inventario y Defectos Críticos que Encontré
+## 2. Inventario y Defectos Críticos
 En el repo me di cuenta de que es una maqueta de anti-patrones, con vulnerabilidades muy graves:
 * **`pagar.php` / `pagar1.php`:** Hay un switch gigante para pasarelas, inyección SQL (SQLi), ejecución de pagos sin idempotencia (doble clic = doble cargo) y envío de correos síncrono.
 * **`index.php` / `index1.php`:** Encontré un bypass de administrador en cookies, SSRF (N peticiones síncronas a APIs locales) y consultas N+1.
@@ -13,12 +13,12 @@ En el repo me di cuenta de que es una maqueta de anti-patrones, con vulnerabilid
 * **`api.php`:** Permite ejecución remota de código (`eval`) y lectura arbitraria de archivos (`file_get_contents`).
 * **Configuración/BD:** Vi contraseñas en texto plano, bases de datos inexistentes o mal nombradas, y una documentación contradictoria y tóxica.
 
-## 3. Mi Propuesta de Rediseño Arquitectónico y Base de Datos
+## 3. Rediseño Arquitectónico y Base de Datos
 * **Base de Datos:** Propongo diseñar un esquema normalizado desde cero (Estudiante, Materia, Inscripcion, Pago, Historial). Sugiero usar migraciones y variables de entorno (`.env`).
 * **Arquitectura Objetivo:** 
   `Front Controller -> Middleware -> Controlador -> Servicio de Aplicación (Unit of Work) -> Dominio/Repositorio -> Vista (HTML/JSON)`
 
-## 4. Cómo Resolver los Conflictos mediante Patrones
+## 4. Resolver los Conflictos mediante Patrones
 * **Políticas Transversales (Sesión, Bitácora):** Recomiendo aplicar `Front Controller` + `Intercepting Filter` (Middleware). Así centralizo la lógica antes/después de la petición. El orden importa mucho (Autenticación -> Idempotencia -> Bitácora).
 * **Múltiples Medios de Pago:** Sugiero implementar `Strategy` (para aislar las lógicas de Tarjeta, SPEI, Ventanilla) + `Factory` (para instanciar el método correcto sin usar ese switch gigante).
 * **Integración con Bancos (Códigos ajenos):** Usaré un `Adapter` (para traducir el contrato del banco al vocabulario de nuestro dominio).
