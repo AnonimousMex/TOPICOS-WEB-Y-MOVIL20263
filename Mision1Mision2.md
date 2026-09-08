@@ -1,4 +1,4 @@
-# Misión 1: El cuadro en tus propias palabras
+# Misión 1
 
 | El problema en corto | Capa | Patrón que lo arregla | Por qué este y no el vecino más fácil de confundir | Cuándo no aplicaría (aunque suene bonito) |
 | :--- | :--- | :--- | :--- | :--- |
