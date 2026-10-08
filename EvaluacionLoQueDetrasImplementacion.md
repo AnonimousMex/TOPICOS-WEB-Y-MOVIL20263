@@ -1,6 +1,7 @@
 # Actividad individual — Lo que hay detrás de la implementación
 
 Nombre: Diego Rivera Cisneros
+
 Matrícula: 22121364
 
 ## A1
