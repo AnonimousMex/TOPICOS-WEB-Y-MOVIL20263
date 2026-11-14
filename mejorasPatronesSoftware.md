@@ -1,5 +1,7 @@
 # Patrones de Software para Aplicaciones Web
 
+> Alcance: análisis del caso académico descrito en la actividad. Los archivos PHP mencionados no están en este repositorio; los hallazgos siguientes no constituyen una auditoría verificable de esta copia.
+
 ## 1. Veredicto y Estado Actual
 * **Decisión:** Recomiendo rehacer todo desde cero. Entiendo que lo único que vale la pena rescatar son las **reglas de negocio** (importes, escalas de calificación, umbrales), pero definitivamente no el código.
 * **Problema Arquitectónico:** Veo que no hay capas. Es un código "spaghetti" total (mezcla conexión, HTML, SQL y negocio en un solo script ejecutado de arriba a abajo).
@@ -23,7 +25,7 @@ En el repo me di cuenta de que es una maqueta de anti-patrones, con vulnerabilid
 * **Múltiples Medios de Pago:** Sugiero implementar `Strategy` (para aislar las lógicas de Tarjeta, SPEI, Ventanilla) + `Factory` (para instanciar el método correcto sin usar ese switch gigante).
 * **Integración con Bancos (Códigos ajenos):** Usaré un `Adapter` (para traducir el contrato del banco al vocabulario de nuestro dominio).
 * **Persistencia y Vistas Múltiples:** Aplicaré `Repository` / `Data Mapper`.
-* **Operaciones Atómicas (Pago + Alta escolar):** Recomiendo usar `Unit of Work` (transacción) + `Domain Events / Observer` (para tareas asíncronas secundarias como enviar los correos).
+* **Operaciones Atómicas (Pago + Alta escolar):** Recomiendo usar `Unit of Work` (transacción local) + outbox y cola para publicar eventos y enviar correos tras el commit. Observer no implica asincronía. Los cobros externos requieren idempotencia, conciliación y, cuando proceda, compensaciones.
 * **Optimización de APIs (App vs Kiosco):** Propongo usar `Backend for Frontend (BFF)` + `Content Negotiation`.
 * **Tolerancia a Fallos (APIs externas caídas):** Implementaré `Circuit Breaker` + `Timeout` + `Bulkhead` para prevenir que nuestro sistema entero colapse si un tercero falla.
 
