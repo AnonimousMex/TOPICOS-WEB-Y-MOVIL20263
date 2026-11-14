@@ -18,7 +18,7 @@ Radica en la secuencia y la flexibilidad. Cascada sigue un flujo lineal en el qu
 **Explica la diferencia entre requerimientos funcionales y no funcionales, dando un ejemplo de cada uno aplicable a una plataforma web.**  
 El requerimiento funcional define qué debe hacer el sistema; el no funcional define cómo debe comportarse.  
 * **Funcional:** Para el sistema de una agencia de viajes, durante el levantamiento el cliente indica que el sistema debe registrar reservas, cotizaciones, clientes, socios e ingresos.  
-* **No funcional:** Una vez definido qué se hace, se pregunta cómo. Por ejemplo, bajo qué criterio una reserva se considera confirmada (a partir del primer pago y de qué monto), tiempos de respuesta, disponibilidad, etc.
+* **No funcional:** Una vez definido qué se hace, se pregunta cómo. Por ejemplo, responder al 95% de las consultas en menos de dos segundos o mantener una disponibilidad mensual del 99.9%. El monto mínimo para confirmar una reserva es una regla de negocio funcional.
 
 ### 3. Arquitectura
 **Describe el modelo Cliente-Servidor y explica brevemente cómo se comunican el frontend y el backend en una aplicación web moderna.**  
