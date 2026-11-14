@@ -1,0 +1,27 @@
+{
+  "corregido_por_reglas": false,
+  "folio": "1BB4296523B3",
+  "medio": "moto",
+  "modelo": "red",
+  "motivo": "red: moto; confianza de hoja/modelo 74.4%.",
+  "preferido_por_modelo": "moto",
+  "ranking": [
+    {
+      "medio": "moto",
+      "probabilidad": 0.7439935456613547
+    },
+    {
+      "medio": "dron",
+      "probabilidad": 0.240341015184921
+    },
+    {
+      "medio": "camioneta",
+      "probabilidad": 0.015213052381576636
+    },
+    {
+      "medio": "bicicleta",
+      "probabilidad": 0.0004523867721475754
+    }
+  ],
+  "servicio": "pedidos"
+}

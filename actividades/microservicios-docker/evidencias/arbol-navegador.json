@@ -1,0 +1,27 @@
+{
+  "corregido_por_reglas": true,
+  "folio": "224A76C95322",
+  "medio": "moto",
+  "modelo": "arbol",
+  "motivo": "arbol: moto; confianza de hoja/modelo 13.1%. Las reglas descartaron dron.",
+  "preferido_por_modelo": "dron",
+  "ranking": [
+    {
+      "medio": "dron",
+      "probabilidad": 0.8406961178045516
+    },
+    {
+      "medio": "moto",
+      "probabilidad": 0.13119143239625167
+    },
+    {
+      "medio": "camioneta",
+      "probabilidad": 0.028112449799196786
+    },
+    {
+      "medio": "bicicleta",
+      "probabilidad": 0
+    }
+  ],
+  "servicio": "pedidos"
+}

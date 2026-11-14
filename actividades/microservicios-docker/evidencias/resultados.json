@@ -1,0 +1,149 @@
+{
+  "arbol": {
+    "corregido_por_reglas": true,
+    "folio": "224A76C95322",
+    "medio": "moto",
+    "modelo": "arbol",
+    "motivo": "arbol: moto; confianza de hoja/modelo 13.1%. Las reglas descartaron dron.",
+    "preferido_por_modelo": "dron",
+    "ranking": [
+      {
+        "medio": "dron",
+        "probabilidad": 0.8406961178045516
+      },
+      {
+        "medio": "moto",
+        "probabilidad": 0.13119143239625167
+      },
+      {
+        "medio": "camioneta",
+        "probabilidad": 0.028112449799196786
+      },
+      {
+        "medio": "bicicleta",
+        "probabilidad": 0
+      }
+    ],
+    "servicio": "pedidos"
+  },
+  "bosque": {
+    "corregido_por_reglas": false,
+    "folio": "F35D272F3757",
+    "medio": "moto",
+    "modelo": "bosque",
+    "motivo": "bosque: moto; confianza de hoja/modelo 82.8%.",
+    "preferido_por_modelo": "moto",
+    "ranking": [
+      {
+        "medio": "moto",
+        "probabilidad": 0.8278371212121213
+      },
+      {
+        "medio": "dron",
+        "probabilidad": 0.16382954545454542
+      },
+      {
+        "medio": "camioneta",
+        "probabilidad": 0.008333333333333333
+      },
+      {
+        "medio": "bicicleta",
+        "probabilidad": 0
+      }
+    ],
+    "servicio": "pedidos"
+  },
+  "red": {
+    "corregido_por_reglas": false,
+    "folio": "1BB4296523B3",
+    "medio": "moto",
+    "modelo": "red",
+    "motivo": "red: moto; confianza de hoja/modelo 74.4%.",
+    "preferido_por_modelo": "moto",
+    "ranking": [
+      {
+        "medio": "moto",
+        "probabilidad": 0.7439935456613547
+      },
+      {
+        "medio": "dron",
+        "probabilidad": 0.240341015184921
+      },
+      {
+        "medio": "camioneta",
+        "probabilidad": 0.015213052381576636
+      },
+      {
+        "medio": "bicicleta",
+        "probabilidad": 0.0004523867721475754
+      }
+    ],
+    "servicio": "pedidos"
+  },
+  "fallo": "HTTP 503\n{\n  \"error\": \"Recomendador no disponible. El pedido no fue creado; puede reintentar.\",\n  \"estado\": \"recomendacion_pendiente\",\n  \"servicio\": \"pedidos\"\n}",
+  "salud_pedidos_sin_recomendar": {
+    "estado": "ok",
+    "servicio": "pedidos"
+  },
+  "pruebas": {
+    "sin_campos": {
+      "http": 400,
+      "respuesta": {
+        "error": "distancia_km debe ser un número finito."
+      }
+    },
+    "modelo_desconocido": {
+      "http": 400,
+      "respuesta": {
+        "error": "Modelo no disponible.",
+        "modelos": [
+          "arbol",
+          "bosque",
+          "red"
+        ]
+      }
+    },
+    "hora_invalida": {
+      "http": 400,
+      "respuesta": {
+        "error": "hora_salida debe ser un entero de 0 a 23."
+      }
+    },
+    "sin_medio_viable": {
+      "http": 422,
+      "respuesta": {
+        "error": "No hay un medio viable para este paquete."
+      }
+    },
+    "refrigerado": {
+      "http": 201,
+      "respuesta": {
+        "corregido_por_reglas": false,
+        "folio": "381BADB7BBA4",
+        "medio": "camioneta",
+        "modelo": "arbol",
+        "motivo": "arbol: camioneta; confianza de hoja/modelo 100.0%.",
+        "preferido_por_modelo": "camioneta",
+        "ranking": [
+          {
+            "medio": "camioneta",
+            "probabilidad": 1.0
+          },
+          {
+            "medio": "bicicleta",
+            "probabilidad": 0.0
+          },
+          {
+            "medio": "dron",
+            "probabilidad": 0.0
+          },
+          {
+            "medio": "moto",
+            "probabilidad": 0.0
+          }
+        ],
+        "servicio": "pedidos"
+      }
+    }
+  }
+}

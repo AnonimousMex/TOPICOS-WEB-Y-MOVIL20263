@@ -1,0 +1,4 @@
+NAME                                IMAGE                             COMMAND                  SERVICE      CREATED              STATUS                        PORTS
+topicos22121364micro-gateway-1      nginx:1.28-alpine                 "/docker-entrypoint.…"   gateway      About a minute ago   Up About a minute             127.0.0.1:18080->80/tcp
+topicos22121364micro-pedidos-1      topicos22121364micro-pedidos      "gunicorn --bind 0.0…"   pedidos      About a minute ago   Up About a minute (healthy)   8001/tcp
+topicos22121364micro-recomendar-1   topicos22121364micro-recomendar   "gunicorn --bind 0.0…"   recomendar   About a minute ago   Up About a minute (healthy)   8002/tcp

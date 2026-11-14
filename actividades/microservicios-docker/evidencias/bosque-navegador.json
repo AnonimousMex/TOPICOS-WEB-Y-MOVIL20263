@@ -1,0 +1,27 @@
+{
+  "corregido_por_reglas": false,
+  "folio": "F35D272F3757",
+  "medio": "moto",
+  "modelo": "bosque",
+  "motivo": "bosque: moto; confianza de hoja/modelo 82.8%.",
+  "preferido_por_modelo": "moto",
+  "ranking": [
+    {
+      "medio": "moto",
+      "probabilidad": 0.8278371212121213
+    },
+    {
+      "medio": "dron",
+      "probabilidad": 0.16382954545454542
+    },
+    {
+      "medio": "camioneta",
+      "probabilidad": 0.008333333333333333
+    },
+    {
+      "medio": "bicicleta",
+      "probabilidad": 0
+    }
+  ],
+  "servicio": "pedidos"
+}

@@ -1,0 +1,17 @@
+{
+  "arbol": {
+    "exactitud_prueba": 0.921,
+    "filas_entrenamiento": 8000,
+    "filas_prueba": 2000
+  },
+  "bosque": {
+    "exactitud_prueba": 0.934,
+    "filas_entrenamiento": 8000,
+    "filas_prueba": 2000
+  },
+  "red": {
+    "exactitud_prueba": 0.8875,
+    "filas_entrenamiento": 8000,
+    "filas_prueba": 2000
+  }
+}

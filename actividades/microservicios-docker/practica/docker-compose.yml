@@ -1,0 +1,30 @@
+services:
+  recomendar:
+    build: ./recomendar
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8002/salud')"]
+      interval: 3s
+      timeout: 2s
+      retries: 30
+  pedidos:
+    build: ./pedidos
+    environment:
+      RECOMENDAR_URL: http://recomendar:8002
+    depends_on:
+      recomendar:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/salud')"]
+      interval: 3s
+      timeout: 2s
+      retries: 30
+  gateway:
+    image: nginx:1.28-alpine
+    ports:
+      - "127.0.0.1:${PUERTO_GATEWAY:-8080}:80"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./gateway/html:/usr/share/nginx/html:ro
+    depends_on:
+      pedidos:
+        condition: service_healthy

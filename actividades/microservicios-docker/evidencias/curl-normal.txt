@@ -1,0 +1,9 @@
+$ curl -i -X POST http://127.0.0.1:18080/pedidos -H "Content-Type: application/json" --data-binary @paquete.json
+HTTP/1.1 201 CREATED
+Server: nginx/1.28.3
+Date: Sat, 14 Nov 2026 20:02:05 GMT
+Content-Type: application/json
+Content-Length: 435
+Connection: keep-alive
+
+{"corregido_por_reglas":true,"folio":"415584E8445F","medio":"moto","modelo":"arbol","motivo":"arbol: moto; confianza de hoja/modelo 13.1%. Las reglas descartaron dron.","preferido_por_modelo":"dron","ranking":[{"medio":"dron","probabilidad":0.8406961178045516},{"medio":"moto","probabilidad":0.13119143239625167},{"medio":"camioneta","probabilidad":0.028112449799196786},{"medio":"bicicleta","probabilidad":0.0}],"servicio":"pedidos"}

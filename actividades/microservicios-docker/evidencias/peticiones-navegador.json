@@ -1,0 +1,22 @@
+[
+  {
+    "metodo": "GET",
+    "url": "http://127.0.0.1:18080/"
+  },
+  {
+    "metodo": "POST",
+    "url": "http://127.0.0.1:18080/pedidos"
+  },
+  {
+    "metodo": "POST",
+    "url": "http://127.0.0.1:18080/pedidos"
+  },
+  {
+    "metodo": "POST",
+    "url": "http://127.0.0.1:18080/pedidos"
+  },
+  {
+    "metodo": "POST",
+    "url": "http://127.0.0.1:18080/pedidos"
+  }
+]
