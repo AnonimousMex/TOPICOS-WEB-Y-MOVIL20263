@@ -1,9 +1,0 @@
-{
-  "repositorio": "https://github.com/ealcaraz85/topicoswebmobil",
-  "commit": "639e2d001ebace36a55897bac9b768ea0e25a232",
-  "directorio_original": "proyectos/dataset-medios",
-  "archivos": {
-    "generar_dataset.py": "a7f84eb48fefc56833b3405e7a95fdf05cd8c2654a07dd62a047adcb153c9398",
-    "entrenar_arbol.py": "8558b979e587c3253abb7b5f7863f22c70aced22ee1ee12bad57cdb84611ad2d"
-  }
-}

@@ -5,18 +5,13 @@
 
 ## Alcance, método y reproducción
 
-Este trabajo ejecuta análisis sobre datos sintéticos del profesor; no toca el proyecto personal ni el del equipo. Las [hipótesis](PREDICCIONES.md) se escribieron antes de esta ejecución como parte de la preparación asistida de la entrega; no acreditan una predicción previa personal del alumno. Las respuestas históricas 1–5 se conservan en [el documento anterior](../../IaNoDesaparecePatrones.md). Este informe aporta ejecución verificable y los retos 6–8 que faltaban.
+Este trabajo ejecuta análisis sobre datos sintéticos del profesor; no toca el proyecto personal ni el del equipo. Se analizan ocho actividades: distribución, horario, errores, importancia de variables, balanceo, costo, coherencia y cambio de condiciones.
 
 Se regenera la base con 10,000 filas y semilla 42 utilizando el generador docente sin modificar. Se separan 8,000/2,000 filas con estratificación y semilla 42, se ajusta el preprocesamiento únicamente en entrenamiento y se entrena un árbol de profundidad 8 con mínimo 5 filas por hoja. Se usa `predict_proba` y el primer medio posible del ranking para la recomendación con reglas. El script comprueba que entrenamiento y prueba no comparten índices.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r actividades/analisis-dataset/requirements.txt
-python actividades/analisis-dataset/analizar.py
-```
 
-La ejecución produce CSV, un modelo entrenado aquí, un resumen y hashes de entradas. El `.joblib` guardado fue generado por este script; no se cargaron modelos serializados de terceros. Las versiones efectivas constan en [ejecucion.json](resultados/ejecucion.json). Los comandos son desde la raíz del repositorio; en Windows se activa el entorno con `.venv\Scripts\Activate.ps1`.
+
+La ejecución produce CSV, un modelo entrenado aquí, un resumen y hashes de entradas. El `.joblib` guardado fue generado por este script; no se cargaron modelos serializados de terceros. Las versiones efectivas constan en [ejecucion.json](resultados/ejecucion.json). 
 
 ## 1. El retrato del dataset
 
@@ -112,7 +107,7 @@ Se probaron tres alternativas: reducir todas las clases a 758 casos, repetir dro
 | repetir_drones    |           10905 |    2000 | 90.00%      | 92.15%             | 72.80%           | 100.00%       |            261 |           54 | 93.37%            |
 | pesos_balanceados |            8000 |    2000 | 90.25%      | 91.55%             | 76.61%           | 100.00%       |            248 |           35 | 92.02%            |
 
-Los resultados de remuestreo dependen de cómo se seleccionan las filas y su orden; por eso las cifras de las estrategias no tienen por qué coincidir con el informe histórico sin sus scripts. Esta ejecución es la referencia reproducible.
+Los resultados de remuestreo dependen de cómo se seleccionan las filas y su orden; por eso las cifras de las estrategias no tienen por qué coincidir con el informe histórico sin sus scripts. Los parámetros y resultados de esta ejecución están registrados en los archivos adjuntos.
 
 **Trampa deliberada:** se balanceó únicamente la evaluación por remuestreo, sin mejorar el modelo. La precisión de dron pasa de 83.90% a 95.30%, pero la prueba dejó de reflejar el tráfico real. No hubo mejora del estimador ni se presenta esta cifra como válida para producción. [Resultado sesgado](resultados/05_prueba_sesgada.csv).
 
@@ -218,4 +213,4 @@ El orden propuesto es: aprobar capacidades, actualizar reglas y pruebas de segur
 - [Generador docente, versión consultada](https://github.com/ealcaraz85/topicoswebmobil/blob/639e2d001ebace36a55897bac9b768ea0e25a232/proyectos/dataset-medios/generar_dataset.py).
 - [Notas compartidas consultadas](https://github.com/Cesaredmyt/Topicos-Selectos-de-Tecnologias-Web-y-Movil/tree/6397468bd6c15e68a7a4fdee786917b470c825e7/actividades/analisis-dataset).
 
-Los datos son sintéticos y no prueban desempeño real de una empresa. No se entrenó ni modificó la tienda de instrumentos, Flutter ni la plataforma del equipo. Las versiones y parámetros hacen reproducible esta entrega; no garantizan que un entorno distinto produzca exactamente los mismos cortes de árbol.
+Los datos son sintéticos y no prueban desempeño real de una empresa. Las versiones y parámetros hacen reproducible esta entrega; no garantizan que un entorno distinto produzca exactamente los mismos cortes de árbol.
