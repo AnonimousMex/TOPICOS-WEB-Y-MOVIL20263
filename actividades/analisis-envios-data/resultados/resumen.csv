@@ -1,0 +1,7 @@
+archivo,filas,exactitud_total,baseline_mayoritaria,filas_vistas_entrenamiento,exactitud_no_vistas,clase_desconocida
+envios1,10000,0.9537,0.25,0,0.9537,0
+envios2,10000,0.7766,0.3471,0,0.7766,1616
+envios3,10000,0.9449,0.7374,0,0.9449,0
+envios4,10000,0.9269,0.5725,0,0.9269,0
+envios5,10000,0.9252,0.4578,8000,0.921,0
+envios6,10000,0.9615,0.6308,0,0.9615,0
