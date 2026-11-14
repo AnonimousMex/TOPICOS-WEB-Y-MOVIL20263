@@ -1,0 +1,49 @@
+{
+  "python": "3.12.13",
+  "versiones": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0",
+    "tabulate": "0.10.0"
+  },
+  "seed_split": 42,
+  "entrenamiento": 8000,
+  "prueba": 2000,
+  "sha256_entradas": {
+    "datos/drones_99.csv": "326911ce9f59d4ddaf99d29b996e16a0242314c2a3ce41e40baf140ce0535d48",
+    "datos/drones_entrenamiento_123.csv": "2fff2554974ef9673e249bf368ef8c031e169617008873e85aaf68b6dc40b692",
+    "datos/envios1.csv": "4d20c14c4a3d7fc9a51ec45d551912909c20430054195734941913e2a562a79a",
+    "datos/envios2.csv": "e080105935441c449ef575aa164154e5b6e7a02a7699870c3a40a3f80d420dcf",
+    "datos/envios3.csv": "96c240dde247ce3f96323af71416735545735cb95b0c6e15a1b5c9b13035d73e",
+    "datos/envios4.csv": "f68d2349626d88ccc500ea9eb3261a525143b08e79f4437eee295ea5e6cc673e",
+    "datos/envios5.csv": "3b8cd1416c62e807fcf6092fdfeb58162fbade8c8bf735e5c24a198dd9c875e2",
+    "datos/envios6.csv": "31a8a1f242b3822219fcc28c5864e5ca50f1fc0a685adef9c42cc45736a0a16d",
+    "datos/envios_medios.csv": "85660fa70f7e7764d5e2fadf2bfe7657642a0efb106239ffc979165dabdee188",
+    "datos/lluvias_99.csv": "8edebd1ff28230ae37f629c225af860d72066f3c2fd6b5dfebdf728090440606",
+    "datos/referencia_99.csv": "3154296ee6bebebbb693a4dddfc5ddb167043e3a5eadb34780824b29abac2987"
+  },
+  "resumen_actividad_1": {
+    "etiquetas_imposibles": 0,
+    "camionetas_cortas": 107,
+    "camionetas_grandes": 61,
+    "camionetas_refrigeradas": 36,
+    "justificadas_union": 95,
+    "sin_razon_fisica": 12,
+    "periferia_hasta_7_km": 0.022482893450635387
+  },
+  "resumen_actividad_6": {
+    "acuerdo_optimo_etiquetas": 0.9365,
+    "modelo_sin_reglas_etiquetas": 0.921,
+    "modelo_reglas_etiquetas": 0.9365,
+    "modelo_reglas_optimo": 0.981,
+    "errores_reglas_contra_etiqueta": 127,
+    "errores_reglas_que_son_optimos": 107
+  },
+  "resumen_actividad_7": {
+    "datos_valor_mayor_20000": 43,
+    "cambios_modelo_valor": 0,
+    "cambios_optimo_valor": 352
+  }
+}

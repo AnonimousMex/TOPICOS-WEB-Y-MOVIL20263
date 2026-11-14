@@ -1,0 +1,7 @@
+,peso_kg,peso_kg,peso_kg,volumen_l,volumen_l,volumen_l,distancia_km,distancia_km,distancia_km
+,min,median,max,min,median,max,min,median,max
+medio_recomendado,,,,,,,,,
+bicicleta,0.1,1.76,7.99,0.3,7.78,39.7,0.37,3.42,7.0
+camioneta,0.1,6.725,80.0,0.3,31.365000000000002,400.57,0.43,8.99,59.12
+dron,0.1,1.045,2.5,0.3,4.29,11.98,2.07,9.535,14.99
+moto,0.1,2.58,24.93,0.3,11.274999999999999,89.99,0.34,10.63,39.9

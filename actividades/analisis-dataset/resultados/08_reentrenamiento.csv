@@ -1,0 +1,10 @@
+,estrategia,nuevos,total,exactitud_reglas,acuerdo_optimo_nuevo
+0,solo_nuevos,200,200,0.797,0.8284
+1,viejos_mas_nuevos,200,10200,0.8412,0.8818
+2,viejos_reetiquetados_mas_nuevos,200,10200,0.9302,0.9758
+3,solo_nuevos,500,500,0.8612,0.896
+4,viejos_mas_nuevos,500,10500,0.8408,0.8806
+5,viejos_reetiquetados_mas_nuevos,500,10500,0.931,0.9762
+6,solo_nuevos,1000,1000,0.901,0.937
+7,viejos_mas_nuevos,1000,11000,0.841,0.882
+8,viejos_reetiquetados_mas_nuevos,1000,11000,0.9298,0.975
