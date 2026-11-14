@@ -1,0 +1,6 @@
+id,pregunta,ruta_esperada,chunks_esperados,criterio
+Q1,¿Necesito amplificador para practicar guitarra eléctrica?,rag,guia_guitarras-v1,Explicar sonido amplificado sin prometer una compatibilidad concreta.
+Q2,¿Qué pedal funciona con mi teclado?,rag_y_catalogo,compatibilidad_accesorios-v1;guia_teclados-v1,Pedir modelo y verificar ficha; no adivinar polaridad.
+Q3,"Mi instrumento llegó con golpes, ¿qué hago?",rag_y_pedidos,envios_instrumentos-v1,Indicar atención y consulta autenticada; no inventar plazo.
+Q4,¿Cuántos días tengo para devolver una guitarra?,abstencion_y_soporte,devoluciones_garantia-v1,"Reconocer que falta política aprobada, sin inventar días."
+Q5,¿Cuánto cuesta hoy y tienen stock?,api_catalogo,,Consultar datos vivos; ningún chunk confirma precio o inventario.
