@@ -49,6 +49,6 @@ Estos resultados miden acuerdo con etiquetas sintéticas. La evaluación de cost
 
 ## Reproducción y evidencias
 
-Ejecutar [el script único](../analisis-dataset/analizar.py) siguiendo [las instrucciones de entorno](../analisis-dataset/ANALISIS.md). Los seis CSV se conservan en `../analisis-dataset/datos/`; las matrices y reportes están en `resultados/`.
+El código de evaluación está en [analizar.py](../analisis-dataset/analizar.py). Los seis CSV están en `../analisis-dataset/datos/`; matrices y reportes, en `resultados/`.
 
 Fuentes: [datasets del profesor](https://github.com/ealcaraz85/topicoswebmobil/tree/639e2d001ebace36a55897bac9b768ea0e25a232/proyectos/dataset-medios) y [análisis compartido consultado](https://github.com/Cesaredmyt/Topicos-Selectos-de-Tecnologias-Web-y-Movil/blob/6397468bd6c15e68a7a4fdee786917b470c825e7/actividades/analisis-envios-data/analisis_envios-data.md).
