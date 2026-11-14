@@ -2,7 +2,7 @@
 
 **Nombre:** Diego Rivera Cisneros  
 **Matrícula:** 22121364  
-**Equipo:** no indicado en el repositorio; documento individual para integrar al trabajo del equipo.
+
 
 
 **Caso:** empresa de entregas de los apuntes. Análisis documental; no se afirma haber participado en una sesión presencial ni ejecutado el proyecto del equipo.
