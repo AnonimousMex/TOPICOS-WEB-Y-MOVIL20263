@@ -1,0 +1,1360 @@
+{
+  "cotizaciones": {
+    "correcta": {
+      "http": 200,
+      "km": 5.0,
+      "kg": 2.0,
+      "medio": "moto",
+      "motivo": "Distancia media y paquete dentro de capacidad de moto.",
+      "atendido_por": "8b28e46b8e10",
+      "worker": 7
+    },
+    "sin_km": {
+      "http": 400,
+      "error": "km y kg son obligatorios y deben ser números finitos no negativos.",
+      "atendido_por": "8b28e46b8e10",
+      "worker": 7
+    },
+    "km_texto": {
+      "http": 400,
+      "error": "km y kg son obligatorios y deben ser números finitos no negativos.",
+      "atendido_por": "eaaa3d7fd03b",
+      "worker": 8
+    },
+    "negativo": {
+      "http": 400,
+      "error": "km y kg son obligatorios y deben ser números finitos no negativos.",
+      "atendido_por": "be801c308982",
+      "worker": 8
+    }
+  },
+  "cliente_terminal_antes": {
+    "km": 5.0,
+    "kg": 2.0,
+    "medio": "moto",
+    "motivo": "Distancia media y paquete dentro de capacidad de moto.",
+    "atendido_por": "eaaa3d7fd03b",
+    "worker": 8
+  },
+  "cliente_terminal_despues": {
+    "km": 5.0,
+    "kg": 2.0,
+    "medio": "bicicleta",
+    "motivo": "Paquete ligero dentro del límite de bicicleta (6 km).",
+    "atendido_por": "4727c1b2800b",
+    "worker": 8
+  },
+  "base": {
+    "alta": {
+      "folio": "97656CA5AED2",
+      "destino": "Destino académico de prueba",
+      "estado": "registrado",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    "consultas": [
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "97656CA5AED2",
+        "destino": "Destino académico de prueba",
+        "estado": "registrado",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      }
+    ]
+  },
+  "memoria": {
+    "alta": {
+      "folio": "E93D82545E6B",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    "consultas": [
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "bb1352130803",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 7
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      },
+      {
+        "http": 200,
+        "folio": "E93D82545E6B",
+        "destino": "Destino académico de prueba",
+        "atendido_por": "bb1352130803",
+        "worker": 7
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "4727c1b2800b",
+        "worker": 8
+      },
+      {
+        "http": 404,
+        "error": "Pedido no encontrado en la memoria de este worker.",
+        "atendido_por": "a9880d4ac477",
+        "worker": 8
+      }
+    ]
+  },
+  "borrador_global_alta": {
+    "http": 200,
+    "destino": "Destino global",
+    "almacenamiento": "variable global",
+    "atendido_por": "bb1352130803",
+    "worker": 8
+  },
+  "borrador_global": [
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "BE0FA366F9F3",
+      "destino": "Destino global",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "409D48EE4AC4",
+      "destino": "Destino global",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "29657C022048",
+      "destino": "Destino global",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "8555F77A4739",
+      "destino": "Destino global",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 400,
+      "error": "Este worker no tiene el destino.",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    }
+  ],
+  "sesion_alta": {
+    "http": 200,
+    "destino": "Destino de mi sesion",
+    "almacenamiento": "session en base compartida",
+    "atendido_por": "bb1352130803",
+    "worker": 8
+  },
+  "sesion_tres": [
+    {
+      "http": 201,
+      "folio": "AB01670B2F63",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "C7362A178996",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "4DD00B33890F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "76E37019C6DE",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "E44BDE84F260",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "9327B88DAFD1",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "01AE8623C69C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "2C301991128C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "CBBB0DCEE863",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "4A4B437D7837",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "676E9A6A35CF",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "21360CB5018D",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "61676E3C1C8E",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "288D63DE083F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "0A8294454FAB",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "D8129A54DCEE",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "75971D4869A0",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "87747FBE7F43",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "857C8014773F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "8D6B6169FEA7",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "704BC1CFD18C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "A2B7538C5B34",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "713BCA74A497",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "D99E69D02204",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "6914A8D81235",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "E87F0D61432C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "F135843DB7C7",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "3491DD018DD8",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "5237BF08E8E6",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "C9C4C10631BB",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    }
+  ],
+  "sesiones_separadas": {
+    "cliente_1": {
+      "http": 201,
+      "folio": "E15281155F31",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    "cliente_2": {
+      "http": 201,
+      "folio": "5F7304533BD6",
+      "destino": "Destino de otro cliente",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    }
+  },
+  "sesion_cinco": [
+    {
+      "http": 201,
+      "folio": "849043F70079",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "4C4978ECE370",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "2E1CB83682AE",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "13F4C6A03841",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "4F3B80F06E2F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "122B761EE3D4",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "6B7C03B03FB7",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "88E0ECD82AFE",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "620264B46F1B",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "FC0D7174448D",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "09E32610EFAA",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "C244751CCD4C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "90FA93280FFC",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "D8276AF133B3",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "77FD779FD1F4",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "26132A576406",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "2B781686B1F3",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "6B74070F6D5F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "0A36D72F9648",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "0780C7BEA685",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "B4CC272ED4CE",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "FD8991F73B2A",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "D42E15826B4F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "14CBFF36C43B",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "F66CBA6E17F4",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "B3A11AB548ED",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "8356E022A03C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "5D5DD62187E5",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "75BDC7E662E9",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "83A97D207BEB",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "ACFED99CB49C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "960790370295",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "690322D15C34",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "682C22C70E16",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "6752F5E180EF",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "D0014D6C5A92",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "BE85F2E9D67A",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "017A01F3DC0A",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "E151F0CA0EE8",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "75108506BCC9",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "C2BBD07DCD7F",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "5F3C9A2042F5",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "6EFD71363E2D",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "6A121FCA625E",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "48AD6C4E9F3C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "A71598860473",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "4727c1b2800b",
+      "worker": 7
+    },
+    {
+      "http": 201,
+      "folio": "F1045FE18A5D",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "a9880d4ac477",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "34B4E9C82F3C",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "bb1352130803",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "0706DADAAC0E",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "8b78e2ce8809",
+      "worker": 8
+    },
+    {
+      "http": 201,
+      "folio": "E68F26D2D0FE",
+      "destino": "Destino de mi sesion",
+      "atendido_por": "285426616d74",
+      "worker": 8
+    }
+  ]
+}

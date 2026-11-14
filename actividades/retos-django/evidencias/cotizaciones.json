@@ -1,0 +1,29 @@
+{
+  "correcta": {
+    "http": 200,
+    "km": 5.0,
+    "kg": 2.0,
+    "medio": "moto",
+    "motivo": "Distancia media y paquete dentro de capacidad de moto.",
+    "atendido_por": "8b28e46b8e10",
+    "worker": 7
+  },
+  "sin_km": {
+    "http": 400,
+    "error": "km y kg son obligatorios y deben ser números finitos no negativos.",
+    "atendido_por": "8b28e46b8e10",
+    "worker": 7
+  },
+  "km_texto": {
+    "http": 400,
+    "error": "km y kg son obligatorios y deben ser números finitos no negativos.",
+    "atendido_por": "eaaa3d7fd03b",
+    "worker": 8
+  },
+  "negativo": {
+    "http": 400,
+    "error": "km y kg son obligatorios y deben ser números finitos no negativos.",
+    "atendido_por": "be801c308982",
+    "worker": 8
+  }
+}

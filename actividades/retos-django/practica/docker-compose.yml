@@ -1,0 +1,44 @@
+x-django: &django
+  image: topicos22121364-django-laboratorio
+  build: .
+  environment:
+    POSTGRES_HOST: db
+    POSTGRES_PASSWORD: clave-solo-laboratorio-local
+    BICI_MAX_KM: ${BICI_MAX_KM:-3}
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: laboratorio
+      POSTGRES_USER: laboratorio
+      POSTGRES_PASSWORD: clave-solo-laboratorio-local
+    volumes:
+      - datos:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U laboratorio"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  migrar:
+    <<: *django
+    command: python manage.py migrate --noinput
+    depends_on:
+      db:
+        condition: service_healthy
+  web:
+    <<: *django
+    deploy:
+      replicas: 3
+    depends_on:
+      migrar:
+        condition: service_completed_successfully
+  balanceador:
+    image: nginx:1.28-alpine
+    ports:
+      - "127.0.0.1:${PUERTO_DJANGO:-18081}:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
+volumes:
+  datos:

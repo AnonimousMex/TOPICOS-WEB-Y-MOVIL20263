@@ -1,0 +1,9 @@
+NAME                                 IMAGE                                COMMAND                  SERVICE       CREATED         STATUS                     PORTS
+topicos22121364retos-balanceador-1   nginx:1.28-alpine                    "/docker-entrypoint.…"   balanceador   2 minutes ago   Up 2 minutes               127.0.0.1:18081->80/tcp
+topicos22121364retos-db-1            postgres:16-alpine                   "docker-entrypoint.s…"   db            2 minutes ago   Up 2 minutes (healthy)     5432/tcp
+topicos22121364retos-migrar-1        topicos22121364-django-laboratorio   "python manage.py mi…"   migrar        2 minutes ago   Exited (0) 2 minutes ago   
+topicos22121364retos-web-1           topicos22121364-django-laboratorio   "gunicorn plataforma…"   web           5 seconds ago   Up 4 seconds               8000/tcp
+topicos22121364retos-web-2           topicos22121364-django-laboratorio   "gunicorn plataforma…"   web           5 seconds ago   Up 4 seconds               8000/tcp
+topicos22121364retos-web-3           topicos22121364-django-laboratorio   "gunicorn plataforma…"   web           5 seconds ago   Up 4 seconds               8000/tcp
+topicos22121364retos-web-4           topicos22121364-django-laboratorio   "gunicorn plataforma…"   web           3 seconds ago   Up 2 seconds               8000/tcp
+topicos22121364retos-web-5           topicos22121364-django-laboratorio   "gunicorn plataforma…"   web           3 seconds ago   Up 2 seconds               8000/tcp
