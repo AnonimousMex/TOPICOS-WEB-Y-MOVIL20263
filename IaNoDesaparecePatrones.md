@@ -1,3 +1,7 @@
+# IA y patrones de diseño
+
+> Documento histórico de actividades 1–5. La reproducción actual, sus scripts y los retos 6–8 están en [ANALISIS.md](actividades/analisis-dataset/ANALISIS.md). Las diferencias de remuestreo se explican allí; para resultados verificables se usa esa ejecución.
+
 ## Actividad 1: El retrato del dataset
 
 * **Lo que esperábamos:** Con lluvia debería dominar la moto; en el centro, la bicicleta; la ruta más larga en bici rondaría los 7 km; y creíamos que no veríamos etiquetas imposibles.
@@ -8,7 +12,7 @@ El dron brilla por su ausencia en dos situaciones concretas, cada una respaldada
 * **Con lluvia o viento fuerte (0%):** La regla indica que el dron solo puede volar con clima despejado.
 * **En el centro (0%):** La regla establece que el espacio aéreo del centro está restringido.
 
-Adicionalmente, hay un tercer caso que não depende del clima sino de la distancia: en la zona rural el dron tampoco aparece porque todos los envíos ahí están a 15.93 km o más, mientras que el alcance máximo del dron es de 15 km.
+Adicionalmente, hay un tercer caso que no depende del clima sino de la distancia: en la zona rural el dron tampoco aparece porque todos los envíos ahí están a 15.93 km o más, mientras que el alcance máximo del dron es de 15 km.
 
 ### Pregunta 2: La bicicleta casi no va a la periferia, aunque ninguna regla se lo prohíbe. ¿Qué otra columna lo explica?
 La clave está en `distancia_km`. Apenas el 2.2% de los envíos a la periferia están a 7 km o menos (el límite operativo de la bici). Además, la mediana de distancia en la periferia es de 15.75 km, frente a los 6.98 km de la zona residencial. En la periferia solo detectamos 18 bicicletas de un total de 2,046 envíos (0.9%). En resumen: casi toda la periferia queda demasiado lejos para una bici, aunque no exista una regla escrita que lo prohíba textualmente.
@@ -23,7 +27,7 @@ El que de plano **no** se puede adivinar es el de la camioneta. Los máximos que
 
 ### Pregunta 4: Hay más de cien camionetas para viajes de menos de 2 km. ¿Cuántas tienen una razón clara?
 Contabilizamos 107 camionetas en trayectos menores a 2 km. De ellas:
-* 59 no caben en una moto (pesan más de 25 kg o superan los 90 L).
+* 59 no caben en una moto y no son refrigerados. En total hay 61 que superan peso o volumen de moto, pero 2 también son refrigerados y se cuentan en el siguiente grupo.
 * 36 son productos refrigerados (exclusivos de camioneta).
 
 Esto nos da 95 casos con una justificación clara. Las 12 restantes tenían a la moto o a la bici como opciones viables según las reglas, y 11 de ellas están ubicadas en el centro. Nuestra inferencia es que forman parte del 3% de ruido que el generador introduce a propósito (cambiando la etiqueta por otro medio posible). Ojo: es una deducción, ya que con el puro CSV no hay forma de confirmarlo con certeza absoluta.
@@ -54,7 +58,7 @@ Aquí la premisa inicial no se sostiene del todo. A las 20:00 la bicicleta apare
 Lo que explica este cambio es la regla de bicicleta de noche: a partir de las 21:00 el generador penaliza a la bici con 30 puntos porque se considera horario nocturno (el README menciona que *"la bicicleta de noche y con lluvia también recibe penalizaciones"*). El repunte de la moto ocurre sencillamente porque la bici pierde competitividad y el dron tiene prohibido volar a esa hora.
 
 ### Pregunta 4: Un árbol solo pregunta si la hora es menor o igual que X. ¿Por qué le cuesta representar "de noche"? ¿Cuántas preguntas necesita como mínimo?
-Decir "de noche" significa evaluar two condiciones: *"hora menor que 6"* o *"hora mayor o igual que 21"*. Son dos cortes distintos ubicados en extremos opuestos del día. Como un árbol toma decisiones evaluando una sola pregunta a la vez, necesita al menos dos consultas sobre la hora para aislar la noche, quedando repartidas en ramas separadas. Con una sola pregunta no es suficiente.
+Decir "de noche" significa evaluar dos condiciones: *"hora menor que 6"* o *"hora mayor o igual que 21"*. Son dos cortes distintos ubicados en extremos opuestos del día. Como un árbol toma decisiones evaluando una sola pregunta a la vez, necesita al menos dos consultas sobre la hora para aislar la noche, quedando repartidas en ramas separadas. Con una sola pregunta no es suficiente.
 
 ### Para pensar: una columna nueva para la noche.
 Propusimos crear la variable `es_de_noche` (vale 1 si la hora es menor a 6 o mayor/igual a 21, y 0 en cualquier otro caso). Pusimos a prueba la idea: sin esta columna, el árbol registraba una exactitud de 92.1% y 31 recomendaciones imposibles en la prueba. Al incluirla, la exactitud subió al 93.0% y las imposibles bajaron a 14 (los drones imposibles cayeron de 26 a 10). 
@@ -92,7 +96,7 @@ En otras palabras, el modelo confunde la moto con la bici cuando el envío es ur
 ### Para pensar: si solo pudieran arreglar un tipo de error, ¿cuál sería y cómo?
 Arreglaríamos el de la moto mandada a bicicleta (46 casos). Es el error más voluminoso y el único que las reglas no pueden atrapar, ya que para esos paquetes la bici es técnicamente posible. Lo atacaríamos mejorando los datos de entrenamiento, por ejemplo, alimentando al modelo con más ejemplos de envíos urgentes bajo lluvia para que el árbol aprenda a distinguirlos mejor. Modificar las reglas no sirve de nada aquí, porque las reglas ya consideran que la bici es válida.
 
-> **Nota sobre el `random_state`:** Los errores solo son válidos si se analizan con datos que el modelo jamás vio. Como nos entrenamos con `random_state=42`, debemos mantener esa misma partición. Si usáramos otra semilla, por ejemplo la 7, el 80.6% de los envíos del set de "prueba" ya habrían sido utilizados en el entrenamiento, arrojando una exactitud artificial de 93.0% que resulta engañosa. Evaluando estrictamente con datos ocultos, la exactitud real es del 92.3% y la lista de errores cambia por completo.
+> **Nota sobre el `random_state`:** Los errores solo son válidos si se analizan con datos que el modelo jamás vio. Como nos entrenamos con `random_state=42`, debemos mantener esa misma partición. Si usáramos otra semilla, por ejemplo la 7, el 80.6% de los envíos del set de "prueba" ya habrían sido utilizados en el entrenamiento, arrojando una exactitud artificial de 93.0% que resulta engañosa. También se reportó un 92.3% en otra evaluación, pero no se conserva aquí la configuración necesaria para compararlo. La referencia de las tablas de esta actividad sigue siendo 92.1% (158 errores en 2,000 casos). Cambiar la semilla exige volver a entrenar y evaluar sin solapamiento; mantenerla por sí solo no demuestra que no haya fuga de datos.
 
 ---
 
@@ -133,7 +137,7 @@ No necesariamente. La zona de destino no la utiliza el modelo predictivo, pero l
 ## Actividad 5: El dron es minoría: ¿hay que balancear el dataset?
 
 ### Parte A: Pensar antes de tocar los datos
-* **Pregunta 1:** Un modelo que nunca sugiriera un dron alcanzaría un 90.5% de exactitud, porque los drones representan el 9.5% de los envíos. Uno que siempre dijera moto lograría un 45.8%. Aquí radica el problema: la exactitud premia al modelo perezoso que acierta siempre con la clase mayoritaria, aunque no sirva para el negocio. Para evaluar un dataset desbalanceado hay que analizar la precisión, el *recall* del dron, la matriz de confusión y las recomendaciones imposibles.
+* **Pregunta 1:** El clasificador hipotético del enunciado, que nunca acierta dron pero acierta todos los demás medios, alcanzaría un 90.5% de exactitud. La condición de acertar todo lo demás es esencial: simplemente no predecir dron no garantiza ese porcentaje en cuatro clases. Uno que siempre dijera moto lograría un 45.8%. Aquí radica el problema: la exactitud premia al modelo perezoso que acierta siempre con la clase mayoritaria, aunque no sirva para el negocio. Para evaluar un dataset desbalanceado hay que analizar la precisión, el *recall* del dron, la matriz de confusión y las recomendaciones imposibles.
 * **Pregunta 2:** Hay pocos drones porque el negocio real opera así: solo pueden volar con clima despejado, de día, fuera del centro y con paquetes ligeros. El dataset es un espejo de esa realidad. Balancearlo a la fuerza distorsiona las probabilidades y hace que el modelo crea que los drones son mucho más comunes de lo que realmente son.
 * **Pregunta 3:** Se debe balancear después de separar, y únicamente en el conjunto de entrenamiento. Si balanceamos antes, duplicaríamos drones que terminarían repartidos en ambos lados (entrenamiento y prueba), provocando que el modelo "memorice" esas muestras y los resultados salgan inflados artificialmente. La prueba debe mantenerse intacta para reflejar la realidad.
 
@@ -159,7 +163,7 @@ Evaluamos todas las opciones con los mismos 2,000 envíos de prueba y usando el 
 ---
 
 ### Parte C: Interpretar
-* **Pregunta 1:** El *recall* subió del 90.5% a prácticamente el 100%, mientras que la precisión cayó del 83.9% a un rango de entre 72% y 78%. Al balancear, el modelo se vuelve más agresivo diciendo "dron" (pasa de 205 a 248–263 veces). Así atrapa casi todos los drones reales, pero también etiqueta erróneamente como dron a envíos que no lo eran. La precisión mide qué tan certeros somos al decir "dron", y al lanzarnos más veces, nos equivocamos más. Es como pescar con una red sobredimensionada: atrapas más peces, pero también mucha basura.
+* **Pregunta 1:** El *recall* subió del 90.5% a prácticamente el 100%, mientras que la precisión cayó del 83.9% a un rango de entre 72% y 78%. Al balancear, el modelo se vuelve más agresivo diciendo "dron" (pasa de 205 a 244–263 veces). Así atrapa casi todos los drones reales, pero también etiqueta erróneamente como dron a envíos que no lo eran. La precisión mide qué tan certeros somos al decir "dron", y al lanzarnos más veces, nos equivocamos más. Es como pescar con una red sobredimensionada: atrapas más peces, pero también mucha basura.
 * **Pregunta 2:** Sí, la estrategia 1 sacrificó el 62% de la información al quedarse con solo 3,032 envíos de los 8,000 originales. Su exactitud cayó al 89.7%, y el modelo aprendió peor sobre las bicicletas, motos y camionetas al haber descartado datos para igualar al dron.
 * **Pregunta 3:** Sí, las estrategias 2, 3 y 4 hacen esencialmente lo mismo bajo el capó: le indican al árbol que los ejemplares de dron tienen mayor peso. Ya sea duplicándolos, incorporando datos nuevos o aplicando ponderaciones en la medición, todas alteran la proporción que el modelo asimila, de ahí que los resultados sean tan similares.
 * **Pregunta 4:** No. Ese 84% de confianza original reflejaba el hecho de que el 9.5% de los datos eran drones. Tras balancear, la confianza promedio sube al 89.9%, y un paquete de ejemplo que antes tenía una confianza del 84.1% para dron, ahora salta al 97.9%. La confianza deja de reflejar la realidad y pasa a reflejar la proporción artificial aprendida en el entrenamiento.
@@ -175,3 +179,7 @@ Nuestra recomendación contundente es **no usar el modelo balanceado y quedarnos
 * **Las reglas no cubren todo:** Las reglas del sistema bloquean lo imposible (como un dron de noche), pero no filtran las recomendaciones que son técnicamente posibles aunque ineficientes. Por eso, el exceso de drones que predice el modelo balanceado no se soluciona solo con reglas.
 * **Si la flota de drones crece en el futuro:** Si la empresa adquiere el doble de drones, la proporción real de envíos subirá de forma natural, y el modelo sin balancear se adaptará mejor a esa nueva realidad. En ese escenario, lo correcto será reentrenar con data fresca, no aplicar un balance artificial.
 * **"No balancear" está respaldado por números:** El modelo sin balancear ya encuentra 9 de cada 10 drones reales, comete muchos menos errores y genera menos sugerencias imposibles (31 frente a las 35 del modelo balanceado).
+
+## Referencias técnicas
+
+- [Métricas de clasificación — scikit-learn](https://scikit-learn.org/stable/modules/model_evaluation.html)
