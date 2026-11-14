@@ -43,12 +43,12 @@ Indicaciones
   a) Desarmen su argumento. ¿Qué parte de la frase cree cumplir con la
   API? ¿Qué parte cree cumplir con Docker? ¿En qué se equivoca en cada
   una?
-En cuanto a la API, acierta parcialmente porque expone endpoints con DRF, pero se equivoca al justificar Docker. Contenerizar con Docker solo encapsula un proceso; un contenedor que encierra toda la aplicación de Django sigue siendo exactamente un monolito: un único proceso en ejecución, un despliegue indivisible, una base de datos centralizada y un punto único de fallo global.
+En cuanto a la API, acierta parcialmente porque expone endpoints con DRF, pero se equivoca al justificar Docker. Contenerizar con Docker solo encapsula un proceso; un contenedor que encierra toda la aplicación de Django sigue siendo exactamente un monolito: una unidad de despliegue que agrupa esas responsabilidades. Puede tener varios procesos o réplicas; eso no cambia por sí solo su arquitectura monolítica.
 
   b) Den un contraejemplo mínimo: mismo código Django, *con* API y *con*
   Docker, que *sigamos* pudiendo llamar monolito. ¿Qué tendría que
   añadir (o partir) para que deje de serlo?
-Un proyecto Django clásico que maneje en el mismo código las apps de usuarios, pedidos y recomendaciones, expuestas mediante Django REST Framework, empaquetado en un único `Dockerfile`, corriendo en un contenedor individual y conectado a una sola base de datos. Tiene API y tiene Docker, pero sigue siendo un monolito. Dejará de serlo en el momento exacto en que dividas físicamente el código en procesos independientes con ciclos de vida y despliegues separados. Cada módulo autónomo requiere su propia imagen de contenedor, su propia estrategia de versionado, sus propios datos y contratos de red bien definidos.
+Un proyecto Django clásico que maneje en el mismo código las apps de usuarios, pedidos y recomendaciones, expuestas mediante Django REST Framework, empaquetado en un único `Dockerfile`, corriendo en un contenedor individual y conectado a una sola base de datos. Tiene API y tiene Docker, pero sigue siendo un monolito. Dejará de serlo en el momento exacto en que dividas físicamente el código en procesos independientes con ciclos de vida y despliegues separados. Cada servicio debe poder desplegarse de forma independiente, con contratos definidos y responsabilidad sobre sus datos. Usar imágenes distintas ayuda a expresarlo, pero no es un requisito universal de los microservicios.
 
   c) ¿La frase del pizarrón habla de *tecnologías* (Docker, REST) o de
   *límites de proceso / despliegue*? Defiendan su lectura con lo que
@@ -83,7 +83,7 @@ La frase hace referencia estricta a los límites lógicos de proceso y a las uni
 
   a) Separen las dos ideas que mezclaron (rutas vs réplicas). ¿Qué
   problema resuelve cada una y cuál *no* resuelve?
-Por un lado, las rutas definidas en el enrutador simplemente organizan lógicamente el código dentro del mismo proceso de software; aportan orden estructural, pero cero independencia, ya que si el módulo de recomendación colapsa, arrastra y tira todo el proceso. Por otro lado, las réplicas generan copias idénticas de ese mismo monolito base; esto último sí aporta alta disponibilidad y capacidad de expansión ante carga, pero jamás soluciona el acoplamiento de responsabilidades. Además, intentar levantar tres réplicas exponiendo idénticamente el puerto fijo `8000:8000` sin un balanceador de carga previo generará un conflicto inminente de puertos.
+Por un lado, las rutas definidas en el enrutador simplemente organizan lógicamente el código dentro del mismo proceso de software; aportan orden estructural, pero cero independencia, ya que si recomendaciones agota los recursos compartidos o provoca una caída del proceso, puede afectar a los demás módulos; un error controlado no necesariamente derriba toda la aplicación. Por otro lado, las réplicas generan copias idénticas de ese mismo monolito base; esto último sí aporta alta disponibilidad y capacidad de expansión ante carga, pero jamás soluciona el acoplamiento de responsabilidades. Además, intentar levantar tres réplicas exponiendo idénticamente el puerto fijo `8000:8000` sin un balanceador de carga previo generará un conflicto inminente de puertos.
 
   b) Si una de las tres réplicas se cae a mitad de un `POST /pedidos',
   ¿el sistema dejó de ser monolito? ¿Por qué sí o por qué no?
@@ -97,7 +97,7 @@ El sistema no pierde su naturaleza de monolito por el simple hecho de que una in
 - Usuarios: servicio con su propio espacio de datos exclusivo.
 - Pedidos: módulo de transacciones con su base de datos propia y comunicación hacia recomendaciones.
 - Recomendar: servicio analítico dedicado a procesar los modelos predictivos mediante archivos serializados.
-Se requieren como mínimo 3 imágenes de desarrollo propio (usuarios, pedidos y recomendador), puesto que cada una encapsula un código fuente independiente y se despliega por separado; sumando el contenedor perimetral con la imagen oficial de Nginx, el total operativo es de 4 servicios. Si concentramos menos componentes, volvemos a caer en dependencias de despliegue compartido.
+Para esta propuesta se usarían 3 imágenes de desarrollo propio (usuarios, pedidos y recomendador), puesto que cada una encapsula un código fuente independiente y se despliega por separado; sumando el contenedor perimetral con la imagen oficial de Nginx, el total operativo es de 4 servicios. La independencia se verifica por los despliegues y contratos, no por contar imágenes: una misma imagen podría ejecutar servicios distintos con comandos separados.
 
 
 3 — El gateway que «hace de más» (10 puntos)
@@ -119,7 +119,7 @@ Definitivamente no es un gateway; se trata de un monolito envuelto con un servid
   pesado se reentrena cada semana y el correo empieza a fallar.
 1. Cada ciclo semanal de reentrenamiento y actualización del archivo `.joblib` obliga a redesplegar toda la aplicación completa, provocando interrupciones incluso en los flujos de autenticación y login de los usuarios.
 2. Si el servicio externo de correo electrónico experimenta fallas de conectividad, el proceso completo de registro del pedido se bloquea y se reporta como fallido, invitando al cliente a reintentar y duplicar transacciones.
-3. El motor de inferencia analítica consume recursos intensivos de CPU y memoria RAM que compiten directamente con las validaciones de seguridad del JWT, mientras que el uso de SQLite incrustado impide la replicación horizontal del servicio y arriesga la integridad de los datos ante cualquier reinicio del contenedor.
+3. El motor de inferencia analítica consume recursos intensivos de CPU y memoria RAM que compiten directamente con las validaciones de seguridad del JWT, mientras que SQLite limita las escrituras concurrentes y exige planificar la persistencia. Un reinicio no implica corrupción; al eliminar o recrear un contenedor sin almacenamiento persistente sí pueden perderse los datos de su capa escribible.
 
   c) Partan ese contenedor en piezas. Para cada pieza digan: ¿queda en
   el borde (gateway) o detrás? No inventen diez servicios: el mínimo que
@@ -185,7 +185,7 @@ El usuario final visualiza el pedido confirmado exitosamente con un código de r
   que Recomendar vuelva; así nunca usamos plan B.» ¿Qué le pasa a la
   cola de peticiones y al gateway si Recomendar está caído 10 minutos?
   ¿Plan B siempre es peor que reintentar? Argumenten.
-Si se implementa una política de reintentos masivos y ciegos (por ejemplo, 10 intentos consecutivos con esperas de 3 segundos), cada petición fallida retendría recursos operativos durante unos 30 segundos. Ante un flujo constante durante 10 minutos, se acumularían cientos de solicitudes estancadas consumiendo hilos de procesamiento en el servidor de pedidos, saturando la capacidad del gateway y provocando errores masivos de rebasamiento perimetral (`504 Gateway Timeout`). Cuando el servicio de recomendaciones finalmente se recupere, recibirá una avalancha repentina de peticiones acumuladas que podría volver a colapsarlo. Por otro lado, el plan B no es universalmente peor; si un envío por un medio inadecuado implica altos costos económicos o riesgos operativos graves, resulta preferible marcar la transacción como pendiente de revisión en lugar de forzar una ejecución errónea.
+Si se implementa una política de reintentos masivos y ciegos (por ejemplo, 10 intentos consecutivos con esperas de 3 segundos), cada petición fallida retendría recursos operativos durante unos 30 segundos. Ante un flujo constante durante 10 minutos, se retendrían recursos y aumentaría la concurrencia. Con 1,000 solicitudes/hora y 30 segundos por solicitud, habría unas 8.3 solicitudes simultáneas en promedio bajo un flujo uniforme; la saturación y los errores `504` dependerían de los límites de recursos, las ráfagas y el timeout del gateway. Cuando el servicio de recomendaciones finalmente se recupere, recibirá una avalancha repentina de peticiones acumuladas que podría volver a colapsarlo. Por otro lado, el plan B no es universalmente peor; si un envío por un medio inadecuado implica altos costos económicos o riesgos operativos graves, resulta preferible marcar la transacción como pendiente de revisión en lugar de forzar una ejecución errónea.
 
 
 6 — Apagan el «edificio equivocado» (10 puntos)
@@ -207,7 +207,7 @@ Si se implementa una política de reintentos masivos y ciegos (por ejemplo, 10 i
   afuera aunque más piezas sigan arriba? ¿Qué les enseña eso del borde?
 1. Al detener el gateway, el navegador es incapaz de establecer conexión, por lo que no carga ninguna interfaz gráfica ni procesa solicitudes; sin embargo, en la red interna los contenedores de pedidos y recomendaciones permanecen completamente operativos y listos para procesar llamadas internas si existieran.
 2. Al detener el servicio de pedidos, la interfaz web principal provista por el gateway sigue cargando con normalidad, pero al intentar ejecutar la acción de crear un pedido la plataforma arroja un error de comunicación perimetral (`502 Bad Gateway`), mientras que el servicio de recomendaciones continúa activo pero inutilizado.
-3. Al detener únicamente el recomendador, la interfaz carga sin inconvenientes y los pedidos se procesan y completan de manera inmediata utilizando el plan B de respaldo, respondiendo con agilidad gracias a que el rechazo de conexión se detecta instantáneamente.
+3. Al detener únicamente el recomendador, la interfaz carga sin inconvenientes y los pedidos pueden completarse con el plan B. Si la conexión se rechaza, el fallo puede detectarse rápido; si se descartan paquetes o la red no responde, habrá que esperar al timeout. Detener el contenedor no garantiza una respuesta inmediata.
 
 El escenario donde la aplicación aparenta estar totalmente colapsada hacia el exterior a pesar de mantener la mayoría de sus componentes internos intactos es cuando se apaga el gateway (experimento 1). Esto nos demuestra de forma categórica que el borde perimetral constituye el punto único de fallo crítico de cara al usuario, por lo que debe mantenerse robusto, simplificado y dotado de mecanismos confiables de respaldo.
 
