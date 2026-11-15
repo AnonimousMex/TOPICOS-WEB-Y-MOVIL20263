@@ -3,8 +3,6 @@
 **Nombre:** Diego Rivera Cisneros  
 **Matrícula:** 22121364  
 
-
-
 Caso de estudio: empresa de mensajería descrita en los apuntes.
 
 ## Misión 1. La plataforma no es un patrón
@@ -78,6 +76,6 @@ Un repositorio con fuente remota y local permite consultar el último pedido sin
 
 No copiaría BLoC a Android para igualar nombres: usaría las herramientas del entorno y compartiría contratos de API y reglas del servidor. Las doce consultas de inicio se resuelven con agregación/BFF, no con Factory.
 
-**Fuente:** [misiones y rúbrica del profesor](https://ealcaraz85.github.io/topicoswebmobil/#actividades). 
+**Fuente:** [misiones y rúbrica del profesor](https://ealcaraz85.github.io/topicoswebmobil/#actividades).
 
 Referencias de los mecanismos nativos: [middleware de Express](https://expressjs.com/en/guide/using-middleware/), [transacciones en Django](https://docs.djangoproject.com/en/6.0/topics/db/transactions/) y [ViewModel de Android](https://developer.android.com/topic/libraries/architecture/viewmodel).
