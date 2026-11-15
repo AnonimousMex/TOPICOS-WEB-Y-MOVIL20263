@@ -3,9 +3,7 @@
 **Nombre:** Diego Rivera Cisneros  
 **Matrícula:** 22121364  
 
-
-
-**Caso:** empresa de entregas de los apuntes. Análisis documental; no se afirma haber participado en una sesión presencial ni ejecutado el proyecto del equipo.
+**Caso:** empresa de entregas de los apuntes. Análisis documental.
 
 ## Paso 1. Separar los inconvenientes
 
@@ -43,7 +41,7 @@
 
 ## Paso 3. Primer corte y dos clientes
 
-Elegiría aislar la consulta del pedido: recuperar una representación ya guardada sin volver a pedir una sugerencia a la IA. Es un cambio pequeño y permite comprobar que un fallo del recomendador no bloquea seguimiento. Mantendría los folios y las reglas vigentes; no sustituiría toda la base ni modificaría el proyecto del equipo para esta entrega documental.
+Elegiría aislar la consulta del pedido: recuperar una representación ya guardada sin volver a pedir una sugerencia a la IA. Es un cambio pequeño y permite comprobar que un fallo del recomendador no bloquea seguimiento. Mantendría los folios, las reglas vigentes y los datos existentes.
 
 El panel puede renderizar HTML con mapa y el teléfono pedir JSON con folio, estado y ETA. Ambos deben leer el mismo estado autorizado. Que el mapa no cargue puede cambiar la presentación, pero no el estado del pedido ni los permisos para consultarlo.
 
