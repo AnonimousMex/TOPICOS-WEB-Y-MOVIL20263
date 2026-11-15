@@ -6,7 +6,7 @@
 **Nombre del alumno:** Diego Rivera Cisneros  
 **Fecha:** 27/08/2026  
 
-**Instrucciones:** Responde de manera clara y concisa a cada una de las siguientes preguntas abiertas. El propósito de esta evaluación es medir tus conocimientos previos en Ingeniería de Software.
+**Objetivo:** evaluación de conocimientos previos en Ingeniería de Software.
 
 ---
 
