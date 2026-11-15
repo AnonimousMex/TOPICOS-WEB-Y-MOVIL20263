@@ -1,0 +1,4 @@
+[submodule "proyectos/rumbo"]
+	path = proyectos/rumbo
+	url = https://github.com/AnonimousMex/rumbo.git
+	branch = main
