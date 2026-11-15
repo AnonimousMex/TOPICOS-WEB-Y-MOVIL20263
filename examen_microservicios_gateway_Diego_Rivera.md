@@ -10,24 +10,7 @@
 Nombre: Diego Rivera Cisneros                      Calificación: _________
 
 
-Indicaciones
-════════════
-
-  Este examen *no* se aprueba de memoria. Casi todas las preguntas
-  tienen una respuesta que «suena bien» y está mal, o dos opciones
-  defendibles donde se califica el argumento.
-
-  Reglas:
-
-  • Expliquen el *porqué*. Una conclusión sin razonamiento vale la mitad
-    (o menos).
-  • Cuando digan «depende», digan *de qué*.
-  • No hace falta código que compile; sí hace falta que el diseño cierre
-    (quién llama a quién, qué pasa si algo falla, qué ve el cliente).
-  • Pueden dibujar. Un dibujo contradictorio con el texto resta.
-
-  Puntaje: *100 puntos* (10 × 10).
-
+Puntaje: 100 puntos (10 × 10).
 
 1 — La frase del compañero (10 puntos)
 ══════════════════════════════════════
