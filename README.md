@@ -6,6 +6,8 @@ Repositorio personal de actividades y evidencias de Diego Rivera Cisneros.
 
 **[Abrir el proyecto Rumbo](proyectos/rumbo)** · [Repositorio independiente](https://github.com/AnonimousMex/rumbo)
 
+[Informe individual del Proyecto 3](actividades/proyecto-3/22121364_rivera.md) · [Informe del equipo](https://github.com/AnonimousMex/rumbo/blob/main/docs/INFORME_EQUIPO_PROYECTO_3.md) · [Evidencias web y Android](https://github.com/AnonimousMex/rumbo/blob/main/docs/evidencias/README.md)
+
 Rumbo es una plataforma de entregas con microservicios Python, frontend React/TypeScript, cliente Flutter, datasets y modelos entrenados. Sus instrucciones de instalación, arquitectura y pruebas están en el README del proyecto.
 
 La carpeta `proyectos/rumbo` es un **submódulo Git**: este repositorio registra una versión concreta del proyecto, mientras que el código, los commits y el desarrollo del equipo se mantienen en `AnonimousMex/rumbo`. En GitHub, hacer clic en esa carpeta abre la versión enlazada del proyecto.
