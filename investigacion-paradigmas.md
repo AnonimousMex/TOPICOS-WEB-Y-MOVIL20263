@@ -1,6 +1,6 @@
 # Investigación de Paradigmas y Tendencias Tecnológicas (2024-2030)
 
-> Alcance: síntesis cualitativa. Se retiraron cifras de salarios, demanda y crecimiento sin fuente verificable. Las proyecciones son hipótesis de análisis, no pronósticos comprobados.
+> Alcance: síntesis cualitativa de paradigmas y tendencias. Las proyecciones son hipótesis de análisis.
 
 ## PARTE I: ANÁLISIS DE LENGUAJES
 
