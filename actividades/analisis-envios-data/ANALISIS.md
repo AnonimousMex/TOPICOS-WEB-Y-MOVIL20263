@@ -4,7 +4,7 @@
 
 ## Hipótesis y método
 
-Se esperaba que el medio nuevo `eskuter` no pudiera predecirse y que balancear por sí solo no garantizara mayor exactitud. Se consultaron las notas compartidas como antecedente; los resultados siguientes se ejecutaron aquí. No son mediciones copiadas del compañero.
+Se esperaba que el medio nuevo `eskuter` no pudiera predecirse y que balancear por sí solo no garantizara mayor exactitud. Las notas compartidas se utilizan como antecedente; las mediciones proceden de la ejecución del script de evaluación incluido.
 
 Se entrena el árbol en 8,000 filas de la base original, con las mismas 14 variables, profundidad 8 y mínimo 5 filas por hoja. Se evalúan los seis CSV docentes con ese único modelo. Se comparan las filas completas de atributos y etiqueta mediante hash para identificar las vistas durante entrenamiento; `id_envio` se excluye porque los generadores reutilizan identificadores. Este control no acredita independencia temporal ni ausencia de toda similitud estadística, pero sí detecta repetición exacta de contenido.
 
