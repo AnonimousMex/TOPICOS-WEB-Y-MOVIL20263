@@ -6,7 +6,7 @@
 
 ## Alcance y procedencia
 
-Análisis documental propio a partir de los hallazgos compartidos por César Enrique Díaz Maldonado y sus colaboradores. **No se dispone aquí del código original del caso y no se ejecutó.** Las rutas y defectos de la tabla son observaciones reportadas en [el documento de referencia](https://github.com/Cesaredmyt/Topicos-Selectos-de-Tecnologias-Web-y-Movil/blob/6397468bd6c15e68a7a4fdee786917b470c825e7/proyectossE/Auditoria_Pasofit_Flutter.md); las prioridades y propuestas siguientes son el análisis de esta entrega. 
+Análisis documental de los hallazgos publicados por César Enrique Díaz Maldonado y sus colaboradores, sin ejecución del código original. Las rutas y defectos de la tabla son observaciones reportadas en [el documento de referencia](https://github.com/Cesaredmyt/Topicos-Selectos-de-Tecnologias-Web-y-Movil/blob/6397468bd6c15e68a7a4fdee786917b470c825e7/proyectossE/Auditoria_Pasofit_Flutter.md); las prioridades y propuestas siguientes son el análisis de esta entrega.
 
 ## Misión 1. Problemas, capas y decisiones
 
@@ -21,7 +21,7 @@ Análisis documental propio a partir de los hallazgos compartidos por César Enr
 
 ## Decisión de intervención
 
-Conservar las pantallas como referencia y revisar gradualmente estado, repositorio y contratos. 
+Conservar las pantallas como referencia y revisar gradualmente estado, repositorio y contratos.
 
 La prioridad inicial es controlar acceso y parametrizar consultas; después, probar consistencia y duplicados; finalmente, optimizar latencia y retirar duplicación. La validación de entradas y los parámetros SQL son controles concretos: añadir una clase Repository sin ellos no corrige una inyección.
 
