@@ -5,13 +5,11 @@
 
 ## Alcance, método y reproducción
 
-Este trabajo ejecuta análisis sobre datos sintéticos del profesor; no toca el proyecto personal ni el del equipo. Se analizan ocho actividades: distribución, horario, errores, importancia de variables, balanceo, costo, coherencia y cambio de condiciones.
+Este trabajo analiza datos sintéticos del profesor. Se analizan ocho actividades: distribución, horario, errores, importancia de variables, balanceo, costo, coherencia y cambio de condiciones.
 
 Se regenera la base con 10,000 filas y semilla 42 utilizando el generador docente sin modificar. Se separan 8,000/2,000 filas con estratificación y semilla 42, se ajusta el preprocesamiento únicamente en entrenamiento y se entrena un árbol de profundidad 8 con mínimo 5 filas por hoja. Se usa `predict_proba` y el primer medio posible del ranking para la recomendación con reglas. El script comprueba que entrenamiento y prueba no comparten índices.
 
-
-
-La ejecución produce CSV, un modelo entrenado aquí, un resumen y hashes de entradas. El `.joblib` guardado fue generado por este script; no se cargaron modelos serializados de terceros. Las versiones efectivas constan en [ejecucion.json](resultados/ejecucion.json). 
+La ejecución produce CSV, un modelo entrenado por el script, un resumen y hashes de las entradas. Las versiones efectivas constan en [ejecucion.json](resultados/ejecucion.json).
 
 ## 1. El retrato del dataset
 
