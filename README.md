@@ -28,7 +28,7 @@ git submodule update --init --recursive
 
 Una clonación normal sin inicializar submódulos deja la carpeta del proyecto vacía. Para obtener el código completo, usar los comandos anteriores en lugar de depender del ZIP del repositorio principal.
 
-### Actualizar la versión de Rumbo que se entrega
+### Actualizar Rumbo
 
 Primero publicar los cambios en el repositorio independiente de Rumbo. Después, desde la raíz de este repositorio:
 
@@ -40,6 +40,4 @@ git commit -m "Actualiza la versión de Rumbo para la entrega"
 git push
 ```
 
-El submódulo sigue la rama `main` al ejecutar `--remote`; los cambios de Rumbo no actualizan automáticamente la referencia guardada en este repositorio. Esto permite identificar exactamente qué versión se entregó.
-
-Esta organización enlaza repositorios independientes. Si una entrega exige que los archivos del proyecto estén almacenados directamente en el historial de este repositorio, deberá utilizarse una copia sincronizada o `git subtree` en lugar de un submódulo.
+El submódulo sigue la rama `main` al ejecutar `--remote`; los cambios de Rumbo no actualizan automáticamente la referencia guardada en este repositorio. Cada commit del repositorio principal identifica una versión concreta del proyecto.
