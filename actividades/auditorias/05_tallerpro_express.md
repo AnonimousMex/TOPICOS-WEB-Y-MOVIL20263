@@ -6,7 +6,7 @@
 
 ## Alcance y procedencia
 
-Análisis documental propio a partir de los hallazgos compartidos por César Enrique Díaz Maldonado y sus colaboradores. **No se dispone aquí del código original del caso y no se ejecutó.** Las rutas y defectos de la tabla son observaciones reportadas en [el documento de referencia](https://github.com/Cesaredmyt/Topicos-Selectos-de-Tecnologias-Web-y-Movil/blob/6397468bd6c15e68a7a4fdee786917b470c825e7/proyectossE/Auditoria_Tallerpro_Express.md); las prioridades y propuestas siguientes son el análisis de esta entrega. 
+Análisis documental de los hallazgos publicados por César Enrique Díaz Maldonado y sus colaboradores, sin ejecución del código original. Las rutas y defectos de la tabla son observaciones reportadas en [el documento de referencia](https://github.com/Cesaredmyt/Topicos-Selectos-de-Tecnologias-Web-y-Movil/blob/6397468bd6c15e68a7a4fdee786917b470c825e7/proyectossE/Auditoria_Tallerpro_Express.md); las prioridades y propuestas siguientes son el análisis de esta entrega.
 
 ## Misión 1. Problemas, capas y decisiones
 
