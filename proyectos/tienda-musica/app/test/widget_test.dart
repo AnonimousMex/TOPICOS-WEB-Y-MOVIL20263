@@ -7,6 +7,8 @@ import 'package:http/testing.dart';
 import 'package:tienda_musica/api.dart';
 import 'package:tienda_musica/main.dart';
 import 'package:tienda_musica/ubicacion.dart';
+import 'package:tienda_musica/widgets/comunes.dart';
+import 'package:tienda_musica/widgets/desplazamiento.dart';
 
 Map<String, dynamic> _prod(int id, String nombre, String marca, double precio, {double? original, int desc = 0}) => {
       'id': id, 'nombre': nombre, 'marca': marca, 'categoria': 'guitarra', 'subcategoria': 'Guitarras eléctricas',
@@ -89,8 +91,8 @@ class _Falso {
       );
 }
 
-Future<_Falso> _abrir(WidgetTester t, {bool caido = false, bool ubicacionFalla = false}) async {
-  t.view.physicalSize = const Size(1280, 3200);
+Future<_Falso> _abrir(WidgetTester t, {bool caido = false, bool ubicacionFalla = false, Size tamano = const Size(1280, 3200)}) async {
+  t.view.physicalSize = tamano;
   t.view.devicePixelRatio = 1;
   addTearDown(t.view.reset);
   final f = _Falso(caido: caido);
@@ -112,6 +114,16 @@ Future<void> _elegirMonterrey(WidgetTester t) async {
 }
 
 void main() {
+  testWidgets('inicio construye las secciones lejanas solo al desplazarse', (t) async {
+    await _abrir(t, tamano: const Size(1280, 800));
+    final ultimaSeccion = find.byWidgetPredicate((w) => w is Seccion && w.titulo == 'Teclados y pianos');
+    expect(ultimaSeccion, findsNothing);
+    final scroll = find.descendant(of: find.byType(ListaSuave), matching: find.byType(Scrollable)).first;
+    await t.scrollUntilVisible(ultimaSeccion, 400, scrollable: scroll);
+    expect(ultimaSeccion, findsOneWidget);
+    expect(t.takeException(), isNull);
+  });
+
   testWidgets('inicio: marcas, ofertas y más vendidos', (t) async {
     await _abrir(t);
     expect(find.text('Marcas populares'), findsOneWidget);

@@ -6,7 +6,6 @@ import '../theme.dart';
 import '../widgets/comunes.dart';
 import '../widgets/marco.dart';
 import '../widgets/desplazamiento.dart';
-import '../widgets/precarga.dart';
 import '../widgets/logo.dart';
 import '../widgets/producto_card.dart';
 import '../widgets/producto_visual.dart';
@@ -33,6 +32,12 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _cargar());
   }
 
+  @override
+  void dispose() {
+    _hero.dispose();
+    super.dispose();
+  }
+
   Future<void> _cargar() async {
     final api = TiendaScope.leer(context).api;
     setState(() {
@@ -55,7 +60,6 @@ class _HomePageState extends State<HomePage> {
         _teclados = (r[3] as List<Producto>).take(10).toList();
         _guitarras = (r[4] as List<Producto>).take(10).toList();
       });
-      precargarFotos(context, [..._ofertas, ..._vendidos, ..._guitarras, ..._teclados]);
     } on ApiException catch (e) {
       if (mounted) setState(() => _error = e.mensaje);
     } finally {
@@ -75,19 +79,23 @@ class _HomePageState extends State<HomePage> {
               : ListaSuave(children: [
                   Centrado(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-                      child: Column(children: [
-                        _Hero(controller: _hero, slide: _slide, onCambio: (i) => setState(() => _slide = i), onIr: _ir),
-                        const SizedBox(height: 16),
-                        _Marcas(marcas: _facetas!.marcas, onMarca: (m) => _ir(Filtro(marcas: {m}))),
-                        const SizedBox(height: 16),
-                        Seccion(titulo: 'Ofertas del día', accion: 'Ver todas', alAccion: () => _ir(const Filtro(oferta: true)), child: FilaProductos(productos: _ofertas)),
-                        Seccion(titulo: 'Los más vendidos', accion: 'Ver más', alAccion: () => _ir(const Filtro(orden: 'mas_vendidos')), child: FilaProductos(productos: _vendidos)),
-                        Seccion(titulo: 'Guitarras y bajos mejor valorados', accion: 'Ver todo', alAccion: () => _ir(const Filtro(categoria: 'guitarra', orden: 'mejor_valorados')), child: FilaProductos(productos: _guitarras)),
-                        Seccion(titulo: 'Teclados y pianos', accion: 'Ver todo', alAccion: () => _ir(const Filtro(categoria: 'teclado', orden: 'mejor_valorados')), child: FilaProductos(productos: _teclados)),
-                      ]),
+                      padding: const EdgeInsets.fromLTRB(12, 12, 12, 16),
+                      child: _Hero(controller: _hero, slide: _slide, onCambio: (i) => setState(() => _slide = i), onIr: _ir),
                     ),
                   ),
+                  Centrado(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: _Marcas(marcas: _facetas!.marcas, onMarca: (m) => _ir(Filtro(marcas: {m}))),
+                    ),
+                  ),
+                  for (final seccion in [
+                    Seccion(titulo: 'Ofertas del día', accion: 'Ver todas', alAccion: () => _ir(const Filtro(oferta: true)), child: FilaProductos(productos: _ofertas)),
+                    Seccion(titulo: 'Los más vendidos', accion: 'Ver más', alAccion: () => _ir(const Filtro(orden: 'mas_vendidos')), child: FilaProductos(productos: _vendidos)),
+                    Seccion(titulo: 'Guitarras y bajos mejor valorados', accion: 'Ver todo', alAccion: () => _ir(const Filtro(categoria: 'guitarra', orden: 'mejor_valorados')), child: FilaProductos(productos: _guitarras)),
+                    Seccion(titulo: 'Teclados y pianos', accion: 'Ver todo', alAccion: () => _ir(const Filtro(categoria: 'teclado', orden: 'mejor_valorados')), child: FilaProductos(productos: _teclados)),
+                  ])
+                    Centrado(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 12), child: seccion)),
                   const PieDePagina(),
                 ]),
     );

@@ -5,7 +5,6 @@ import '../state.dart';
 import '../theme.dart';
 import '../widgets/comunes.dart';
 import '../widgets/desplazamiento.dart';
-import '../widgets/precarga.dart';
 import '../widgets/marco.dart';
 import '../widgets/producto_card.dart';
 import '../widgets/producto_visual.dart';
@@ -52,7 +51,6 @@ class _ListadoPageState extends State<ListadoPage> {
         _productos = r[0] as List<Producto>;
         if (r.length > 1) _facetas = r[1] as Facetas;
       });
-      precargarFotos(context, r[0] as List<Producto>);
     } on ApiException catch (e) {
       if (mounted) setState(() => _error = e.mensaje);
     } finally {

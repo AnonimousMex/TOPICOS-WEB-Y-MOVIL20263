@@ -113,7 +113,7 @@ Si cambias semilla o filas, el modelo cambia: los casos de ejemplo del README pu
 ```bash
 cd backend && python manage.py test               # 64 pruebas (reglas, recomendador, geo, catálogo, envío, pagos, checkout, correo, asistente)
 cd backend && python manage.py evaluar_asistente  # 16 casos de evaluación del asistente
-cd app && flutter test                            # 10 pruebas de widgets con servidor simulado
+cd app && flutter test                            # 13 pruebas de widgets y desplazamiento con servidor simulado
 ```
 
 ## Recomendador (Proyecto 1)
@@ -143,21 +143,13 @@ El ejemplo decide el **medio de transporte** (moto, dron, bicicleta, camioneta);
 
 ## Fluidez y animaciones
 
-Se midió el desplazamiento en pantalla Retina (1440×900 a 2x, 30 pasos de rueda con el mouse quieto, Chrome con WebGL por software; mismo método antes y después). Qué se hizo y cuánto ayudó:
+- Rueda, trackpad y gestos táctiles usan el desplazamiento de Flutter, sin multiplicar la distancia ni reiniciar una animación por cada evento.
+- El inicio distribuye las secciones en elementos independientes de la lista: las secciones lejanas se construyen cuando se acercan al área visible. El catálogo conserva su `SliverGrid` con tarjetas bajo demanda.
+- Las tarjetas usan miniaturas y cargan las imágenes de los elementos próximos a la vista; no se precargan lotes de hasta 60 fotos mientras se navega. La ficha conserva la foto completa.
+- El logo es una imagen y el resaltado de las tarjetas usa `InkWell`. Las animaciones se reservan para cambios de pantalla o estado.
+- La compilación WebAssembly puede utilizar renderizado en otro hilo cuando el navegador lo soporta y el servidor permite aislamiento de origen cruzado. Esto depende del entorno y no garantiza una tasa de cuadros concreta.
 
-| Versión | Inicio: prom. / cuadros > 40 ms | Listado: prom. / cuadros > 40 ms |
-|---|---|---|
-| Motor normal (CanvasKit) | 27 ms / **36** | 33 ms / **42** |
-| **WebAssembly con aislamiento** (la actual) | **17 ms (58 fps) / 1** | **17 ms (59 fps) / 1** |
-
-- **WebAssembly (`skwasm`) + aislamiento** (`flutter build web --wasm` y `python servir_web.py 8090 --aislado`): es el cambio que más pesa. Dibuja en otro hilo, así que los cálculos del contenido no frenan el desplazamiento. Si el navegador no lo soporta (por ejemplo Safari), Flutter carga solo el motor normal y todo sigue funcionando, solo que menos fluido. Sin los encabezados de aislamiento también funciona, con algo menos de mejora.
-- **Las fotos eran lo más pesado:** las tarjetas usan **miniaturas de ~29 KB** (`python scripts/generar_miniaturas.py`, `/img/productos_mini/`), sin fundido por imagen, con caché del servidor (`max-age`) y **precarga escalonada** de las que están por aparecer. La ficha del producto usa la foto completa.
-- **Sin efectos que Flutter web recalcula en cada cuadro:** el logo es una imagen ya generada (no un dibujo con desenfoque), se quitaron las sombras con desenfoque y el resaltado al pasar el mouse lo da el `InkWell` (antes cada tarjeta que pasaba bajo el cursor reconstruía y animaba).
-- El listado construye **solo las tarjetas visibles** (`SliverGrid`).
-- **Rueda y trackpad** (`widgets/desplazamiento.dart`): un «tic» movía solo 100 px (una tarjeta mide ~420). La rueda se amplifica ×2 y acelera hasta ×5 si giras seguido, con 200 ms de suavizado; el trackpad se aplica directo. En móvil se usa el desplazamiento nativo. Para desactivarlo: `--dart-define=SCROLL_SUAVE=false`.
-- Animaciones con sentido, cortas (160–260 ms) y con la misma curva (`Anim` en `theme.dart`): transición entre pantallas, panel del asistente y su botón, panel de envío que se expande, resultado del recomendador con fundido y resultados del listado que se atenúan mientras cargan.
-
-Nota de método: con el Chrome de pruebas sin WebGL (`--disable-gpu`) todo da 2–3 veces peor y la versión WebAssembly cae al motor normal; esas cifras no representan una Mac con GPU, por eso la tabla usa WebGL.
+Las pruebas cubren la distancia de rueda/trackpad sin aceleración, el arrastre táctil y la construcción diferida de secciones. El resultado en un dispositivo real depende también del navegador, el modo de compilación y la GPU.
 
 ## La tienda (interfaz)
 
