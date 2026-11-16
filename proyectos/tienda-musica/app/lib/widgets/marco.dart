@@ -146,20 +146,49 @@ class _CabeceraState extends State<_Cabecera> {
       tooltip: 'URL del servidor',
       icon: const Icon(Icons.settings_ethernet, color: Colors.white70),
       onPressed: () async {
-        final c = TextEditingController(text: t.api.baseUrl);
+        var url = t.api.baseUrl;
+        final formulario = GlobalKey<FormState>();
         final nueva = await showDialog<String>(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: const Text('URL del servidor'),
-            content: TextField(controller: c, key: const Key('campo-url'), decoration: const InputDecoration(helperText: 'Emulador Android: http://10.0.2.2:8000/api')),
+            title: const Text('Servidor de la tienda'),
+            content: Form(
+              key: formulario,
+              child: TextFormField(
+                initialValue: url,
+                key: const Key('campo-url'),
+                keyboardType: TextInputType.url,
+                autocorrect: false,
+                onChanged: (v) => url = v,
+                validator: (v) {
+                  try {
+                    normalizarUrlServidor(v ?? '');
+                    return null;
+                  } on FormatException catch (e) {
+                    return e.message;
+                  }
+                },
+                decoration: const InputDecoration(labelText: 'Dirección del servidor', helperText: 'Usa el mismo servidor en web y celular.', hintText: 'http://192.168.1.10:18000/api'),
+              ),
+            ),
             actions: [
               TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancelar')),
-              FilledButton(style: FilledButton.styleFrom(minimumSize: const Size(100, 44)), onPressed: () => Navigator.pop(ctx, c.text.trim()), child: const Text('Guardar')),
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: const Size(100, 44)),
+                onPressed: () { if (formulario.currentState!.validate()) Navigator.pop(ctx, url); },
+                child: const Text('Guardar'),
+              ),
             ],
           ),
         );
         if (nueva != null && nueva.isNotEmpty && context.mounted) {
-          t.api.baseUrl = nueva;
+          try {
+            await t.cambiarServidor(nueva);
+          } catch (_) {
+            if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No se pudo guardar el servidor. Inténtalo de nuevo.')));
+            return;
+          }
+          if (!context.mounted) return;
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const HomePage()), (r) => false);
         }
       },

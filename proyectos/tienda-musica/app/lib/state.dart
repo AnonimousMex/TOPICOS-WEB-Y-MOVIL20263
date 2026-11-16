@@ -22,9 +22,17 @@ class MensajeChat {
 
 /// Estado global: carrito y conversación del asistente (se conservan al navegar).
 class Tienda extends ChangeNotifier {
-  Tienda(this.api, {ServicioUbicacion? ubicacion}) : ubicacion = ubicacion ?? UbicacionReal();
+  Tienda(this.api, {ServicioUbicacion? ubicacion, this.alCambiarServidor}) : ubicacion = ubicacion ?? UbicacionReal();
   final RumboApi api;
   final ServicioUbicacion ubicacion;
+  final Future<void> Function(String)? alCambiarServidor;
+
+  Future<void> cambiarServidor(String url) async {
+    final normalizada = normalizarUrlServidor(url);
+    await alCambiarServidor?.call(normalizada);
+    api.baseUrl = normalizada;
+    notifyListeners();
+  }
 
   /// Identifica la conversación para que el asistente recuerde el contexto (no es una cuenta ni un dato personal).
   final String sesion = 's${DateTime.now().microsecondsSinceEpoch}${Random().nextInt(99999)}';

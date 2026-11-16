@@ -18,6 +18,15 @@ String urlBasePorDefecto() {
 /// Origen del servidor (sin /api): las imágenes llegan como rutas relativas (/img/...).
 String origenServidor = '';
 
+String normalizarUrlServidor(String valor) {
+  final uri = Uri.tryParse(valor.trim());
+  if (uri == null || !{'http', 'https'}.contains(uri.scheme) || uri.host.isEmpty || uri.userInfo.isNotEmpty || uri.hasQuery || uri.hasFragment) {
+    throw const FormatException('Escribe una dirección http:// o https:// sin usuario, parámetros ni fragmentos.');
+  }
+  final path = uri.path.replaceAll(RegExp(r'/+$'), '');
+  return uri.replace(path: path.isEmpty ? '/api' : path).toString();
+}
+
 String? resolverImagen(String? ruta) {
   if (ruta == null || ruta.isEmpty) return null;
   return ruta.startsWith('http') ? ruta : '$origenServidor$ruta';
@@ -314,7 +323,7 @@ class RumboApi {
   String _baseUrl;
   String get baseUrl => _baseUrl;
   set baseUrl(String v) {
-    _baseUrl = v.endsWith('/') ? v.substring(0, v.length - 1) : v;
+    _baseUrl = normalizarUrlServidor(v);
     origenServidor = _baseUrl.replaceAll(RegExp(r'/api$'), '');
   }
 

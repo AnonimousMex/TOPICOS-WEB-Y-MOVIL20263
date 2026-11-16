@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
 
 import 'api.dart';
+import 'configuracion_servidor.dart';
 import 'pages/home_page.dart';
 import 'state.dart';
 import 'ubicacion.dart';
 import 'theme.dart';
 
-void main() => runApp(const TiendaApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final configuracion = ConfiguracionServidor();
+  final url = await configuracion.cargar();
+  runApp(TiendaApp(api: RumboApi(baseUrl: url), alCambiarServidor: configuracion.guardar));
+}
 
 class TiendaApp extends StatefulWidget {
-  const TiendaApp({super.key, this.api, this.ubicacion});
+  const TiendaApp({super.key, this.api, this.ubicacion, this.alCambiarServidor});
   final RumboApi? api;
   final ServicioUbicacion? ubicacion;
+  final Future<void> Function(String)? alCambiarServidor;
 
   @override
   State<TiendaApp> createState() => _TiendaAppState();
 }
 
 class _TiendaAppState extends State<TiendaApp> {
-  late final Tienda tienda = Tienda(widget.api ?? RumboApi(), ubicacion: widget.ubicacion);
+  late final Tienda tienda = Tienda(widget.api ?? RumboApi(), ubicacion: widget.ubicacion, alCambiarServidor: widget.alCambiarServidor);
 
   @override
   Widget build(BuildContext context) {
