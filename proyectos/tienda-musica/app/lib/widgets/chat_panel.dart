@@ -122,7 +122,7 @@ class _Burbuja extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
             decoration: BoxDecoration(
-              color: propio ? doom : Colors.white,
+              color: propio ? doom : superficieAlta,
               borderRadius: BorderRadius.only(topLeft: const Radius.circular(16), topRight: const Radius.circular(16), bottomLeft: Radius.circular(propio ? 16 : 4), bottomRight: Radius.circular(propio ? 4 : 16)),
             ),
             child: Text(mensaje.texto, style: TextStyle(color: propio ? Colors.white : tinta, height: 1.35, fontSize: 14)),
@@ -134,7 +134,7 @@ class _Burbuja extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 6),
                 child: FilledButton.tonal(
                   key: const Key('abrir-recomendador'),
-                  style: FilledButton.styleFrom(minimumSize: const Size(0, 40), backgroundColor: doomSuave, foregroundColor: doom),
+                  style: FilledButton.styleFrom(minimumSize: const Size(0, 40), backgroundColor: doomSuave, foregroundColor: doomClaro),
                   onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => RecomendarPage(api: TiendaScope.leer(context).api))),
                   child: const Text('Abrir recomendador de embalaje'),
                 ),
@@ -142,7 +142,7 @@ class _Burbuja extends StatelessWidget {
             if (r.fuentes.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 6),
-                child: Wrap(spacing: 6, children: [for (final f in r.fuentes) Chip(visualDensity: VisualDensity.compact, avatar: const Icon(Icons.menu_book_outlined, size: 14), label: Text('Fuente: $f', style: const TextStyle(fontSize: 11)), backgroundColor: Colors.white)]),
+                child: Wrap(spacing: 6, children: [for (final f in r.fuentes) Chip(visualDensity: VisualDensity.compact, avatar: const Icon(Icons.menu_book_outlined, size: 14, color: gris), label: Text('Fuente: $f', style: const TextStyle(fontSize: 11, color: tinta)), backgroundColor: superficieAlta)]),
               ),
             if (r.aviso != null) Padding(padding: const EdgeInsets.only(top: 4, left: 4), child: Text(r.aviso!, style: const TextStyle(fontSize: 11, fontStyle: FontStyle.italic, color: grisClaro))),
             _Calificar(mensaje: mensaje),
