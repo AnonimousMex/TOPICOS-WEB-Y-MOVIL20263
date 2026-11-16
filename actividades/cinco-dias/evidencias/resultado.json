@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-11-16T01:06:02.362Z",
+  "folio": "PED-4CE0FC557D9D",
+  "resumen": {
+    "folio": "PED-4CE0FC557D9D",
+    "estado": "registrado",
+    "eta": 24
+  },
+  "postRedirige": true,
+  "intentoRepetidoMismoFolio": true,
+  "iaApagadaHTTP": 503,
+  "consultaPedidoGuardadoHTTP": 200,
+  "testsDjango": 8
+}

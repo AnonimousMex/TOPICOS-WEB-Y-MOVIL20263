@@ -1,0 +1,11 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pedidos · Laboratorio</title>
+<style>body{font:16px system-ui;max-width:620px;margin:40px auto;padding:20px;background:#f1f5f9;color:#0f172a}form{display:grid;gap:14px;background:white;padding:24px;border-radius:16px}label{display:grid;gap:6px}input,select,button{font:inherit;padding:10px}button{background:#0f766e;color:white;border:0;border-radius:8px}.error{color:#b91c1c}</style>
+<h1>Registrar pedido</h1><p>Laboratorio local de patrones web.</p>{% if error %}<p role="alert" class="error">{{ error }}</p>{% endif %}
+<form action="/pedidos" method="post">{% csrf_token %}<input type="hidden" name="intento" value="{{ intento }}">
+<label>Destino<input name="destino" required maxlength="120" value="Centro de Morelia"></label>
+<label>Peso (kg)<input name="kg" type="number" min="0.1" step="0.1" required value="3"></label>
+<label>Distancia (km)<input name="km" type="number" min="0.1" step="0.1" required value="6"></label>
+<label>Proveedor<select name="formato"><option value="json">JSON</option><option value="xml">XML</option></select></label>
+<label><span><input type="checkbox" name="ia_caida"> Simular caída de IA</span></label>
+<label><span><input type="checkbox" name="aviso_caido"> Simular fallo del aviso</span></label>
+<button>Registrar pedido</button></form></html>
