@@ -1,0 +1,59 @@
+{
+  "verificado": "2026-11-16T14:56:41.862021+00:00",
+  "api": "http://192.168.101.28:18000/api",
+  "web_crea_android_consulta": {
+    "folio": "MUS-2026-000006",
+    "resultado": "correcto",
+    "evidencia": "android/09_chat_folio.png"
+  },
+  "android_crea_servidor_consulta": {
+    "folio": "MUS-2026-000007",
+    "http": 200,
+    "pedido": {
+      "folio": "MUS-2026-000007",
+      "estado": "registrado",
+      "creado": "2026-11-16T14:55:47.648959+00:00",
+      "producto": null,
+      "destino": "",
+      "cantidad": 1,
+      "costo_embalaje_mxn": 299,
+      "entradas": {
+        "tipo": "guitarra",
+        "valor_mxn": 9000.0,
+        "peso_kg": 3.0,
+        "dimension_max_cm": 105,
+        "distancia_km": 520,
+        "fragil": true
+      },
+      "compra": null,
+      "recomendacion": {
+        "nivel_modelo": "reforzado",
+        "confianza": 0.6059,
+        "nivel_final": "premium",
+        "corregido_por_reglas": true,
+        "reglas": [
+          {
+            "regla": "R8_ZONA_DE_RIESGO",
+            "efecto": "sube a premium",
+            "motivo": "Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total."
+          }
+        ],
+        "ranking": [
+          {
+            "nivel": "reforzado",
+            "probabilidad": 0.6059
+          },
+          {
+            "nivel": "premium",
+            "probabilidad": 0.3645
+          },
+          {
+            "nivel": "basico",
+            "probabilidad": 0.0296
+          }
+        ],
+        "costo_embalaje_mxn": 299
+      }
+    }
+  }
+}

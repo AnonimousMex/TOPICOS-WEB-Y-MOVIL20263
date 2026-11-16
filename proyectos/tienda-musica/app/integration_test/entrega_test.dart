@@ -31,6 +31,14 @@ void main() {
   testWidgets('Tesitura: catálogo, reglas, folio y asistente', (tester) async {
     final trace = RegistroHttp();
     final api = RumboApi(cliente: trace);
+    const folioCompartido = String.fromEnvironment('FOLIO_COMPARTIDO');
+    Map<String, dynamic>? pedidoCompartido;
+    if (folioCompartido.isNotEmpty) {
+      final consulta = await http.get(Uri.parse('${api.baseUrl}/pedidos/$folioCompartido/'));
+      expect(consulta.statusCode, 200, reason: 'Android debe encontrar el pedido creado desde la web');
+      pedidoCompartido = jsonDecode(consulta.body) as Map<String, dynamic>;
+      expect(pedidoCompartido['folio'], folioCompartido);
+    }
     await tester.pumpWidget(TiendaApp(api: api));
     if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
       await binding.convertFlutterSurfaceToImage();
@@ -116,11 +124,12 @@ void main() {
       await shot(screenshot);
     }
     await chat('hola, buenas tardes', {'saludo'}, '08_chat_saludo');
-    await chat('¿Cómo va mi pedido $folio?', {'consulta_folio'}, '09_chat_folio');
-    expect(tienda.chat.last.texto, contains(folio));
+    final folioConsultado = folioCompartido.isEmpty ? folio : folioCompartido;
+    await chat('¿Cómo va mi pedido $folioConsultado?', {'consulta_folio'}, '09_chat_folio');
+    expect(tienda.chat.last.texto, contains(folioConsultado));
     await chat('¿qué embalaje necesita mi violín?', {'pedir_recomendacion'}, '10_chat_dominio');
     await chat('cuéntame un chiste', {'fuera_dominio', 'no_entendido'}, '11_chat_fuera_dominio');
-    binding.reportData = {...?binding.reportData, 'folio': folio, 'plataforma': kIsWeb ? 'web' : 'android', 'recomendacion': recomendacion, 'peticiones': trace.respuestas};
+    binding.reportData = {...?binding.reportData, 'folio': folio, 'folio_consultado': folioConsultado, 'pedido_creado_en_web': pedidoCompartido, 'api': api.baseUrl, 'plataforma': kIsWeb ? 'web' : 'android', 'recomendacion': recomendacion, 'peticiones': trace.respuestas};
     trace.close();
   }, timeout: const Timeout(Duration(minutes: 8)));
 }

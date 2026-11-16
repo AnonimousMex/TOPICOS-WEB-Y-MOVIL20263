@@ -1,5 +1,8 @@
 {
   "folio": "MUS-2026-000006",
+  "folio_consultado": "MUS-2026-000006",
+  "pedido_creado_en_web": null,
+  "api": "http://192.168.101.28:18000/api",
   "plataforma": "web",
   "recomendacion": {
     "entradas": {
@@ -142,7 +145,7 @@
       "respuesta": {
         "folio": "MUS-2026-000006",
         "estado": "registrado",
-        "creado": "2026-11-16T01:27:54.222507+00:00",
+        "creado": "2026-11-16T14:53:14.626671+00:00",
         "producto": null,
         "destino": "",
         "cantidad": 1,
@@ -204,7 +207,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #5 registrada: ok, 18 ms (sin datos personales)."
+            "detalle": "Consulta #38 registrada: ok, 18 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -213,7 +216,7 @@
           "¿Cómo va mi pedido?"
         ],
         "fuentes": [],
-        "consulta_id": 5
+        "consulta_id": 38
       }
     },
     {
@@ -242,7 +245,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #6 registrada: ok, 6 ms (sin datos personales)."
+            "detalle": "Consulta #39 registrada: ok, 5 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -253,7 +256,7 @@
         "folio": "MUS-2026-000006",
         "estado": "registrado",
         "nivel_final": "premium",
-        "consulta_id": 6
+        "consulta_id": 39
       }
     },
     {
@@ -278,7 +281,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #7 registrada: ok, 2 ms (sin datos personales)."
+            "detalle": "Consulta #40 registrada: ok, 3 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -287,7 +290,7 @@
         ],
         "fuentes": [],
         "accion": "abrir_recomendador",
-        "consulta_id": 7
+        "consulta_id": 40
       }
     },
     {
@@ -308,7 +311,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #8 registrada: ok, 3 ms (sin datos personales)."
+            "detalle": "Consulta #41 registrada: ok, 2 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -317,7 +320,7 @@
           "¿Cómo va mi pedido?"
         ],
         "fuentes": [],
-        "consulta_id": 8
+        "consulta_id": 41
       }
     }
   ],
@@ -335,5 +338,5 @@
     "11_chat_fuera_dominio"
   ],
   "resultado": "correcto",
-  "fecha": "2026-11-16T01:28:13.601519Z"
+  "fecha": "2026-11-16T14:53:33.549704Z"
 }

@@ -1,5 +1,53 @@
 {
-  "folio": "MUS-2026-000005",
+  "folio": "MUS-2026-000007",
+  "folio_consultado": "MUS-2026-000006",
+  "pedido_creado_en_web": {
+    "folio": "MUS-2026-000006",
+    "estado": "registrado",
+    "creado": "2026-11-16T14:53:14.626671+00:00",
+    "producto": null,
+    "destino": "",
+    "cantidad": 1,
+    "costo_embalaje_mxn": 299,
+    "entradas": {
+      "tipo": "guitarra",
+      "valor_mxn": 9000.0,
+      "peso_kg": 3.0,
+      "dimension_max_cm": 105,
+      "distancia_km": 520,
+      "fragil": true
+    },
+    "compra": null,
+    "recomendacion": {
+      "nivel_modelo": "reforzado",
+      "confianza": 0.6059,
+      "nivel_final": "premium",
+      "corregido_por_reglas": true,
+      "reglas": [
+        {
+          "regla": "R8_ZONA_DE_RIESGO",
+          "efecto": "sube a premium",
+          "motivo": "Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total."
+        }
+      ],
+      "ranking": [
+        {
+          "nivel": "reforzado",
+          "probabilidad": 0.6059
+        },
+        {
+          "nivel": "premium",
+          "probabilidad": 0.3645
+        },
+        {
+          "nivel": "basico",
+          "probabilidad": 0.0296
+        }
+      ],
+      "costo_embalaje_mxn": 299
+    }
+  },
+  "api": "http://192.168.101.28:18000/api",
   "plataforma": "android",
   "recomendacion": {
     "entradas": {
@@ -140,9 +188,9 @@
       "ruta": "/api/pedidos/",
       "http": 201,
       "respuesta": {
-        "folio": "MUS-2026-000005",
+        "folio": "MUS-2026-000007",
         "estado": "registrado",
-        "creado": "2026-11-16T01:27:46.446727+00:00",
+        "creado": "2026-11-16T14:55:47.648959+00:00",
         "producto": null,
         "destino": "",
         "cantidad": 1,
@@ -204,7 +252,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #1 registrada: ok, 29 ms (sin datos personales)."
+            "detalle": "Consulta #42 registrada: ok, 7 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -213,7 +261,7 @@
           "¿Cómo va mi pedido?"
         ],
         "fuentes": [],
-        "consulta_id": 1
+        "consulta_id": 42
       }
     },
     {
@@ -222,7 +270,7 @@
       "respuesta": {
         "intencion": "consulta_folio",
         "confianza": 0.989,
-        "respuesta": "Tu pedido MUS-2026-000005 (guitarra) está en estado «registrado». Embalaje: premium.",
+        "respuesta": "Tu pedido MUS-2026-000006 (guitarra) está en estado «registrado». Embalaje: premium.",
         "capas": [
           {
             "capa": "seguridad",
@@ -230,7 +278,7 @@
           },
           {
             "capa": "router",
-            "detalle": "Intención «consulta_folio» (99%). Entidades: {'folio': 'MUS-2026-000005'}."
+            "detalle": "Intención «consulta_folio» (99%). Entidades: {'folio': 'MUS-2026-000006'}."
           },
           {
             "capa": "permisos",
@@ -238,11 +286,11 @@
           },
           {
             "capa": "herramienta: pedidos",
-            "detalle": "Lectura del folio MUS-2026-000005 en la base de datos."
+            "detalle": "Lectura del folio MUS-2026-000006 en la base de datos."
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #2 registrada: ok, 8 ms (sin datos personales)."
+            "detalle": "Consulta #43 registrada: ok, 2 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -250,10 +298,10 @@
           "¿Qué hago si llega golpeado?"
         ],
         "fuentes": [],
-        "folio": "MUS-2026-000005",
+        "folio": "MUS-2026-000006",
         "estado": "registrado",
         "nivel_final": "premium",
-        "consulta_id": 2
+        "consulta_id": 43
       }
     },
     {
@@ -278,7 +326,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #3 registrada: ok, 4 ms (sin datos personales)."
+            "detalle": "Consulta #44 registrada: ok, 4 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -287,7 +335,7 @@
         ],
         "fuentes": [],
         "accion": "abrir_recomendador",
-        "consulta_id": 3
+        "consulta_id": 44
       }
     },
     {
@@ -308,7 +356,7 @@
           },
           {
             "capa": "observabilidad",
-            "detalle": "Consulta #4 registrada: ok, 2 ms (sin datos personales)."
+            "detalle": "Consulta #45 registrada: ok, 3 ms (sin datos personales)."
           }
         ],
         "sugerencias": [
@@ -317,7 +365,7 @@
           "¿Cómo va mi pedido?"
         ],
         "fuentes": [],
-        "consulta_id": 4
+        "consulta_id": 45
       }
     }
   ],
@@ -335,5 +383,5 @@
     "11_chat_fuera_dominio"
   ],
   "resultado": "correcto",
-  "fecha": "2026-11-16T01:27:54.746182Z"
+  "fecha": "2026-11-16T14:55:55.697482Z"
 }

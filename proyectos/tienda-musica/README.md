@@ -4,9 +4,9 @@
 
 Catálogo de instrumentos con backend Django/SQLite y cliente Flutter para web y Android. El recomendador decide el nivel de embalaje y seguro (`basico`, `reforzado`, `premium`); el asistente entrenado consulta productos y folios y utiliza un corpus propio para orientación de compra y cuidados.
 
-**[Descargar Tesitura para Android](https://github.com/AnonimousMex/TOPICOS-WEB-Y-MOVIL20263/releases/download/tesitura-v1.0.0/Tesitura-Android.apk)**
+**[Descargar Tesitura para Android](https://github.com/AnonimousMex/TOPICOS-WEB-Y-MOVIL20263/releases/download/tesitura-v1.0.1/Tesitura-Android.apk)**
 
-La APK se configura con la API de la Mac en `http://192.168.101.28:8000/api`. El teléfono debe estar en la misma red; la URL puede cambiarse con el botón de configuración del encabezado.
+La APK se configura con la API de la Mac en `http://192.168.101.28:18000/api`. El teléfono debe estar en la misma red; la URL puede cambiarse con el botón de configuración del encabezado y se conserva al volver a abrir la aplicación.
 
 ## Instalación
 
@@ -19,7 +19,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py cargar_datos
-python manage.py runserver 8000
+python manage.py runserver 0.0.0.0:18000
 ```
 
 En otra terminal:
@@ -27,12 +27,20 @@ En otra terminal:
 ```bash
 cd app
 flutter pub get
-flutter run -d chrome
+flutter run -d chrome --dart-define=API_URL=http://192.168.101.28:18000/api
 # Android: emulador configurado
-flutter run -d emulator-5554
+flutter run -d emulator-5580 --dart-define=API_URL=http://192.168.101.28:18000/api
 ```
 
-Web usa `http://localhost:8000/api`; Android emulado, `http://10.0.2.2:8000/api`. Se puede indicar `--dart-define=API_URL=...` en ejecución o compilación. El backend debe permanecer encendido.
+Web y APK comparten `http://192.168.101.28:18000/api` en esta entrega. Los pedidos se guardan en la misma base SQLite: un folio creado desde web se puede consultar en Android. El backend y la Mac deben permanecer encendidos; si cambia la IP de la Mac, hay que actualizar la URL en ambos clientes. Los cambios de datos se consultan en el servidor; los cambios del código Flutter requieren recompilar web y reinstalar la APK.
+
+Para servir la compilación web local en `http://192.168.101.28:18090`:
+
+```bash
+cd app
+flutter build web --dart-define=API_URL=http://192.168.101.28:18000/api
+python3 servir_web.py 18090 --aislado
+```
 
 ## Modelos y reglas
 
@@ -59,17 +67,18 @@ python manage.py test
 python manage.py evaluar_asistente
 ```
 
-La prueba Flutter `app/integration_test/entrega_test.dart` se ejecuta contra una API de demostración y crea un pedido. El driver guarda capturas y respuestas reales del servidor. Para repetirla, iniciar una copia de prueba del backend en el puerto 18090:
+La prueba Flutter `app/integration_test/entrega_test.dart` se ejecuta contra la API de demostración y crea un pedido. Android puede consultar además el folio creado en web mediante `FOLIO_COMPARTIDO`. El driver guarda capturas y respuestas reales del servidor. Para repetirla, iniciar el backend de demostración en el puerto 18000:
 
 ```bash
 cd app
 # ChromeDriver debe estar escuchando en el puerto 4444 para la prueba web
 TESITURA_EVIDENCE_DIR=../evidencias/web flutter drive -d chrome --web-port=5175 \
   --driver=test_driver/entrega_driver.dart --target=integration_test/entrega_test.dart \
-  --dart-define=API_URL=http://localhost:18090/api
-TESITURA_EVIDENCE_DIR=../evidencias/android flutter drive -d emulator-5554 \
+  --dart-define=API_URL=http://192.168.101.28:18000/api
+TESITURA_EVIDENCE_DIR=../evidencias/android flutter drive -d emulator-5580 \
   --driver=test_driver/entrega_driver.dart --target=integration_test/entrega_test.dart \
-  --dart-define=API_URL=http://10.0.2.2:18090/api
+  --dart-define=API_URL=http://192.168.101.28:18000/api \
+  --dart-define=FOLIO_COMPARTIDO=MUS-2026-000006
 ```
 
 [Capturas web y Android](evidencias/README.md) · [Patrones web y móvil](ANALISIS_PATRONES.md) · [Métricas de entrenamiento](backend/ml/reportes/entrenamiento.md) · [Métricas de ambos modelos](evidencias/modelos.json).
