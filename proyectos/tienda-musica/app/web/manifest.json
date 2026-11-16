@@ -1,0 +1,35 @@
+{
+    "name": "Tesitura · Música e instrumentos",
+    "short_name": "Tesitura",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#12181B",
+    "theme_color": "#12181B",
+    "description": "Tienda de instrumentos musicales con envío protegido y asistente inteligente.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

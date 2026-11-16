@@ -3,3 +3,5 @@ __pycache__/
 *.py[cod]
 .DS_Store
 *.sqlite3
+.env
+correos_enviados/

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <title>Tesitura</title>
+  <defs>
+    <linearGradient id="acero" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2F3A41"/><stop offset="1" stop-color="#12181B"/>
+    </linearGradient>
+    <filter id="brillo" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.2"/></filter>
+  </defs>
+  <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="url(#acero)" stroke="#3BE08F" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="50,11 84,31 84,69 50,89 16,69 16,31" fill="none" stroke="#3BE08F" stroke-opacity=".28" stroke-width="1"/>
+  <g fill="none" stroke="#3BE08F" stroke-linecap="round" stroke-linejoin="round">
+    <g filter="url(#brillo)" stroke-opacity=".8" stroke-width="6.5"><path d="M41 26V50Q41 60 50 60Q59 60 59 50V26"/><path d="M50 60V77"/></g>
+    <g stroke-width="6"><path d="M41 26V50Q41 60 50 60Q59 60 59 50V26"/><path d="M50 60V77"/></g>
+    <g stroke-width="3" stroke-opacity=".75"><path d="M31 41Q27 50 31 59"/><path d="M69 41Q73 50 69 59"/></g>
+    <g stroke-width="3" stroke-opacity=".38"><path d="M23 36Q17 50 23 64"/><path d="M77 36Q83 50 77 64"/></g>
+  </g>
+</svg>

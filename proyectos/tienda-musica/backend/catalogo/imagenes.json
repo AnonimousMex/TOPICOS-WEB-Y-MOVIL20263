@@ -1,0 +1,1509 @@
+{
+ "productos": {
+  "Guitarra acústica Yamaha FG800": {
+   "archivo": "12-string-yamaha-acoustic-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "12 string Yamaha acoustic guitar.jpg",
+   "autor": "Peternick2468",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:12_string_Yamaha_acoustic_guitar.jpg"
+  },
+  "Teclado portátil Yamaha PSR-E373 61 teclas": {
+   "archivo": "masterkeyboard-png.png",
+   "nivel": "referencia",
+   "titulo": "Masterkeyboard.png",
+   "autor": "Masterkeyboard.jpg: André Karwath aka Aka\nderivative work: Steven De Oliveira",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Masterkeyboard.png"
+  },
+  "Piano digital Yamaha P-45 88 teclas": {
+   "archivo": "yamaha-digital-piano-voice-effects-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha digital piano voice effects.jpg",
+   "autor": "Santeri Viinamäki",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_digital_piano_voice_effects.jpg"
+  },
+  "Saxofón alto Yamaha YAS-280": {
+   "archivo": "yamaha-saxophone-yts-62-recrop-png.png",
+   "nivel": "marca",
+   "titulo": "Yamaha Saxophone YTS-62 (recrop).png",
+   "autor": "Yamaha Corporation",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Saxophone_YTS-62_(recrop).png"
+  },
+  "Violín Yamaha V3 4/4": {
+   "archivo": "yamaha-silent-violin-salone-del-mobile-2006-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha Silent Violin, Salone del Mobile 2006.jpg",
+   "autor": "régine debatty",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Silent_Violin,_Salone_del_Mobile_2006.jpg"
+  },
+  "Violonchelo Yamaha VC5S 4/4": {
+   "archivo": "cello-study-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Cello study.jpg",
+   "autor": "MichaelMaggs",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Cello_study.jpg"
+  },
+  "Guitarra eléctrica Fender Player Stratocaster": {
+   "archivo": "fender-stratocaster-deluxe-player-series-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Fender Stratocaster Deluxe Player Series.JPG",
+   "autor": "Stratocaster27",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_Stratocaster_Deluxe_Player_Series.JPG"
+  },
+  "Guitarra acústica Fender FA-125": {
+   "archivo": "fender-california-series-acoustic-guitar-serial-no-csc100016.jpg",
+   "nivel": "marca",
+   "titulo": "Fender California Series Acoustic Guitar (serial no. CSC10001615) (2018-04-26 13.21.46 Piqsels.com id olkmb).jpg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_California_Series_Acoustic_Guitar_(serial_no._CSC10001615)_(2018-04-26_13.21.46_Piqsels.com_id_olkmb).jpg"
+  },
+  "Guitarra eléctrica Gibson Les Paul Standard 60s": {
+   "archivo": "1987-gibson-wanderer-custom-dion-dimucci-s-electric-guitar-r.jpg",
+   "nivel": "marca",
+   "titulo": "1987 Gibson Wanderer Custom - Dion DiMucci's Electric Guitar - Rock and Roll Hall of Fame (2014-12-30 12.21.15 by Sam Howzit).jpg",
+   "autor": "Sam Howzit",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:1987_Gibson_Wanderer_Custom_-_Dion_DiMucci%27s_Electric_Guitar_-_Rock_and_Roll_Hall_of_Fame_(2014-12-30_12.21.15_by_Sam_Howzit).jpg"
+  },
+  "Guitarra acústica Gibson J-45 Standard": {
+   "archivo": "gibson-tg-50-archtop-tenor-1955-gibson-l-7-archtop-guitar-19.jpg",
+   "nivel": "marca",
+   "titulo": "Gibson TG-50 Archtop Tenor (1955) & Gibson L-7 Archtop Guitar (1947) - 2012 Northwest Handmade Musical Instrument Exhibit.jpg",
+   "autor": "Moses Gunesch from Brooklyn, NY, US",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Gibson_TG-50_Archtop_Tenor_(1955)_%26_Gibson_L-7_Archtop_Guitar_(1947)_-_2012_Northwest_Handmade_Musical_Instrument_Exhibit.jpg"
+  },
+  "Guitarra eléctrica Ibanez GRX70QA": {
+   "archivo": "ibanez-electric-guitar-icx120-headstock-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Ibanez electric guitar ICX120 headstock.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ibanez_electric_guitar_ICX120_headstock.jpg"
+  },
+  "Guitarra eléctrica Epiphone Les Paul Special II": {
+   "archivo": "epiphone-pr-5e-vs-cutaway-acoustic-electric-guitar-vintage-s.jpg",
+   "nivel": "marca",
+   "titulo": "Epiphone PR-5E VS Cutaway Acoustic Electric Guitar (Vintage Sunburst).jpg",
+   "autor": "Joshu∆ Byrd",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Epiphone_PR-5E_VS_Cutaway_Acoustic_Electric_Guitar_(Vintage_Sunburst).jpg"
+  },
+  "Guitarra acústica Epiphone DR-100": {
+   "archivo": "epiphone-pr-5e-vs-cutaway-acoustic-electric-guitar-vintage-s.jpg",
+   "nivel": "marca",
+   "titulo": "Epiphone PR-5E VS Cutaway Acoustic Electric Guitar (Vintage Sunburst).jpg",
+   "autor": "Joshu∆ Byrd",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Epiphone_PR-5E_VS_Cutaway_Acoustic_Electric_Guitar_(Vintage_Sunburst).jpg"
+  },
+  "Guitarra eléctrica Squier Affinity Stratocaster": {
+   "archivo": "squier-stratocaster-headstock-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Squier Stratocaster headstock.jpg",
+   "autor": "Opa",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Squier_Stratocaster_headstock.jpg"
+  },
+  "Guitarra eléctrica Squier Classic Vibe Telecaster": {
+   "archivo": "squier-classic-vibe-telecaster-50s-butterscotch-blonde-and-1.jpg",
+   "nivel": "modelo",
+   "titulo": "Squier Classic Vibe Telecaster '50s Butterscotch Blonde and 1966 Fender Vibrolux (2011-06-23 18.13.29 by John Tuggle).jpg",
+   "autor": "John Tuggle from Decatur, Ga, USA",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Squier_Classic_Vibe_Telecaster_%2750s_Butterscotch_Blonde_and_1966_Fender_Vibrolux_(2011-06-23_18.13.29_by_John_Tuggle).jpg"
+  },
+  "Guitarra eléctrica PRS SE Custom 24": {
+   "archivo": "prs-custom-1988-santana-guitar-body-mim-phx-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "PRS Custom (1988) Santana guitar (body), MIM PHX.jpg",
+   "autor": "Carlos Santana guitars, MIM PHX.jpg: Kevin Spencer\nderived work: Clusternote",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:PRS_Custom_(1988)_Santana_guitar_(body),_MIM_PHX.jpg"
+  },
+  "Guitarra electroacústica Taylor GS Mini": {
+   "archivo": "00-walden-acoustic-guitar-d310e-01-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "00 Walden Acoustic Guitar D310e 01.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:00_Walden_Acoustic_Guitar_D310e_01.jpg"
+  },
+  "Guitarra electroacústica Martin D-10E": {
+   "archivo": "martin-d-28-acoustic-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Martin D-28 Acoustic Guitar.jpg",
+   "autor": "Niranjan Arminius",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Martin_D-28_Acoustic_Guitar.jpg"
+  },
+  "Guitarra acústica Cort AD810": {
+   "archivo": "cort-acoustic-guitar-photo-by-wetwebwork-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Cort Acoustic Guitar (photo by wetwebwork).jpg",
+   "autor": "wetwebwork from london, U.K",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Cort_Acoustic_Guitar_(photo_by_wetwebwork).jpg"
+  },
+  "Guitarra electroacústica Takamine GD30CE": {
+   "archivo": "takamine-martin-guitars-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Takamine & Martin Guitars.jpg",
+   "autor": "Batch1928 44",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Takamine_%26_Martin_Guitars.jpg"
+  },
+  "Guitarra eléctrica Jackson JS22 Dinky": {
+   "archivo": "jackson-soloist-electric-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Jackson Soloist electric guitar.jpg",
+   "autor": "Styroks",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Jackson_Soloist_electric_guitar.jpg"
+  },
+  "Guitarra eléctrica Schecter Omen-6": {
+   "archivo": "schecter-omen-extreme-7-string-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Schecter Omen Extreme (7 String) Guitar.JPG",
+   "autor": "Kyral",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Schecter_Omen_Extreme_(7_String)_Guitar.JPG"
+  },
+  "Guitarra eléctrica Gretsch G2420 Streamliner": {
+   "archivo": "gretsch-electric-guitar-antique-recording-studio-berlin-2013.jpg",
+   "nivel": "marca",
+   "titulo": "Gretsch electric guitar, Antique recording studio, Berlin 2013 (2013-06-08 12.31.22 by Thomas Quine).jpg",
+   "autor": "Thomas Quine",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Gretsch_electric_guitar,_Antique_recording_studio,_Berlin_2013_(2013-06-08_12.31.22_by_Thomas_Quine).jpg"
+  },
+  "Guitarra acústica Washburn WD7S": {
+   "archivo": "washburn-acoustic-guitar-in-guitar-case-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Washburn acoustic guitar in guitar case.jpg",
+   "autor": "Housing Works Thrift Shops",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Washburn_acoustic_guitar_in_guitar_case.jpg"
+  },
+  "Piano digital Roland FP-10": {
+   "archivo": "roland-ep-95-digital-piano-many-keys-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Roland EP-95 Digital Piano - Many keys.jpg",
+   "autor": "James Niland from Brisbane, Australia",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Roland_EP-95_Digital_Piano_-_Many_keys.jpg"
+  },
+  "Batería electrónica Roland TD-1DMK": {
+   "archivo": "electronic-drum-kit-roland-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Electronic drum kit Roland.jpg",
+   "autor": "Rob DiCaterino",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Electronic_drum_kit_Roland.jpg"
+  },
+  "Teclado Casio CT-S300": {
+   "archivo": "casio-ctk-496-keyboard-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Casio CTK-496 keyboard.jpg",
+   "autor": "Ananas96",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Casio_CTK-496_keyboard.jpg"
+  },
+  "Piano digital Casio Privia PX-S1100": {
+   "archivo": "casio-privia-px-310-digital-piano-warm-clip2-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Casio Privia PX-310 digital piano (warm clip2).jpg",
+   "autor": "Casio Privia PX-310 digital piano.jpg: Malcolm Tredinnick from Sydney, Australia\nderivative work: Clusternote",
+   "licencia": "CC BY 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Casio_Privia_PX-310_digital_piano_(warm_clip2).jpg"
+  },
+  "Piano digital Korg B2": {
+   "archivo": "korg-digital-piano-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Korg digital piano.jpg",
+   "autor": "Bobbyshabangu",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Korg_digital_piano.jpg"
+  },
+  "Sintetizador Korg Volca Keys": {
+   "archivo": "korg-synthesizer-ms-20-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Korg Synthesizer MS-20.jpg",
+   "autor": "Wilfredor",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Korg_Synthesizer_MS-20.jpg"
+  },
+  "Piano digital Kawai ES120": {
+   "archivo": "kawai-s-toy-piano-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Kawai's toy piano.jpg",
+   "autor": "Ludwig D. Omen from Osaka, Japan",
+   "licencia": "CC BY 2.1 jp",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Kawai%27s_toy_piano.jpg"
+  },
+  "Sintetizador Nord Electro 6D 61": {
+   "archivo": "clavia-nord-modular-g2-orlando-synthesizer-meetup-dec-2016-2.png",
+   "nivel": "marca",
+   "titulo": "Clavia Nord Modular G2 - Orlando Synthesizer Meetup Dec 2016 (2016-12-04 (19) by Mac Rutan).png",
+   "autor": "Mac Rutan from Oviedo, FL, U.S.A.",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Clavia_Nord_Modular_G2_-_Orlando_Synthesizer_Meetup_Dec_2016_(2016-12-04_(19)_by_Mac_Rutan).png"
+  },
+  "Controlador MIDI Akai MPK249": {
+   "archivo": "akai-professional-lpd8-midi-controller-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Akai Professional LPD8 MiDi Controller.jpg",
+   "autor": "ParsecAU",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Akai_Professional_LPD8_MiDi_Controller.jpg"
+  },
+  "Controlador MIDI Novation Launchkey 49 MK3": {
+   "archivo": "elektron-analog-four-novation-launchkey-mini-ipad-my-setup-f.jpg",
+   "nivel": "marca",
+   "titulo": "Elektron Analog Four, Novation LaunchKey Mini, & iPad - My setup for my synthesizers-MIDI talk.jpg",
+   "autor": "Pete Brown from Gambrills, MD, USA",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Elektron_Analog_Four,_Novation_LaunchKey_Mini,_%26_iPad_-_My_setup_for_my_synthesizers-MIDI_talk.jpg"
+  },
+  "Controlador MIDI Arturia KeyLab Essential 61": {
+   "archivo": "arturia-beatstep-midi-controller-midi-usb-cv-gate-step-seque.jpg",
+   "nivel": "marca",
+   "titulo": "Arturia BEATSTEP = MIDI Controller + MIDI,USB,CV-Gate Step Sequencer.jpg",
+   "autor": "Kazuhisa OTSUBO from Tokyo, Japan",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Arturia_BEATSTEP_%3D_MIDI_Controller_%2B_MIDI,USB,CV-Gate_Step_Sequencer.jpg"
+  },
+  "Controlador MIDI Arturia MiniLab 3": {
+   "archivo": "arturia-beatstep-midi-controller-midi-usb-cv-gate-step-seque.jpg",
+   "nivel": "marca",
+   "titulo": "Arturia BEATSTEP = MIDI Controller + MIDI,USB,CV-Gate Step Sequencer.jpg",
+   "autor": "Kazuhisa OTSUBO from Tokyo, Japan",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Arturia_BEATSTEP_%3D_MIDI_Controller_%2B_MIDI,USB,CV-Gate_Step_Sequencer.jpg"
+  },
+  "Controlador MIDI M-Audio Keystation 49 MK3": {
+   "archivo": "steinberg-cc121-cubase-control-surface-and-m-audio-oxygen-mi.jpg",
+   "nivel": "marca",
+   "titulo": "Steinberg CC121 Cubase control surface and M-Audio Oxygen MIDI keyboard controller (2013-03-02 by martinezdj).jpg",
+   "autor": "martinezdj",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Steinberg_CC121_Cubase_control_surface_and_M-Audio_Oxygen_MIDI_keyboard_controller_(2013-03-02_by_martinezdj).jpg"
+  },
+  "Batería electrónica Donner DED-80": {
+   "archivo": "electronic-drum-kit-roland-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Electronic drum kit Roland.jpg",
+   "autor": "Rob DiCaterino",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Electronic_drum_kit_Roland.jpg"
+  },
+  "Piano digital Donner DDP-100": {
+   "archivo": "digital-piano-423-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Digital-piano-423.jpg",
+   "autor": "Pianomangeorge",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Digital-piano-423.jpg"
+  },
+  "Batería electrónica Alesis Nitro Max": {
+   "archivo": "electronic-drum-kit-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Electronic drum kit.jpg",
+   "autor": "Pxhere.com",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Electronic_drum_kit.jpg"
+  },
+  "Piano digital Alesis Recital 88": {
+   "archivo": "technics-digital-piano-sx-pr902-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Technics digital piano SX-PR902..jpg",
+   "autor": "Marlon E",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Technics_digital_piano_SX-PR902..jpg"
+  },
+  "Batería acústica Pearl Roadshow 5 piezas": {
+   "archivo": "pearl-midtown-compact-drum-kit-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Pearl Midtown compact drum kit.jpg",
+   "autor": "Englishteacher68",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Pearl_Midtown_compact_drum_kit.jpg"
+  },
+  "Cajón Pearl Primero": {
+   "archivo": "homemade-cajon-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Homemade cajón.jpg",
+   "autor": "Luislema",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Homemade_caj%C3%B3n.jpg"
+  },
+  "Batería acústica Tama Imperialstar 5 piezas": {
+   "archivo": "tama-drum-kit-757809927-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Tama drum kit (757809927).jpg",
+   "autor": "Phillip Harrington",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Tama_drum_kit_(757809927).jpg"
+  },
+  "Batería acústica Ludwig Accent Drive 5 piezas": {
+   "archivo": "john-bonham-ludwig-drum-kit-hard-rock-cafe-london-jpeg.jpeg",
+   "nivel": "marca",
+   "titulo": "John Bonham Ludwig drum kit, Hard Rock Cafe London.jpeg",
+   "autor": "Ian Stannard from Southsea, England",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:John_Bonham_Ludwig_drum_kit,_Hard_Rock_Cafe_London.jpeg"
+  },
+  "Platillo Zildjian A Custom Crash 16\"": {
+   "archivo": "2006-07-06-crash-zildjian-14-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "2006-07-06 Crash Zildjian 14.jpg",
+   "autor": "Stephan Czuratis (Jazz-face)",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:2006-07-06_Crash_Zildjian_14.jpg"
+  },
+  "Paquete de platillos Zildjian ZBT": {
+   "archivo": "2006-07-06-crash-zildjian-14-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "2006-07-06 Crash Zildjian 14.jpg",
+   "autor": "Stephan Czuratis (Jazz-face)",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:2006-07-06_Crash_Zildjian_14.jpg"
+  },
+  "Paquete de platillos Sabian B8X": {
+   "archivo": "sabian-o-zone-cymbal-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sabian O-zone cymbal.jpg",
+   "autor": "bigdrumthump.com from Santa Monica, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sabian_O-zone_cymbal.jpg"
+  },
+  "Platillo Sabian AAX Hi-Hat 14\"": {
+   "archivo": "sabian-o-zone-cymbal-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sabian O-zone cymbal.jpg",
+   "autor": "bigdrumthump.com from Santa Monica, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sabian_O-zone_cymbal.jpg"
+  },
+  "Cajón Meinl Headliner": {
+   "archivo": "maugein-cajon-01-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "MAUGEIN CAJON 01.jpg",
+   "autor": "Richard Brandao",
+   "licencia": "CC BY 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:MAUGEIN_CAJON_01.jpg"
+  },
+  "Baquetas Vic Firth 5A": {
+   "archivo": "vic-firth-drumsticks-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Vic Firth drumsticks.jpg",
+   "autor": "Mark Kobayashi-Hillary",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Vic_Firth_drumsticks.jpg"
+  },
+  "Micrófono Shure SM58": {
+   "archivo": "micro-shure-sm58-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Micro Shure SM58.jpg",
+   "autor": "Nicolas Esposito from France",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Micro_Shure_SM58.jpg"
+  },
+  "Micrófono Shure SM57": {
+   "archivo": "shure-sm57-microphone-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Shure SM57 microphone.jpg",
+   "autor": "E bailey",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Shure_SM57_microphone.jpg"
+  },
+  "Micrófono Sennheiser e835": {
+   "archivo": "sennheiser-e45s-microphone-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sennheiser e45s microphone.jpg",
+   "autor": "Bizzarle",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sennheiser_e45s_microphone.jpg"
+  },
+  "Micrófono Audio-Technica AT2020": {
+   "archivo": "ea-f20-microphone-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Ea f20 microphone.jpg",
+   "autor": "Equationaudio",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ea_f20_microphone.jpg"
+  },
+  "Pedal de distorsión Boss DS-1": {
+   "archivo": "boss-guitar-pedals-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "BOSS guitar pedals.jpg",
+   "autor": "Peter Hall",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:BOSS_guitar_pedals.jpg"
+  },
+  "Amplificador Marshall MG15": {
+   "archivo": "marshall-guitar-amplifier-closeup-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Marshall guitar amplifier closeup.jpg",
+   "autor": "Shixart1985",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Marshall_guitar_amplifier_closeup.jpg"
+  },
+  "Amplificador Marshall DSL20CR": {
+   "archivo": "marshall-guitar-amplifier-closeup-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Marshall guitar amplifier closeup.jpg",
+   "autor": "Shixart1985",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Marshall_guitar_amplifier_closeup.jpg"
+  },
+  "Amplificador Vox AC15C1": {
+   "archivo": "vox-ac30-guitar-amplifire-with-foot-switch-exposition-john-l.jpg",
+   "nivel": "marca",
+   "titulo": "VOX AC30 guitar amplifire with foot switch - Exposition John Lennon unfinished music - Musée de la musique (2006-04-30 15.36.01 Benoit Darcy).jpg",
+   "autor": "Benoit Darcy from Paris, France",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:VOX_AC30_guitar_amplifire_with_foot_switch_-_Exposition_John_Lennon_unfinished_music_-_Mus%C3%A9e_de_la_musique_(2006-04-30_15.36.01_Benoit_Darcy).jpg"
+  },
+  "Amplificador Line 6 Spider V 30": {
+   "archivo": "line6-bogner-guitar-amplifiers-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Line6-Bogner guitar amplifiers.jpg",
+   "autor": "fvancini",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Line6-Bogner_guitar_amplifiers.jpg"
+  },
+  "Cuerdas Ernie Ball Slinky 10-46": {
+   "archivo": "ernie-ball-regular-slinky-10-46-nickel-wound-electric-guitar.jpg",
+   "nivel": "modelo",
+   "titulo": "Ernie Ball Regular Slinky 10-46 nickel wound electric guitar strings.jpg",
+   "autor": "Skimel",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ernie_Ball_Regular_Slinky_10-46_nickel_wound_electric_guitar_strings.jpg"
+  },
+  "Flauta transversal Jupiter JFL700": {
+   "archivo": "flute-with-musicial-notes-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Flute with musicial notes.jpg",
+   "autor": "Petar Milošević",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Flute_with_musicial_notes.jpg"
+  },
+  "Guitarra clásica Yamaha C40": {
+   "archivo": "guitar-may-2009-1-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Guitar May 2009-1.jpg",
+   "autor": "Alvesgaspar (talk)",
+   "licencia": "CC BY 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Guitar_May_2009-1.jpg"
+  },
+  "Monitor de estudio Yamaha HS5": {
+   "archivo": "yamaha-msp7-studio-monitor-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha MSP7 Studio Monitor.jpg",
+   "autor": "ligia diniz",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_MSP7_Studio_Monitor.jpg"
+  },
+  "Clarinete Yamaha YCL-255": {
+   "archivo": "yamaha-clarinet-ycl-457ii-22-rotated-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha Clarinet YCL-457II-22 (rotated).jpg",
+   "autor": "Yamaha Corporation; rotation by  — Chris Woodrich (talk)",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Clarinet_YCL-457II-22_(rotated).jpg"
+  },
+  "Teclado Yamaha PSR-SX600": {
+   "archivo": "yamaha-electronic-piano-keyboard-41330384220-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha Electronic Piano Keyboard (41330384220).jpg",
+   "autor": "Tony Webster from Minneapolis, Minnesota, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Electronic_Piano_Keyboard_(41330384220).jpg"
+  },
+  "Teclado Yamaha PSR-E473": {
+   "archivo": "yamaha-electronic-piano-keyboard-41330384220-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha Electronic Piano Keyboard (41330384220).jpg",
+   "autor": "Tony Webster from Minneapolis, Minnesota, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Electronic_Piano_Keyboard_(41330384220).jpg"
+  },
+  "Guitarra eléctrica Fender Player Telecaster": {
+   "archivo": "fender-classic-player-baja-60s-telecaster-faded-sonic-blue-2.jpg",
+   "nivel": "modelo",
+   "titulo": "Fender Classic Player Baja '60s Telecaster (Faded Sonic Blue) (2015-05-02 15.58.23 by interestedbystandr).jpg",
+   "autor": "interestedbystandr",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_Classic_Player_Baja_%2760s_Telecaster_(Faded_Sonic_Blue)_(2015-05-02_15.58.23_by_interestedbystandr).jpg"
+  },
+  "Ukelele Fender Venice Soprano": {
+   "archivo": "fender-ukulele-single-cutaway-2014-08-31-21-06-15-by-adam-c.jpg",
+   "nivel": "marca",
+   "titulo": "Fender Ukulele single cutaway (2014-08-31 21.06.15 by Adam C).jpg",
+   "autor": "Adam C",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_Ukulele_single_cutaway_(2014-08-31_21.06.15_by_Adam_C).jpg"
+  },
+  "Guitarra acústica Fender CD-60S": {
+   "archivo": "fender-california-series-acoustic-guitar-serial-no-csc100016.jpg",
+   "nivel": "marca",
+   "titulo": "Fender California Series Acoustic Guitar (serial no. CSC10001615) (2018-04-26 13.21.46 Piqsels.com id olkmb).jpg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_California_Series_Acoustic_Guitar_(serial_no._CSC10001615)_(2018-04-26_13.21.46_Piqsels.com_id_olkmb).jpg"
+  },
+  "Amplificador Fender Champion 40": {
+   "archivo": "fender-champion-300-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Fender Champion 300.jpg",
+   "autor": "Richard Riley",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_Champion_300.jpg"
+  },
+  "Guitarra eléctrica Gibson ES-335": {
+   "archivo": "1987-gibson-wanderer-custom-dion-dimucci-s-electric-guitar-r.jpg",
+   "nivel": "marca",
+   "titulo": "1987 Gibson Wanderer Custom - Dion DiMucci's Electric Guitar - Rock and Roll Hall of Fame (2014-12-30 12.21.15 by Sam Howzit).jpg",
+   "autor": "Sam Howzit",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:1987_Gibson_Wanderer_Custom_-_Dion_DiMucci%27s_Electric_Guitar_-_Rock_and_Roll_Hall_of_Fame_(2014-12-30_12.21.15_by_Sam_Howzit).jpg"
+  },
+  "Bajo eléctrico Ibanez GSR200": {
+   "archivo": "ibanez-gsr200-electric-bass-body-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Ibanez GSR200 electric Bass body.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ibanez_GSR200_electric_Bass_body.jpg"
+  },
+  "Guitarra acústica Ibanez AW54": {
+   "archivo": "ibanez-12-string-acoustic-guitar-with-penguin-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Ibanez 12 string acoustic guitar with Penguin.jpg",
+   "autor": "j4yx0r",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ibanez_12_string_acoustic_guitar_with_Penguin.jpg"
+  },
+  "Guitarra eléctrica Ibanez AZ2402": {
+   "archivo": "ibanez-electric-guitar-icx120-headstock-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Ibanez electric guitar ICX120 headstock.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ibanez_electric_guitar_ICX120_headstock.jpg"
+  },
+  "Guitarra eléctrica Epiphone SG Standard": {
+   "archivo": "epiphone-pr-5e-vs-cutaway-acoustic-electric-guitar-vintage-s.jpg",
+   "nivel": "marca",
+   "titulo": "Epiphone PR-5E VS Cutaway Acoustic Electric Guitar (Vintage Sunburst).jpg",
+   "autor": "Joshu∆ Byrd",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Epiphone_PR-5E_VS_Cutaway_Acoustic_Electric_Guitar_(Vintage_Sunburst).jpg"
+  },
+  "Bajo eléctrico Squier Affinity Precision Bass PJ": {
+   "archivo": "squier-fender-1989-rock-bass-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Squier Fender 1989 Rock bass guitar.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Squier_Fender_1989_Rock_bass_guitar.jpg"
+  },
+  "Guitarra eléctrica PRS SE Standard 24": {
+   "archivo": "prs-custom-1988-santana-guitar-body-mim-phx-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "PRS Custom (1988) Santana guitar (body), MIM PHX.jpg",
+   "autor": "Carlos Santana guitars, MIM PHX.jpg: Kevin Spencer\nderived work: Clusternote",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:PRS_Custom_(1988)_Santana_guitar_(body),_MIM_PHX.jpg"
+  },
+  "Guitarra eléctrica PRS SE Silver Sky": {
+   "archivo": "prs-custom-1988-santana-guitar-body-mim-phx-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "PRS Custom (1988) Santana guitar (body), MIM PHX.jpg",
+   "autor": "Carlos Santana guitars, MIM PHX.jpg: Kevin Spencer\nderived work: Clusternote",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:PRS_Custom_(1988)_Santana_guitar_(body),_MIM_PHX.jpg"
+  },
+  "Guitarra acústica Martin LX1": {
+   "archivo": "martin-d-28-acoustic-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Martin D-28 Acoustic Guitar.jpg",
+   "autor": "Niranjan Arminius",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Martin_D-28_Acoustic_Guitar.jpg"
+  },
+  "Guitarra acústica Martin D-18": {
+   "archivo": "martin-d-28-acoustic-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Martin D-28 Acoustic Guitar.jpg",
+   "autor": "Niranjan Arminius",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Martin_D-28_Acoustic_Guitar.jpg"
+  },
+  "Guitarra clásica Cort AC100": {
+   "archivo": "classical-guitar-two-views-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Classical Guitar two views.jpg",
+   "autor": "Martin Möller",
+   "licencia": "CC BY-SA 2.0 de",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Classical_Guitar_two_views.jpg"
+  },
+  "Guitarra acústica Takamine GN10": {
+   "archivo": "takamine-martin-guitars-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Takamine & Martin Guitars.jpg",
+   "autor": "Batch1928 44",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Takamine_%26_Martin_Guitars.jpg"
+  },
+  "Guitarra eléctrica Jackson JS32 Rhoads": {
+   "archivo": "jackson-soloist-electric-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Jackson Soloist electric guitar.jpg",
+   "autor": "Styroks",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Jackson_Soloist_electric_guitar.jpg"
+  },
+  "Guitarra eléctrica ESP LTD M-200": {
+   "archivo": "esp-ltd-electric-5-string-bass-guitar-f-255-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "ESP Ltd. electric 5 string bass guitar F 255.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:ESP_Ltd._electric_5_string_bass_guitar_F_255.jpg"
+  },
+  "Guitarra eléctrica Schecter C-1 Platinum": {
+   "archivo": "schecter-omen-extreme-7-string-guitar-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Schecter Omen Extreme (7 String) Guitar.JPG",
+   "autor": "Kyral",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Schecter_Omen_Extreme_(7_String)_Guitar.JPG"
+  },
+  "Guitarra eléctrica Gretsch G5222 Electromatic": {
+   "archivo": "gretsch-electric-guitar-antique-recording-studio-berlin-2013.jpg",
+   "nivel": "marca",
+   "titulo": "Gretsch electric guitar, Antique recording studio, Berlin 2013 (2013-06-08 12.31.22 by Thomas Quine).jpg",
+   "autor": "Thomas Quine",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Gretsch_electric_guitar,_Antique_recording_studio,_Berlin_2013_(2013-06-08_12.31.22_by_Thomas_Quine).jpg"
+  },
+  "Guitarra eléctrica Washburn Parallaxe PXM10": {
+   "archivo": "washburn-dime-333-a-dean-ml-style-dimebag-darrell-signature.jpg",
+   "nivel": "marca",
+   "titulo": "Washburn Dime 333, a Dean ML-style Dimebag Darrell signature guitar model.jpg",
+   "autor": "Dave Barnett2",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Washburn_Dime_333,_a_Dean_ML-style_Dimebag_Darrell_signature_guitar_model.jpg"
+  },
+  "Piano digital Roland RP102": {
+   "archivo": "roland-ep-95-digital-piano-many-keys-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Roland EP-95 Digital Piano - Many keys.jpg",
+   "autor": "James Niland from Brisbane, Australia",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Roland_EP-95_Digital_Piano_-_Many_keys.jpg"
+  },
+  "Teclado Roland GO:KEYS": {
+   "archivo": "roland-ep-95-digital-piano-many-keys-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Roland EP-95 Digital Piano - Many keys.jpg",
+   "autor": "James Niland from Brisbane, Australia",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Roland_EP-95_Digital_Piano_-_Many_keys.jpg"
+  },
+  "Batería electrónica Roland TD-07KV": {
+   "archivo": "electronic-drum-kit-roland-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Electronic drum kit Roland.jpg",
+   "autor": "Rob DiCaterino",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Electronic_drum_kit_Roland.jpg"
+  },
+  "Amplificador Roland Cube Street EX": {
+   "archivo": "roland-cube-street-battery-powered-stereo-amplifier-with-ac.jpg",
+   "nivel": "marca",
+   "titulo": "Roland CUBE Street Battery Powered Stereo Amplifier with AC adapter.jpg",
+   "autor": "sushi zume",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Roland_CUBE_Street_Battery_Powered_Stereo_Amplifier_with_AC_adapter.jpg"
+  },
+  "Piano digital Casio CDP-S160": {
+   "archivo": "casio-privia-px-310-digital-piano-warm-clip2-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Casio Privia PX-310 digital piano (warm clip2).jpg",
+   "autor": "Casio Privia PX-310 digital piano.jpg: Malcolm Tredinnick from Sydney, Australia\nderivative work: Clusternote",
+   "licencia": "CC BY 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Casio_Privia_PX-310_digital_piano_(warm_clip2).jpg"
+  },
+  "Teclado Casio CT-S1": {
+   "archivo": "casio-ctk-496-keyboard-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Casio CTK-496 keyboard.jpg",
+   "autor": "Ananas96",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Casio_CTK-496_keyboard.jpg"
+  },
+  "Teclado Casio CT-X700": {
+   "archivo": "casio-ctk-496-keyboard-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Casio CTK-496 keyboard.jpg",
+   "autor": "Ananas96",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Casio_CTK-496_keyboard.jpg"
+  },
+  "Teclado Korg EK-50": {
+   "archivo": "musical-keyboard-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Musical Keyboard.jpg",
+   "autor": "The original uploader was AkiShinji at English Wikipedia.",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Musical_Keyboard.jpg"
+  },
+  "Sintetizador Korg Minilogue XD": {
+   "archivo": "korg-synthesizer-ms-20-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Korg Synthesizer MS-20.jpg",
+   "autor": "Wilfredor",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Korg_Synthesizer_MS-20.jpg"
+  },
+  "Piano digital Korg LP-380": {
+   "archivo": "korg-digital-piano-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Korg digital piano.jpg",
+   "autor": "Bobbyshabangu",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Korg_digital_piano.jpg"
+  },
+  "Piano digital Kawai KDP120": {
+   "archivo": "kawai-s-toy-piano-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Kawai's toy piano.jpg",
+   "autor": "Ludwig D. Omen from Osaka, Japan",
+   "licencia": "CC BY 2.1 jp",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Kawai%27s_toy_piano.jpg"
+  },
+  "Piano digital Kawai CN201": {
+   "archivo": "kawai-s-toy-piano-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Kawai's toy piano.jpg",
+   "autor": "Ludwig D. Omen from Osaka, Japan",
+   "licencia": "CC BY 2.1 jp",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Kawai%27s_toy_piano.jpg"
+  },
+  "Teclado Nord Stage 4 Compact": {
+   "archivo": "clavia-nord-modular-g2-orlando-synthesizer-meetup-dec-2016-2.png",
+   "nivel": "marca",
+   "titulo": "Clavia Nord Modular G2 - Orlando Synthesizer Meetup Dec 2016 (2016-12-04 (19) by Mac Rutan).png",
+   "autor": "Mac Rutan from Oviedo, FL, U.S.A.",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Clavia_Nord_Modular_G2_-_Orlando_Synthesizer_Meetup_Dec_2016_(2016-12-04_(19)_by_Mac_Rutan).png"
+  },
+  "Controlador MIDI Akai MPK Mini Plus": {
+   "archivo": "akai-professional-lpd8-midi-controller-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Akai Professional LPD8 MiDi Controller.jpg",
+   "autor": "ParsecAU",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Akai_Professional_LPD8_MiDi_Controller.jpg"
+  },
+  "Pad controlador Akai MPD218": {
+   "archivo": "akai-professional-lpd8-midi-controller-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Akai Professional LPD8 MiDi Controller.jpg",
+   "autor": "ParsecAU",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Akai_Professional_LPD8_MiDi_Controller.jpg"
+  },
+  "Controlador MIDI Novation Launchkey Mini MK3": {
+   "archivo": "elektron-analog-four-novation-launchkey-mini-ipad-my-setup-f.jpg",
+   "nivel": "marca",
+   "titulo": "Elektron Analog Four, Novation LaunchKey Mini, & iPad - My setup for my synthesizers-MIDI talk.jpg",
+   "autor": "Pete Brown from Gambrills, MD, USA",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Elektron_Analog_Four,_Novation_LaunchKey_Mini,_%26_iPad_-_My_setup_for_my_synthesizers-MIDI_talk.jpg"
+  },
+  "Sintetizador Arturia MicroFreak": {
+   "archivo": "arturia-minifreak-on-a-desk-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Arturia MiniFreak on a desk.jpg",
+   "autor": "Leo Ronert",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Arturia_MiniFreak_on_a_desk.jpg"
+  },
+  "Controlador MIDI Arturia KeyStep 37": {
+   "archivo": "arturia-beatstep-midi-controller-midi-usb-cv-gate-step-seque.jpg",
+   "nivel": "marca",
+   "titulo": "Arturia BEATSTEP = MIDI Controller + MIDI,USB,CV-Gate Step Sequencer.jpg",
+   "autor": "Kazuhisa OTSUBO from Tokyo, Japan",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Arturia_BEATSTEP_%3D_MIDI_Controller_%2B_MIDI,USB,CV-Gate_Step_Sequencer.jpg"
+  },
+  "Monitor de estudio M-Audio BX5 D3": {
+   "archivo": "passive-studio-monitor-amphion-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Passive studio monitor Amphion.jpg",
+   "autor": "GeorgiL",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Passive_studio_monitor_Amphion.jpg"
+  },
+  "Controlador MIDI M-Audio Oxygen Pro 61": {
+   "archivo": "steinberg-cc121-cubase-control-surface-and-m-audio-oxygen-mi.jpg",
+   "nivel": "marca",
+   "titulo": "Steinberg CC121 Cubase control surface and M-Audio Oxygen MIDI keyboard controller (2013-03-02 by martinezdj).jpg",
+   "autor": "martinezdj",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Steinberg_CC121_Cubase_control_surface_and_M-Audio_Oxygen_MIDI_keyboard_controller_(2013-03-02_by_martinezdj).jpg"
+  },
+  "Piano digital Donner DEP-20": {
+   "archivo": "williams-allegro-2-88-key-hammer-action-digital-piano-2016-0.jpg",
+   "nivel": "referencia",
+   "titulo": "Williams Allegro 2 88-Key Hammer Action Digital Piano (2016-06-25 22.01.41 by Scott Ritchie).jpg",
+   "autor": "Scott  Ritchie from Harrisburg, USA",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Williams_Allegro_2_88-Key_Hammer_Action_Digital_Piano_(2016-06-25_22.01.41_by_Scott_Ritchie).jpg"
+  },
+  "Batería electrónica Alesis Turbo Mesh Kit": {
+   "archivo": "electronic-drums-alesis-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Electronic drums alesis.jpg",
+   "autor": "bigdrumthump.com from Santa Monica, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Electronic_drums_alesis.jpg"
+  },
+  "Teclado Alesis Harmony 61": {
+   "archivo": "edirol-pcr-300-midi-keyboard-controller-usb-midi-primax-midi.jpg",
+   "nivel": "referencia",
+   "titulo": "Edirol PCR-300 MIDI Keyboard Controller (USB + MIDI) & PRiMAX MIDISTORM Music Keyboard M-4900.jpg",
+   "autor": "Alexander Whillas from Berlin, Germany",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Edirol_PCR-300_MIDI_Keyboard_Controller_(USB_%2B_MIDI)_%26_PRiMAX_MIDISTORM_Music_Keyboard_M-4900.jpg"
+  },
+  "Batería acústica Pearl Export EXX725": {
+   "archivo": "pearl-midtown-compact-drum-kit-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Pearl Midtown compact drum kit.jpg",
+   "autor": "Englishteacher68",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Pearl_Midtown_compact_drum_kit.jpg"
+  },
+  "Banco de batería Pearl D-50": {
+   "archivo": "dixon-double-pedal-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Dixon-double-pedal.jpg",
+   "autor": "slayer",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Dixon-double-pedal.jpg"
+  },
+  "Batería acústica Tama Superstar Classic": {
+   "archivo": "tama-drum-kit-757809927-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Tama drum kit (757809927).jpg",
+   "autor": "Phillip Harrington",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Tama_drum_kit_(757809927).jpg"
+  },
+  "Redoblante Ludwig Supraphonic LM400": {
+   "archivo": "snare-drum-strainer-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Snare drum strainer.jpg",
+   "autor": "ZooFari",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Snare_drum_strainer.jpg"
+  },
+  "Pedal de bombo DW 5000": {
+   "archivo": "a-set-of-dw-pedals-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "A set of DW pedals.JPG",
+   "autor": "Drums600",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:A_set_of_DW_pedals.JPG"
+  },
+  "Platillo Zildjian K Custom Dark Ride 20\"": {
+   "archivo": "2006-07-06-crash-zildjian-14-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "2006-07-06 Crash Zildjian 14.jpg",
+   "autor": "Stephan Czuratis (Jazz-face)",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:2006-07-06_Crash_Zildjian_14.jpg"
+  },
+  "Hi-Hat Zildjian A Zildjian 14\"": {
+   "archivo": "2006-07-06-crash-zildjian-14-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "2006-07-06 Crash Zildjian 14.jpg",
+   "autor": "Stephan Czuratis (Jazz-face)",
+   "licencia": "CC BY-SA 2.5",
+   "fuente": "https://commons.wikimedia.org/wiki/File:2006-07-06_Crash_Zildjian_14.jpg"
+  },
+  "Platillo Sabian HHX Evolution Crash 17\"": {
+   "archivo": "sabian-o-zone-cymbal-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sabian O-zone cymbal.jpg",
+   "autor": "bigdrumthump.com from Santa Monica, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sabian_O-zone_cymbal.jpg"
+  },
+  "Platillo Sabian B8 Ride 20\"": {
+   "archivo": "sabian-o-zone-cymbal-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sabian O-zone cymbal.jpg",
+   "autor": "bigdrumthump.com from Santa Monica, United States",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sabian_O-zone_cymbal.jpg"
+  },
+  "Baquetas Vic Firth American Classic 7A": {
+   "archivo": "vic-firth-drumsticks-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Vic Firth drumsticks.jpg",
+   "autor": "Mark Kobayashi-Hillary",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Vic_Firth_drumsticks.jpg"
+  },
+  "Baquetas Vic Firth 5B": {
+   "archivo": "vic-firth-drumsticks-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Vic Firth drumsticks.jpg",
+   "autor": "Mark Kobayashi-Hillary",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Vic_Firth_drumsticks.jpg"
+  },
+  "Micrófono Shure SM7B": {
+   "archivo": "shure-sm57-microphone-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Shure SM57 microphone.jpg",
+   "autor": "E bailey",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Shure_SM57_microphone.jpg"
+  },
+  "Micrófono Shure BETA 58A": {
+   "archivo": "shure-sm57-microphone-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Shure SM57 microphone.jpg",
+   "autor": "E bailey",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Shure_SM57_microphone.jpg"
+  },
+  "Micrófono Sennheiser e945": {
+   "archivo": "sennheiser-e45s-microphone-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sennheiser e45s microphone.jpg",
+   "autor": "Bizzarle",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sennheiser_e45s_microphone.jpg"
+  },
+  "Audífonos Sennheiser HD 280 Pro": {
+   "archivo": "sennheiser-hd-25-headphones-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Sennheiser hd-25 headphones.jpg",
+   "autor": "Bizzarle",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sennheiser_hd-25_headphones.jpg"
+  },
+  "Audífonos Audio-Technica ATH-M50x": {
+   "archivo": "audio-technica-headphones-01-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Audio Technica headphones 01.jpg",
+   "autor": "Gpkp",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Audio_Technica_headphones_01.jpg"
+  },
+  "Micrófono Audio-Technica AT2035": {
+   "archivo": "akg-c214-condenser-microphone-with-h85-shock-mount-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "AKG C214 condenser microphone with H85 shock mount.jpg",
+   "autor": "Lucasbosch",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:AKG_C214_condenser_microphone_with_H85_shock_mount.jpg"
+  },
+  "Micrófono Audio-Technica ATR2100x-USB": {
+   "archivo": "ga100-mic-png.png",
+   "nivel": "referencia",
+   "titulo": "GA100 Mic.png",
+   "autor": "多多123",
+   "licencia": "CC BY 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:GA100_Mic.png"
+  },
+  "Pedal Boss BD-2 Blues Driver": {
+   "archivo": "boss-guitar-pedals-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "BOSS guitar pedals.jpg",
+   "autor": "Peter Hall",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:BOSS_guitar_pedals.jpg"
+  },
+  "Pedal Boss DD-8 Digital Delay": {
+   "archivo": "boss-guitar-pedals-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "BOSS guitar pedals.jpg",
+   "autor": "Peter Hall",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:BOSS_guitar_pedals.jpg"
+  },
+  "Amplificador Marshall Code 50": {
+   "archivo": "marshall-guitar-amplifier-closeup-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Marshall guitar amplifier closeup.jpg",
+   "autor": "Shixart1985",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Marshall_guitar_amplifier_closeup.jpg"
+  },
+  "Amplificador Vox Pathfinder 10": {
+   "archivo": "vox-ac30-guitar-amplifire-with-foot-switch-exposition-john-l.jpg",
+   "nivel": "marca",
+   "titulo": "VOX AC30 guitar amplifire with foot switch - Exposition John Lennon unfinished music - Musée de la musique (2006-04-30 15.36.01 Benoit Darcy).jpg",
+   "autor": "Benoit Darcy from Paris, France",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:VOX_AC30_guitar_amplifire_with_foot_switch_-_Exposition_John_Lennon_unfinished_music_-_Mus%C3%A9e_de_la_musique_(2006-04-30_15.36.01_Benoit_Darcy).jpg"
+  },
+  "Pedalera Line 6 HX Stomp": {
+   "archivo": "line-6-dl4-delay-modeler-guitar-pedal-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Line 6 DL4 Delay Modeler Guitar Pedal.jpg",
+   "autor": "Guitar Chalk Media LLC",
+   "licencia": "CC BY 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Line_6_DL4_Delay_Modeler_Guitar_Pedal.jpg"
+  },
+  "Guitarra eléctrica Ibanez RG421": {
+   "archivo": "ibanez-electric-guitar-icx120-headstock-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Ibanez electric guitar ICX120 headstock.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ibanez_electric_guitar_ICX120_headstock.jpg"
+  },
+  "Guitarra eléctrica ESP LTD EC-256": {
+   "archivo": "esp-ltd-electric-5-string-bass-guitar-f-255-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "ESP Ltd. electric 5 string bass guitar F 255.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:ESP_Ltd._electric_5_string_bass_guitar_F_255.jpg"
+  },
+  "Controlador MIDI Akai MPK Mini MK3": {
+   "archivo": "akai-professional-lpd8-midi-controller-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Akai Professional LPD8 MiDi Controller.jpg",
+   "autor": "ParsecAU",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Akai_Professional_LPD8_MiDi_Controller.jpg"
+  },
+  "Saxofón alto Jupiter JAS500": {
+   "archivo": "a-saxophone-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "A Saxophone.jpg",
+   "autor": "Sally V",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:A_Saxophone.jpg"
+  },
+  "Trompeta Yamaha YTR-2330": {
+   "archivo": "yamaha-piccolo-trumpet-ytr-9835-jpg.jpg",
+   "nivel": "marca",
+   "titulo": "Yamaha Piccolo trumpet YTR-9835.jpg",
+   "autor": "Yamaha Corporation",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Piccolo_trumpet_YTR-9835.jpg"
+  },
+  "Amplificador Fender Frontman 10G": {
+   "archivo": "fender-guitar-amp-frontmann-10-g-jpg.jpg",
+   "nivel": "modelo",
+   "titulo": "Fender guitar Amp Frontmann 10 G.jpg",
+   "autor": "Elmschrat",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_guitar_Amp_Frontmann_10_G.jpg"
+  },
+  "Sintetizador Novation Bass Station II": {
+   "archivo": "chess-game-synthesizer-music-electronics-sequencer-novation.jpg",
+   "nivel": "marca",
+   "titulo": "Chess, Game, Synthesizer, Music, Electronics, Sequencer - Novation Lauchpad as chessboard (2015-09-16 by rotten77).jpg",
+   "autor": "rotten77",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Chess,_Game,_Synthesizer,_Music,_Electronics,_Sequencer_-_Novation_Lauchpad_as_chessboard_(2015-09-16_by_rotten77).jpg"
+  },
+  "Guitarra eléctrica Donner DST-100": {
+   "archivo": "guitarra-electrica-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Guitarra eléctrica.JPG",
+   "autor": "Rjcastillo",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Guitarra_el%C3%A9ctrica.JPG"
+  },
+  "Cuerdas para bajo Elixir Nanoweb": {
+   "archivo": "guitar-strings-corde-chitarra-piolo-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Guitar strings - corde chitarra piolo.jpg",
+   "autor": "petur r",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Guitar_strings_-_corde_chitarra_piolo.jpg"
+  },
+  "Trompeta Jupiter JTR700": {
+   "archivo": "yamaha-trumpet-ytr-8335la-crop-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Yamaha Trumpet YTR-8335LA crop.jpg",
+   "autor": "Yamaha Corporation",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_Trumpet_YTR-8335LA_crop.jpg"
+  },
+  "Clarinete Jupiter JCL700": {
+   "archivo": "parts-of-clarinet-3-jpg.jpg",
+   "nivel": "referencia",
+   "titulo": "Parts of clarinet 3.jpg",
+   "autor": "Gisbert König",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Parts_of_clarinet_3.jpg"
+  }
+ },
+ "marcas": {
+  "Akai Professional": {
+   "archivo": "akai-professional-red-logo-svg.png",
+   "titulo": "Akai Professional red logo.svg",
+   "autor": "™/®inMusic Brands",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Akai_Professional_red_logo.svg"
+  },
+  "Arturia": {
+   "archivo": "arturia-updated-logo-png.png",
+   "titulo": "Arturia updated logo.png",
+   "autor": "Arturia",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Arturia_updated_logo.png"
+  },
+  "Audio-Technica": {
+   "archivo": "audio-technica-logo-jpg.jpg",
+   "titulo": "Audio-technica-logo.jpg",
+   "autor": "Audio-Technica",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Audio-technica-logo.jpg"
+  },
+  "Behringer": {
+   "archivo": "behringer-logo-svg.png",
+   "titulo": "Behringer logo.svg",
+   "autor": "Behringer",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Behringer_logo.svg"
+  },
+  "Boss": {
+   "archivo": "boss-logo-svg.png",
+   "titulo": "BOSS logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:BOSS_logo.svg"
+  },
+  "Casio": {
+   "archivo": "casio-logo-svg.png",
+   "titulo": "Casio logo.svg",
+   "autor": "Tkgd2007",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Casio_logo.svg"
+  },
+  "Cort": {
+   "archivo": "new-cort-logo-black-png.png",
+   "titulo": "New Cort Logo Black.png",
+   "autor": "DSKimmy",
+   "licencia": "CC0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:New_Cort_Logo_Black.png"
+  },
+  "D'Addario": {
+   "archivo": "daddario-logo-svg.png",
+   "titulo": "Daddario logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Daddario_logo.svg"
+  },
+  "Donner": {
+   "archivo": "donner-logo-svg.png",
+   "titulo": "Donner logo.svg",
+   "autor": "Donner boeken bv",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Donner_logo.svg"
+  },
+  "ESP": {
+   "archivo": "esp-logo-svg.png",
+   "titulo": "ESP Logo.svg",
+   "autor": "ESP (Gitarren)",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:ESP_Logo.svg"
+  },
+  "Epiphone": {
+   "archivo": "epiphone-guitars-logo-svg.png",
+   "titulo": "Epiphone guitars logo.svg",
+   "autor": "Epiphone, Gibson",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Epiphone_guitars_logo.svg"
+  },
+  "Ernie Ball": {
+   "archivo": "ernie-ball-logo-svg.png",
+   "titulo": "Ernie Ball logo.svg",
+   "autor": "Ernie Ball",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ernie_Ball_logo.svg"
+  },
+  "Fender": {
+   "archivo": "fender-logo-png.png",
+   "titulo": "Fender logo.png",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Fender_logo.png"
+  },
+  "Gibson": {
+   "archivo": "gibson-guitar-logo-svg.png",
+   "titulo": "Gibson Guitar logo.svg",
+   "autor": "Gibson Guitar Corporation",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Gibson_Guitar_logo.svg"
+  },
+  "Gretsch": {
+   "archivo": "gretsch-company-logo-svg.png",
+   "titulo": "Gretsch Company logo.svg",
+   "autor": "Original: Gretsch; Converted to SVG by FireDragonValo",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Gretsch_Company_logo.svg"
+  },
+  "Ibanez": {
+   "archivo": "ibanez-logo-svg.png",
+   "titulo": "Ibanez logo.svg",
+   "autor": "Ibanez",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ibanez_logo.svg"
+  },
+  "Jackson": {
+   "archivo": "jackson-guitars-logo-svg.png",
+   "titulo": "Jackson guitars logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Jackson_guitars_logo.svg"
+  },
+  "Kawai": {
+   "archivo": "kawai-logo-svg.png",
+   "titulo": "Kawai logo.svg",
+   "autor": "Eurotuber",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Kawai_logo.svg"
+  },
+  "Korg": {
+   "archivo": "korg-logo-svg.png",
+   "titulo": "Korg logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Korg_logo.svg"
+  },
+  "Line 6": {
+   "archivo": "line-6-logo-svg.png",
+   "titulo": "Line 6 logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Line_6_logo.svg"
+  },
+  "Ludwig": {
+   "archivo": "ludwig-drums-logo-svg.png",
+   "titulo": "Ludwig Drums logo.svg",
+   "autor": "Ludwig Drums",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Ludwig_Drums_logo.svg"
+  },
+  "M-Audio": {
+   "archivo": "m-audio-logo-jpg.jpg",
+   "titulo": "M-Audio (logo).jpg",
+   "autor": "The original uploader was Lenilucho at English Wikipedia.",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:M-Audio_(logo).jpg"
+  },
+  "Mapex": {
+   "archivo": "mapex-logo-png.png",
+   "titulo": "Mapex logo.png",
+   "autor": "Verdel",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Mapex_logo.png"
+  },
+  "Marshall": {
+   "archivo": "marshall-logo-svg.png",
+   "titulo": "Marshall logo.svg",
+   "autor": "en:User:Asenine",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Marshall_logo.svg"
+  },
+  "Martin": {
+   "archivo": "martin-guitars-logo-2023-svg.png",
+   "titulo": "Martin Guitars logo 2023.svg",
+   "autor": "C.F. Martin &amp; Co.",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Martin_Guitars_logo_2023.svg"
+  },
+  "Meinl": {
+   "archivo": "meinl-cymbals-logo-png.png",
+   "titulo": "Meinl cymbals logo.png",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Meinl_cymbals_logo.png"
+  },
+  "PRS": {
+   "archivo": "prs-guitars-logo-svg.png",
+   "titulo": "PRS Guitars logo.svg",
+   "autor": "PRS Guitars",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:PRS_Guitars_logo.svg"
+  },
+  "Pearl": {
+   "archivo": "pearl-musikinstrumente-logo-svg.png",
+   "titulo": "Pearl (Musikinstrumente) logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Pearl_(Musikinstrumente)_logo.svg"
+  },
+  "Sabian": {
+   "archivo": "sabian-cymbals-logo-2019-svg.png",
+   "titulo": "Sabian Cymbals logo 2019.svg",
+   "autor": "Sabian Cymbals",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sabian_Cymbals_logo_2019.svg"
+  },
+  "Schecter": {
+   "archivo": "schecter-guitar-research-logo-svg.png",
+   "titulo": "Schecter Guitar Research logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Schecter_Guitar_Research_logo.svg"
+  },
+  "Selmer": {
+   "archivo": "conn-selmer-logo-new-svg.png",
+   "titulo": "Conn-Selmer logo (new).svg",
+   "autor": "Unknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Conn-Selmer_logo_(new).svg"
+  },
+  "Sennheiser": {
+   "archivo": "sennheiser-logo-2019-svg.png",
+   "titulo": "Sennheiser logo (2019).svg",
+   "autor": "Sennheiser",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Sennheiser_logo_(2019).svg"
+  },
+  "Shure": {
+   "archivo": "shure-logo-2024-svg.png",
+   "titulo": "Shure Logo 2024.svg",
+   "autor": "Shure Incorporated",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Shure_Logo_2024.svg"
+  },
+  "Takamine": {
+   "archivo": "takamine-guitar-logo-svg.png",
+   "titulo": "Takamine guitar logo.svg",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Takamine_guitar_logo.svg"
+  },
+  "Tama": {
+   "archivo": "tama-drums-logo-svg.png",
+   "titulo": "Tama Drums logo.svg",
+   "autor": "Tama Drums",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Tama_Drums_logo.svg"
+  },
+  "Taylor": {
+   "archivo": "taylor-guitar-circular-logo-black-and-white-svg.png",
+   "titulo": "Taylor Guitar Circular Logo Black and White.svg",
+   "autor": "Taylor Guitars",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Taylor_Guitar_Circular_Logo_Black_and_White.svg"
+  },
+  "Vic Firth": {
+   "archivo": "vic-firth-logo-svg.png",
+   "titulo": "Vic Firth logo.svg",
+   "autor": "Vic Firth",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Vic_Firth_logo.svg"
+  },
+  "Vox": {
+   "archivo": "vox-amplification-ltd-logo-svg.png",
+   "titulo": "Vox Amplification Ltd logo.svg",
+   "autor": "Vox Amplification Ltd",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Vox_Amplification_Ltd_logo.svg"
+  },
+  "Washburn": {
+   "archivo": "washburn-ichabods-logo-svg.png",
+   "titulo": "Washburn Ichabods logo.svg",
+   "autor": "Washburn University Dept. of Athletics",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Washburn_Ichabods_logo.svg"
+  },
+  "Yamaha": {
+   "archivo": "yamaha-logo-svg.png",
+   "titulo": "Yamaha logo.svg",
+   "autor": "Yamaha",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Yamaha_logo.svg"
+  },
+  "Zildjian": {
+   "archivo": "zildjian-logo-svg.png",
+   "titulo": "Zildjian Logo.svg",
+   "autor": "Zildjian",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Zildjian_Logo.svg"
+  },
+  "DW": {
+   "archivo": "drum-worksh-logo-png.png",
+   "titulo": "Drum worksh logo.png",
+   "autor": "Unknown authorUnknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Drum_worksh_logo.png"
+  },
+  "Nord": {
+   "archivo": "clavia-nord-logo-svg.png",
+   "titulo": "Clavia Nord Logo.svg",
+   "autor": "Clavia DMI AB",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Clavia_Nord_Logo.svg"
+  },
+  "Novation": {
+   "archivo": "novation-logo-png.png",
+   "titulo": "Novation logo.png",
+   "autor": "Verdel",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Novation_logo.png"
+  },
+  "Orange": {
+   "archivo": "orange-mec-logo-svg.png",
+   "titulo": "Orange MEC Logo.svg",
+   "autor": "Orange Music Electronic Company Ltd.",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Orange_MEC_Logo.svg"
+  },
+  "Squier": {
+   "archivo": "squier-guitars-logo-svg.png",
+   "titulo": "Squier guitars logo.svg",
+   "autor": "Unknown author",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Squier_guitars_logo.svg"
+  },
+  "Alesis": {
+   "archivo": "alesis-svg.png",
+   "titulo": "Alesis.svg",
+   "autor": "Alesis Distribution, Inc.",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Alesis.svg"
+  },
+  "Remo": {
+   "archivo": "remo-logo-png.png",
+   "titulo": "Remo logo.png",
+   "autor": "Verdel",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Remo_logo.png"
+  },
+  "Roland": {
+   "archivo": "roland-corporation-logo-svg.png",
+   "titulo": "Roland Corporation logo.svg",
+   "autor": "™/® Roland Corporation",
+   "licencia": "Public domain",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Roland_Corporation_logo.svg"
+  }
+ }
+}

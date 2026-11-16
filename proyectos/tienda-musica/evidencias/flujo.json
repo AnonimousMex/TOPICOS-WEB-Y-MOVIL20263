@@ -1,0 +1,158 @@
+{
+  "pedido_corregido_por_reglas": {
+    "folio": "MUS-2026-000001",
+    "estado": "registrado",
+    "creado": "2026-11-15T20:39:41.087109+00:00",
+    "producto": "Guitarra eléctrica Stratus",
+    "entradas": {
+      "tipo": "guitarra",
+      "valor_mxn": 15200.0,
+      "peso_kg": 2.6,
+      "dimension_max_cm": 105,
+      "distancia_km": 40,
+      "fragil": false
+    },
+    "recomendacion": {
+      "nivel_modelo": "reforzado",
+      "confianza": 0.6133,
+      "nivel_final": "premium",
+      "corregido_por_reglas": true,
+      "reglas": [
+        {
+          "regla": "R1_VALOR_ALTO",
+          "efecto": "sube a premium",
+          "motivo": "Un instrumento de $15,000 o más siempre lleva seguro total."
+        }
+      ],
+      "ranking": [
+        {
+          "nivel": "reforzado",
+          "probabilidad": 0.6133
+        },
+        {
+          "nivel": "premium",
+          "probabilidad": 0.3384
+        },
+        {
+          "nivel": "basico",
+          "probabilidad": 0.0483
+        }
+      ]
+    }
+  },
+  "pedido_confirmado_por_reglas": {
+    "folio": "MUS-2026-000002",
+    "estado": "registrado",
+    "creado": "2026-11-15T20:39:41.093826+00:00",
+    "producto": "Cajón peruano Ritmo",
+    "entradas": {
+      "tipo": "percusion",
+      "valor_mxn": 1900.0,
+      "peso_kg": 4.5,
+      "dimension_max_cm": 50,
+      "distancia_km": 80,
+      "fragil": false
+    },
+    "recomendacion": {
+      "nivel_modelo": "basico",
+      "confianza": 0.6327,
+      "nivel_final": "basico",
+      "corregido_por_reglas": false,
+      "reglas": [],
+      "ranking": [
+        {
+          "nivel": "basico",
+          "probabilidad": 0.6327
+        },
+        {
+          "nivel": "reforzado",
+          "probabilidad": 0.2684
+        },
+        {
+          "nivel": "premium",
+          "probabilidad": 0.0988
+        }
+      ]
+    }
+  },
+  "chat": [
+    {
+      "pregunta": "hola, buenas tardes",
+      "respuesta": {
+        "intencion": "saludo",
+        "confianza": 0.997,
+        "respuesta": "¡Hola! Soy el asistente de la tienda de instrumentos. Puedo consultar productos, el estado de tu folio, explicarte el embalaje recomendado o resolver dudas de envíos, garantía y cuidados."
+      }
+    },
+    {
+      "pregunta": "¿cómo va mi pedido MUS-2026-000001?",
+      "respuesta": {
+        "intencion": "consulta_folio",
+        "confianza": 0.977,
+        "respuesta": "Tu pedido MUS-2026-000001 (Guitarra eléctrica Stratus) está en estado «registrado». Embalaje: premium.",
+        "folio": "MUS-2026-000001",
+        "estado": "registrado",
+        "nivel_final": "premium"
+      }
+    },
+    {
+      "pregunta": "¿por qué me salió embalaje premium? MUS-2026-000001",
+      "respuesta": {
+        "intencion": "explicar_recomendacion",
+        "confianza": 0.932,
+        "respuesta": "Para MUS-2026-000001 el modelo sugirió «reforzado» con 61% de confianza. Las reglas lo cambiaron a «premium»: Un instrumento de $15,000 o más siempre lleva seguro total.",
+        "folio": "MUS-2026-000001",
+        "estado": "registrado",
+        "nivel_final": "premium"
+      }
+    },
+    {
+      "pregunta": "¿qué embalaje necesita mi violín?",
+      "respuesta": {
+        "intencion": "pedir_recomendacion",
+        "confianza": 0.976,
+        "respuesta": "El embalaje y el seguro los calcula el recomendador de la tienda, no yo. Abre un producto y pulsa «Recomendar embalaje» para obtener la decisión y tu folio.",
+        "accion": "abrir_recomendador"
+      }
+    },
+    {
+      "pregunta": "¿necesito amplificador para una guitarra eléctrica?",
+      "respuesta": {
+        "intencion": "guia_compra",
+        "confianza": 0.94,
+        "respuesta": "Una guitarra acústica produce sonido sin amplificación eléctrica, aunque algunos modelos incorporan captación. Una guitarra eléctrica puede oírse débilmente sin amplificar; para escucharla amplificada se necesita una cadena de audio compatible. Antes de conectar audífonos, hay que comprobar que el equipo tenga una salida diseñada para ellos: la salida del instrumento no equivale a una salida de audífonos. Para elegir, conviene considerar comodidad, tamaño, tipo de música y el equipo disponible. Esta guía no confirma existencias ni compatibilidad de un modelo específico; esas características deben consultarse en su ficha vigente.",
+        "fuente": "guia_guitarras-v1",
+        "aviso": "Información de muestra académica, no condición real de venta."
+      }
+    },
+    {
+      "pregunta": "¿cuánto cuesta el violín?",
+      "respuesta": {
+        "intencion": "ver_producto",
+        "confianza": 0.93,
+        "respuesta": "Encontré: Violín Sonata 4/4 $7,800 (6 en existencia).",
+        "productos": [
+          13
+        ]
+      }
+    },
+    {
+      "pregunta": "¿puedo devolver una guitarra?",
+      "respuesta": {
+        "intencion": "devoluciones_garantia",
+        "confianza": 0.94,
+        "respuesta": "Este documento académico no establece una garantía comercial. Una devolución y una atención por defecto pueden seguir procedimientos distintos, según la política vigente y las obligaciones aplicables al negocio. El asistente no debe prometer aceptación automática, reembolso inmediato ni un número de días sin una fuente aprobada. En el ejemplo, la solicitud se inicia por una API autenticada con el identificador del pedido y el motivo; soporte revisa el caso. Falta incorporar la política contractual aprobada, sus condiciones y excepciones antes de publicar este contenido en una tienda.",
+        "fuente": "devoluciones_garantia-v1",
+        "aviso": "Información de muestra académica, no condición real de venta."
+      }
+    },
+    {
+      "pregunta": "cuéntame un chiste",
+      "respuesta": {
+        "intencion": "fuera_dominio",
+        "confianza": 0.947,
+        "respuesta": "Solo puedo ayudarte con temas de la tienda: instrumentos, pedidos, envíos, garantías y cuidados. ¿Algo de eso?"
+      }
+    }
+  ]
+}
