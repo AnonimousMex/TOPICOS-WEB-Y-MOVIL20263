@@ -1,0 +1,10 @@
+{
+  "archivo": "Tesitura-Android.apk",
+  "paquete": "mx.tienda.tienda_musica",
+  "arquitectura": "arm64-v8a",
+  "tipo": "debug",
+  "api": "http://192.168.101.28:8000/api",
+  "bytes": 107008535,
+  "sha256": "797927bd19db503f9d1fe552886733c723a71f4d677976885e18001a3de2275b",
+  "compilado": "2026-11-16T01:40:56.168567+00:00"
+}

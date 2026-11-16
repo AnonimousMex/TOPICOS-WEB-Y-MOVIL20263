@@ -1,0 +1,339 @@
+{
+  "folio": "MUS-2026-000006",
+  "plataforma": "web",
+  "recomendacion": {
+    "entradas": {
+      "tipo": "guitarra",
+      "condicion": "nuevo",
+      "valor_mxn": 9000,
+      "peso_kg": 3,
+      "dimension_max_cm": 105,
+      "distancia_km": 520,
+      "fragil": true,
+      "cantidad": 1,
+      "humedad_destino": "alta",
+      "zona_riesgo": "alta",
+      "temporada": "secas",
+      "urgente": false
+    },
+    "nivel_modelo": "reforzado",
+    "confianza": 0.6059,
+    "nivel_final": "premium",
+    "corregido_por_reglas": true,
+    "reglas": [
+      {
+        "regla": "R8_ZONA_DE_RIESGO",
+        "efecto": "sube a premium",
+        "motivo": "Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total."
+      }
+    ],
+    "ranking": [
+      {
+        "nivel": "reforzado",
+        "probabilidad": 0.6059
+      },
+      {
+        "nivel": "premium",
+        "probabilidad": 0.3645
+      },
+      {
+        "nivel": "basico",
+        "probabilidad": 0.0296
+      }
+    ],
+    "descripcion": "Estuche rígido, caja doble y seguro total contra daño y extravío.",
+    "costo_embalaje_mxn": 299,
+    "razon": "El modelo (modelo_arbol) sugirió «reforzado» con 61% de confianza, considerando: valor alto ($9,000), pieza frágil, humedad alta en el destino, zona de riesgo alto. Las reglas de seguridad lo ajustaron a «premium»: Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total.",
+    "plan": {
+      "nivel": "premium",
+      "descripcion": "Estuche rígido, caja doble y seguro total contra daño y extravío.",
+      "materiales": [
+        "Estuche rígido con espuma a medida",
+        "Caja exterior de doble pared",
+        "Esquineros rígidos",
+        "Sello de seguridad numerado",
+        "Bolsa antihumedad con sílice",
+        "Etiquetas «Frágil» en todas las caras"
+      ],
+      "cobertura_seguro": "Seguro total: 100 % del valor declarado contra daño y extravío",
+      "tiempo_preparacion_h": 1.25,
+      "costo_mxn": 299
+    },
+    "modelo": "modelo_arbol",
+    "niveles": [
+      "basico",
+      "reforzado",
+      "premium"
+    ]
+  },
+  "peticiones": [
+    {
+      "ruta": "/api/recomendar/",
+      "http": 200,
+      "respuesta": {
+        "entradas": {
+          "tipo": "guitarra",
+          "condicion": "nuevo",
+          "valor_mxn": 9000,
+          "peso_kg": 3,
+          "dimension_max_cm": 105,
+          "distancia_km": 520,
+          "fragil": true,
+          "cantidad": 1,
+          "humedad_destino": "alta",
+          "zona_riesgo": "alta",
+          "temporada": "secas",
+          "urgente": false
+        },
+        "nivel_modelo": "reforzado",
+        "confianza": 0.6059,
+        "nivel_final": "premium",
+        "corregido_por_reglas": true,
+        "reglas": [
+          {
+            "regla": "R8_ZONA_DE_RIESGO",
+            "efecto": "sube a premium",
+            "motivo": "Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total."
+          }
+        ],
+        "ranking": [
+          {
+            "nivel": "reforzado",
+            "probabilidad": 0.6059
+          },
+          {
+            "nivel": "premium",
+            "probabilidad": 0.3645
+          },
+          {
+            "nivel": "basico",
+            "probabilidad": 0.0296
+          }
+        ],
+        "descripcion": "Estuche rígido, caja doble y seguro total contra daño y extravío.",
+        "costo_embalaje_mxn": 299,
+        "razon": "El modelo (modelo_arbol) sugirió «reforzado» con 61% de confianza, considerando: valor alto ($9,000), pieza frágil, humedad alta en el destino, zona de riesgo alto. Las reglas de seguridad lo ajustaron a «premium»: Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total.",
+        "plan": {
+          "nivel": "premium",
+          "descripcion": "Estuche rígido, caja doble y seguro total contra daño y extravío.",
+          "materiales": [
+            "Estuche rígido con espuma a medida",
+            "Caja exterior de doble pared",
+            "Esquineros rígidos",
+            "Sello de seguridad numerado",
+            "Bolsa antihumedad con sílice",
+            "Etiquetas «Frágil» en todas las caras"
+          ],
+          "cobertura_seguro": "Seguro total: 100 % del valor declarado contra daño y extravío",
+          "tiempo_preparacion_h": 1.25,
+          "costo_mxn": 299
+        },
+        "modelo": "modelo_arbol",
+        "niveles": [
+          "basico",
+          "reforzado",
+          "premium"
+        ]
+      }
+    },
+    {
+      "ruta": "/api/pedidos/",
+      "http": 201,
+      "respuesta": {
+        "folio": "MUS-2026-000006",
+        "estado": "registrado",
+        "creado": "2026-11-16T01:27:54.222507+00:00",
+        "producto": null,
+        "destino": "",
+        "cantidad": 1,
+        "costo_embalaje_mxn": 299,
+        "entradas": {
+          "tipo": "guitarra",
+          "valor_mxn": 9000,
+          "peso_kg": 3,
+          "dimension_max_cm": 105,
+          "distancia_km": 520,
+          "fragil": true
+        },
+        "compra": null,
+        "recomendacion": {
+          "nivel_modelo": "reforzado",
+          "confianza": 0.6059,
+          "nivel_final": "premium",
+          "corregido_por_reglas": true,
+          "reglas": [
+            {
+              "regla": "R8_ZONA_DE_RIESGO",
+              "efecto": "sube a premium",
+              "motivo": "Entrega en zona de riesgo alto con valor de $8,000 o más: seguro total."
+            }
+          ],
+          "ranking": [
+            {
+              "nivel": "reforzado",
+              "probabilidad": 0.6059
+            },
+            {
+              "nivel": "premium",
+              "probabilidad": 0.3645
+            },
+            {
+              "nivel": "basico",
+              "probabilidad": 0.0296
+            }
+          ],
+          "costo_embalaje_mxn": 299
+        }
+      }
+    },
+    {
+      "ruta": "/api/asistente/",
+      "http": 200,
+      "respuesta": {
+        "intencion": "saludo",
+        "confianza": 0.997,
+        "respuesta": "¡Hola! Soy el asistente de Tesitura. Puedo buscar instrumentos por marca, tipo o presupuesto, mostrarte ofertas, consultar tu folio, explicarte el embalaje recomendado y resolver dudas de envíos, garantía y cuidados.",
+        "capas": [
+          {
+            "capa": "seguridad",
+            "detalle": "Mensaje válido."
+          },
+          {
+            "capa": "router",
+            "detalle": "Intención «saludo» (100%). Entidades: ninguna."
+          },
+          {
+            "capa": "observabilidad",
+            "detalle": "Consulta #5 registrada: ok, 18 ms (sin datos personales)."
+          }
+        ],
+        "sugerencias": [
+          "¿Qué ofertas tienen?",
+          "Busco una guitarra para principiantes",
+          "¿Cómo va mi pedido?"
+        ],
+        "fuentes": [],
+        "consulta_id": 5
+      }
+    },
+    {
+      "ruta": "/api/asistente/",
+      "http": 200,
+      "respuesta": {
+        "intencion": "consulta_folio",
+        "confianza": 0.989,
+        "respuesta": "Tu pedido MUS-2026-000006 (guitarra) está en estado «registrado». Embalaje: premium.",
+        "capas": [
+          {
+            "capa": "seguridad",
+            "detalle": "Mensaje válido."
+          },
+          {
+            "capa": "router",
+            "detalle": "Intención «consulta_folio» (99%). Entidades: {'folio': 'MUS-2026-000006'}."
+          },
+          {
+            "capa": "permisos",
+            "detalle": "Cotización sin comprador: solo datos mínimos (producto, estado, embalaje)."
+          },
+          {
+            "capa": "herramienta: pedidos",
+            "detalle": "Lectura del folio MUS-2026-000006 en la base de datos."
+          },
+          {
+            "capa": "observabilidad",
+            "detalle": "Consulta #6 registrada: ok, 6 ms (sin datos personales)."
+          }
+        ],
+        "sugerencias": [
+          "¿Por qué me salió ese embalaje?",
+          "¿Qué hago si llega golpeado?"
+        ],
+        "fuentes": [],
+        "folio": "MUS-2026-000006",
+        "estado": "registrado",
+        "nivel_final": "premium",
+        "consulta_id": 6
+      }
+    },
+    {
+      "ruta": "/api/asistente/",
+      "http": 200,
+      "respuesta": {
+        "intencion": "pedir_recomendacion",
+        "confianza": 0.979,
+        "respuesta": "El embalaje y el seguro los calcula el recomendador de la tienda, no yo. Abre un producto, elige tu ciudad (o usa tu ubicación) en «Envío protegido» y verás la recomendación al instante (y tu folio al comprar).",
+        "capas": [
+          {
+            "capa": "seguridad",
+            "detalle": "Mensaje válido."
+          },
+          {
+            "capa": "router",
+            "detalle": "Intención «pedir_recomendacion» (98%). Entidades: {'subcategoria': 'Violines'}."
+          },
+          {
+            "capa": "recomendador",
+            "detalle": "Decisión de dominio: se remite al recomendador (modelo + reglas); no la calculo yo."
+          },
+          {
+            "capa": "observabilidad",
+            "detalle": "Consulta #7 registrada: ok, 2 ms (sin datos personales)."
+          }
+        ],
+        "sugerencias": [
+          "¿Cuánto cuesta el violín?",
+          "¿Cómo funcionan los envíos?"
+        ],
+        "fuentes": [],
+        "accion": "abrir_recomendador",
+        "consulta_id": 7
+      }
+    },
+    {
+      "ruta": "/api/asistente/",
+      "http": 200,
+      "respuesta": {
+        "intencion": "fuera_dominio",
+        "confianza": 0.944,
+        "respuesta": "Solo puedo ayudarte con temas de la tienda: instrumentos, ofertas, pedidos, envíos, garantías y cuidados. ¿Te ayudo con alguno?",
+        "capas": [
+          {
+            "capa": "seguridad",
+            "detalle": "Mensaje válido."
+          },
+          {
+            "capa": "router",
+            "detalle": "Intención «fuera_dominio» (94%). Entidades: ninguna."
+          },
+          {
+            "capa": "observabilidad",
+            "detalle": "Consulta #8 registrada: ok, 3 ms (sin datos personales)."
+          }
+        ],
+        "sugerencias": [
+          "¿Qué ofertas tienen?",
+          "Busco una guitarra para principiantes",
+          "¿Cómo va mi pedido?"
+        ],
+        "fuentes": [],
+        "consulta_id": 8
+      }
+    }
+  ],
+  "capturas": [
+    "01_catalogo",
+    "02_producto",
+    "03_entradas",
+    "04_condiciones",
+    "05_recomendacion",
+    "06_reglas",
+    "07_folio",
+    "08_chat_saludo",
+    "09_chat_folio",
+    "10_chat_dominio",
+    "11_chat_fuera_dominio"
+  ],
+  "resultado": "correcto",
+  "fecha": "2026-11-16T01:28:13.601519Z"
+}
