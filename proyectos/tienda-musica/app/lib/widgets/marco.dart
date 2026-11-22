@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../pages/carrito_page.dart';
 import '../pages/home_page.dart';
+import '../pages/cuenta_page.dart';
 import '../pages/listado_page.dart';
 import '../pages/recomendar_page.dart';
 import '../api.dart';
@@ -141,6 +142,30 @@ class _CabeceraState extends State<_Cabecera> {
       onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CarritoPage())),
       icon: Badge(isLabelVisible: t.articulos > 0, label: AnimatedSwitcher(duration: Anim.rapida, transitionBuilder: (h, a) => ScaleTransition(scale: a, child: h), child: Text('${t.articulos}', key: ValueKey(t.articulos))), backgroundColor: doom, child: const Icon(Icons.shopping_cart_outlined, color: Colors.white)),
     );
+    final cuenta = t.usuario == null
+        ? TextButton.icon(
+            key: const Key('ingresar'),
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginPage())),
+            icon: const Icon(Icons.person_outline, color: Colors.white70, size: 20),
+            label: const Text('Ingresar', style: TextStyle(color: Colors.white70)),
+          )
+        : PopupMenuButton<String>(
+            key: const Key('menu-cuenta'),
+            tooltip: t.usuario!.correo,
+            color: superficieAlta,
+            onSelected: (v) {
+              if (v == 'compras') Navigator.push(context, MaterialPageRoute(builder: (_) => const MisComprasPage()));
+              if (v == 'bitacora') Navigator.push(context, MaterialPageRoute(builder: (_) => const BitacoraPage()));
+              if (v == 'salir') t.cerrarSesion();
+            },
+            itemBuilder: (_) => [
+              PopupMenuItem(enabled: false, child: Text('${t.usuario!.nombre} · ${t.usuario!.esAdmin ? 'Administrador' : 'Cliente'}', style: const TextStyle(color: gris, fontSize: 12.5))),
+              const PopupMenuItem(value: 'compras', child: Text('Mis compras')),
+              if (t.usuario!.esAdmin) const PopupMenuItem(value: 'bitacora', child: Text('Bitácora de auditoría')),
+              const PopupMenuItem(value: 'salir', child: Text('Cerrar sesión', key: Key('cerrar-sesion'))),
+            ],
+            child: Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: CircleAvatar(radius: 15, backgroundColor: doom, child: Text(t.usuario!.nombre.isEmpty ? '?' : t.usuario!.nombre[0].toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700)))),
+          );
     final servidor = IconButton(
       key: const Key('servidor'),
       tooltip: 'URL del servidor',
@@ -208,10 +233,11 @@ class _CabeceraState extends State<_Cabecera> {
               for (final e in enlaces) Padding(padding: const EdgeInsets.only(right: 18), child: InkWell(onTap: e.onTap, child: Text(e.texto, style: const TextStyle(fontSize: 14, color: Colors.white70)))),
               const Spacer(),
               servidor,
+              cuenta,
               carrito,
             ])
           : Column(children: [
-              Row(children: [Expanded(child: logo), servidor, carrito]),
+              Row(children: [Expanded(child: logo), servidor, cuenta, carrito]),
               const SizedBox(height: 6),
               Padding(padding: const EdgeInsets.only(right: 8), child: buscador),
             ]),

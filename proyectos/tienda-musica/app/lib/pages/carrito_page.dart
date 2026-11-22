@@ -10,6 +10,7 @@ import '../widgets/producto_visual.dart';
 import '../widgets/selector_destino.dart';
 import '../widgets/tarjeta_form.dart';
 import 'compra_page.dart';
+import 'cuenta_page.dart';
 import 'home_page.dart';
 
 class CarritoPage extends StatefulWidget {
@@ -22,7 +23,6 @@ class CarritoPage extends StatefulWidget {
 class _CarritoPageState extends State<CarritoPage> {
   List<Destino> _destinos = [];
   final _nombre = TextEditingController();
-  final _correo = TextEditingController();
   final _tarjeta = TarjetaControles();
   final Map<int, Recomendacion> _envios = {};
   bool _cotizando = false, _comprando = false;
@@ -78,12 +78,11 @@ class _CarritoPageState extends State<CarritoPage> {
     try {
       final r = await t.api.comprar(
         cliente: _nombre.text.trim(),
-        correo: _correo.text.trim(),
+        correo: t.usuario!.correo,
         destino: t.destino!,
         tarjeta: _tarjeta.aTarjeta(),
         lineas: [for (final l in t.lineas) (productoId: l.producto.id, cantidad: l.cantidad)],
       );
-      t.correoCliente = _correo.text.trim().toLowerCase();
       t.vaciar();
       if (!mounted) return;
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => CompraPage(pedidos: r.pedidos, resultado: r, cliente: _nombre.text.trim())));
@@ -93,8 +92,6 @@ class _CarritoPageState extends State<CarritoPage> {
       if (mounted) setState(() => _comprando = false);
     }
   }
-
-  bool get _correoValido => RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(_correo.text.trim());
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +112,7 @@ class _CarritoPageState extends State<CarritoPage> {
         ),
       );
     }
-    final listo = t.destino != null && _nombre.text.trim().length >= 2 && _correoValido && _tarjeta.completa && _envios.length == t.lineas.length && !_cotizando && !_comprando;
+    final listo = t.destino != null && t.conSesion && _nombre.text.trim().length >= 2 && _tarjeta.completa && _envios.length == t.lineas.length && !_cotizando && !_comprando;
     final embalaje = _envios.values.fold<int>(0, (s, r) => s + r.costo);
     final lineas = Container(
       decoration: BoxDecoration(color: superficie, borderRadius: BorderRadius.circular(6)),
@@ -140,7 +137,21 @@ class _CarritoPageState extends State<CarritoPage> {
         const SizedBox(height: 14),
         TextField(key: const Key('nombre'), controller: _nombre, onChanged: (_) => setState(() {}), decoration: const InputDecoration(labelText: 'Tu nombre', isDense: true)),
         const SizedBox(height: 10),
-        TextField(key: const Key('correo'), controller: _correo, onChanged: (_) => setState(() {}), keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Correo (te enviamos la confirmación)', isDense: true, prefixIcon: Icon(Icons.mail_outline, size: 20))),
+        if (t.usuario != null)
+          Padding(padding: const EdgeInsets.only(top: 8), child: Row(children: [const Icon(Icons.mail_outline, size: 16, color: gris), const SizedBox(width: 6), Expanded(child: Text('Confirmación a ${t.usuario!.correo}', style: const TextStyle(color: gris, fontSize: 12.5)))]))
+        else
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: OutlinedButton.icon(
+              key: const Key('login-para-pagar'),
+              onPressed: () async {
+                final ok = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => const LoginPage()));
+                if (ok == true && mounted && _nombre.text.trim().isEmpty) setState(() => _nombre.text = TiendaScope.leer(context).usuario?.nombre ?? '');
+              },
+              icon: const Icon(Icons.person_outline),
+              label: const Text('Inicia sesión para pagar'),
+            ),
+          ),
         const SizedBox(height: 12),
         SelectorDestino(destinos: _destinos, onCambio: () {
           setState(() {});

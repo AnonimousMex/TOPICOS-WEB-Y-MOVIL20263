@@ -86,3 +86,11 @@ TESITURA_EVIDENCE_DIR=../evidencias/android flutter drive -d emulator-5580 \
 ## Imágenes
 
 Fotos y logos de Wikimedia Commons; las imágenes de marca o referencia se identifican como tales y no necesariamente muestran el modelo exacto. Autoría, licencia y fuentes se conservan en [CREDITOS_IMAGENES.md](CREDITOS_IMAGENES.md). Precios, existencias, calificaciones y ventas son datos de demostración.
+
+
+## Cuentas, roles y auditoría
+
+- `POST /api/auth/registro/`, `/api/auth/login/`, `/api/auth/logout/`, `GET /api/auth/yo/`: token `Bearer` (se guarda solo su SHA-256, vence a los 7 días); contraseñas con hash PBKDF2; bloqueo de 15 min tras 5 fallos.
+- Roles `CLIENTE` y `ADMIN` (`manage.py crear_admin correo`). Pagar exige sesión; `GET /api/mis-compras/` lista las compras de la cuenta; `GET /api/auditoria/` (bitácora: usuario, rol, ruta, estado, IP) solo para ADMIN.
+- Código: `backend/catalogo/autenticacion.py`, `auditoria.py`; Flutter: `app/lib/pages/cuenta_page.dart`, `state.dart`.
+- Para estudiar y defender el proyecto: [GUIA_DEFENSA.md](GUIA_DEFENSA.md).

@@ -295,6 +295,11 @@ class CheckoutTests(Base):
         patcher.start()
         self.addCleanup(patcher.stop)
         self.addCleanup(self.tmp.cleanup)
+        r = self.client.post("/api/auth/registro/", json.dumps({"nombre": "Diego", "correo": "diego@ejemplo.com", "contrasena": "Clave1234"}), content_type="application/json")
+        self.cabecera = {"HTTP_AUTHORIZATION": "Bearer " + r.json()["token"]}
+
+    def post(self, url, datos, **extra):
+        return super().post(url, datos, **{**self.cabecera, **extra})
 
     def compra(self, **extra):
         datos = {"cliente": "Diego", "correo": "diego@ejemplo.com", "destino": "Guadalajara", "tarjeta": TARJETA,
@@ -334,7 +339,7 @@ class CheckoutTests(Base):
         self.assertEqual(Producto.objects.get(nombre__icontains="Shure SM58").existencias, antes)
 
     def test_checkout_valida_correo_tarjeta_nombre_y_destino(self):
-        self.assertIn("correo", self.compra(correo="no-es-correo").json()["campos"])
+        self.assertEqual(self.compra(correo="no-es-correo").json()["compra"]["correo"], "diego@ejemplo.com")  # el correo sale de la cuenta
         self.assertIn("tarjeta.numero", self.compra(tarjeta={**TARJETA, "numero": "4111111111111111"}).json()["campos"])
         self.assertEqual(self.compra(cliente="").status_code, 400)
         self.assertEqual(self.compra(destino="Marte").status_code, 400)
@@ -503,3 +508,95 @@ class AsistenteTests(Base):
     def test_responder_directo_sin_peticion(self):
         self.assertEqual(responder("hola")["intencion"], "saludo")
         self.assertEqual(Peticion().admin, False)
+
+
+class CuentasTests(Base):
+    def registrar(self, correo="ana@ejemplo.com", contrasena="Clave1234", nombre="Ana"):
+        return self.post("/api/auth/registro/", {"nombre": nombre, "correo": correo, "contrasena": contrasena})
+
+    def con(self, token):
+        return {"HTTP_AUTHORIZATION": "Bearer " + token}
+
+    def test_registro_devuelve_token_y_rol_cliente(self):
+        r = self.registrar()
+        self.assertEqual(r.status_code, 201)
+        self.assertEqual(r.json()["usuario"]["rol"], "CLIENTE")
+        self.assertEqual(self.client.get("/api/auth/yo/", **self.con(r.json()["token"])).json()["usuario"]["correo"], "ana@ejemplo.com")
+
+    def test_la_contrasena_no_se_guarda_en_claro_ni_el_token(self):
+        from django.contrib.auth import get_user_model
+        from .models import Sesion
+        token = self.registrar().json()["token"]
+        u = get_user_model().objects.get(username="ana@ejemplo.com")
+        self.assertNotIn("Clave1234", u.password)
+        self.assertTrue(u.password.startswith("pbkdf2_"))
+        self.assertNotEqual(Sesion.objects.get().token_hash, token)
+
+    def test_contrasena_debil_y_correo_repetido(self):
+        self.assertEqual(self.registrar(contrasena="corta").status_code, 400)
+        self.assertEqual(self.registrar(contrasena="todominusculas1").status_code, 400)
+        self.registrar()
+        self.assertEqual(self.registrar().status_code, 409)
+
+    def test_login_correcto_e_incorrecto_con_el_mismo_mensaje(self):
+        self.registrar()
+        ok = self.post("/api/auth/login/", {"correo": "ana@ejemplo.com", "contrasena": "Clave1234"})
+        self.assertEqual(ok.status_code, 200)
+        mal = self.post("/api/auth/login/", {"correo": "ana@ejemplo.com", "contrasena": "Otra12345"})
+        fantasma = self.post("/api/auth/login/", {"correo": "nadie@ejemplo.com", "contrasena": "Otra12345"})
+        self.assertEqual((mal.status_code, fantasma.status_code), (401, 401))
+        self.assertEqual(mal.json()["error"], fantasma.json()["error"])  # no revela si el correo existe
+
+    def test_bloqueo_tras_cinco_fallos(self):
+        self.registrar()
+        for _ in range(5):
+            self.post("/api/auth/login/", {"correo": "ana@ejemplo.com", "contrasena": "Mala12345"})
+        r = self.post("/api/auth/login/", {"correo": "ana@ejemplo.com", "contrasena": "Clave1234"})
+        self.assertEqual(r.status_code, 423)
+
+    def test_logout_invalida_el_token(self):
+        token = self.registrar().json()["token"]
+        self.client.post("/api/auth/logout/", **self.con(token))
+        self.assertEqual(self.client.get("/api/auth/yo/", **self.con(token)).status_code, 401)
+
+    def test_token_vencido_no_sirve(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from .models import Sesion
+        token = self.registrar().json()["token"]
+        Sesion.objects.update(expira=timezone.now() - timedelta(minutes=1))
+        self.assertEqual(self.client.get("/api/auth/yo/", **self.con(token)).status_code, 401)
+
+    def test_comprar_exige_sesion(self):
+        r = self.post("/api/checkout/", {"cliente": "Ana", "tarjeta": TARJETA, "lineas": [{"producto_id": self.pid("Shure SM58"), "cantidad": 1}]})
+        self.assertEqual(r.status_code, 401)
+
+    def test_el_correo_de_la_compra_es_el_de_la_cuenta_y_aparece_en_mis_compras(self):
+        token = self.registrar().json()["token"]
+        r = self.post("/api/checkout/", {"cliente": "Ana", "correo": "otro@ejemplo.com", "destino": "Guadalajara", "tarjeta": TARJETA,
+                                          "lineas": [{"producto_id": self.pid("Shure SM58"), "cantidad": 1}]}, **self.con(token))
+        self.assertEqual(r.status_code, 201)
+        self.assertEqual(r.json()["compra"]["correo"], "ana@ejemplo.com")
+        lista = self.client.get("/api/mis-compras/", **self.con(token)).json()["compras"]
+        self.assertEqual(len(lista), 1)
+        otro = self.registrar("luis@ejemplo.com", nombre="Luis").json()["token"]
+        self.assertEqual(self.client.get("/api/mis-compras/", **self.con(otro)).json()["compras"], [])
+
+    def test_bitacora_solo_para_admin_y_guarda_quien_llamo(self):
+        from django.contrib.auth import get_user_model
+        cliente = self.registrar().json()["token"]
+        self.assertEqual(self.client.get("/api/auditoria/").status_code, 401)
+        self.assertEqual(self.client.get("/api/auditoria/", **self.con(cliente)).status_code, 403)
+        get_user_model().objects.create_user("jefe@ejemplo.com", "jefe@ejemplo.com", "Admin1234", is_staff=True)
+        admin = self.post("/api/auth/login/", {"correo": "jefe@ejemplo.com", "contrasena": "Admin1234"}).json()
+        self.assertEqual(admin["usuario"]["rol"], "ADMIN")
+        filas = self.client.get("/api/auditoria/", **self.con(admin["token"])).json()["registros"]
+        self.assertTrue(any(f["ruta"] == "/api/auth/registro/" and f["status"] == 201 for f in filas))
+        self.assertNotIn("Clave1234", json.dumps(filas))  # nunca se guarda el cuerpo de la petición
+
+    def test_el_admin_con_sesion_ve_las_metricas_del_asistente(self):
+        from django.contrib.auth import get_user_model
+        get_user_model().objects.create_user("jefe@ejemplo.com", "jefe@ejemplo.com", "Admin1234", is_staff=True)
+        token = self.post("/api/auth/login/", {"correo": "jefe@ejemplo.com", "contrasena": "Admin1234"}).json()["token"]
+        self.assertEqual(self.client.get("/api/asistente/metricas/").status_code, 403)
+        self.assertEqual(self.client.get("/api/asistente/metricas/", **self.con(token)).status_code, 200)

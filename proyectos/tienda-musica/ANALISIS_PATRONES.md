@@ -23,6 +23,8 @@ Alumno: Diego Rivera Cisneros · 22121364. Cada patrón apunta a un archivo real
 | **Pasarela simulada (Gateway)** | `catalogo/pagos.py` | Aísla el cobro tras una función (`validar_tarjeta`, `cobrar`); cambiar a una pasarela real no toca el checkout. Solo acepta tarjetas de prueba y descarta número y CVV. |
 | **Servicio con efectos secundarios aislados** | `catalogo/correos.py` | El correo es un efecto lateral tras la transacción: si falla, la compra ya cobrada no se cancela y el fallo queda registrado. |
 | **Servicio geográfico local** | `catalogo/geo.py` | La ubicación del usuario se resuelve con una tabla propia (haversine), sin enviarla a terceros. |
+| **Middleware de auditoría** | `catalogo/auditoria.py` (`AuditoriaMiddleware`) | Registrar quién hizo qué sin tocar cada vista: guarda método, ruta, estado, IP y usuario de las escrituras y errores; nunca el cuerpo (ahí van contraseñas y tarjetas). Equivale al `AuditLog` de Rumbo. |
+| **Servicio de autenticación + autorización por rol** | `catalogo/autenticacion.py`; roles CLIENTE/ADMIN (`is_staff`); `views.auditoria`, `views._es_admin`, `views.checkout` | Las reglas de acceso viven en el servidor: Flutter solo oculta botones, pero el servidor responde 401/403 aunque alguien llame la API a mano. Token opaco con hash en base, vencimiento a 7 días, bloqueo tras 5 fallos. |
 
 No apliqué Repository formal, Observer ni Circuit Breaker: el sistema es un monolito pequeño y no hay eventos ni servicios externos que lo justifiquen.
 
@@ -36,6 +38,7 @@ No apliqué Repository formal, Observer ni Circuit Breaker: el sistema es un mon
 | **Observer (estado compartido)** | `app/lib/state.dart`, `Tienda` (`ChangeNotifier`) + `TiendaScope` (`InheritedNotifier`) | El carrito y la conversación del asistente viven fuera de las pantallas; al cambiar, se redibujan el contador del carrito, el chat y el resumen sin pasar callbacks por todo el árbol. |
 | **Estado local (`State` + `setState`)** | `ListadoPage`, `ProductoPage`, `CarritoPage`, `RecomendarPage` | Cada pantalla gestiona su propia carga, error y resultado (`_cargando`, `_error`); el estado que sobrevive a la navegación va en `Tienda`. |
 | **Navegación por pila** | `Navigator.push/pushReplacement/popUntil` | La confirmación reemplaza al formulario para no volver a registrar con «atrás». |
+| **Estado de sesión en `Tienda` + token en la fachada** | `state.dart` (`iniciarSesion`, `restaurarSesion`), `api.dart` (`RumboApi.token`), `configuracion_servidor.dart` (`AlmacenSesion`) | Las pantallas no manejan el token: la fachada lo añade como `Authorization: Bearer` a cada llamada y `Tienda` avisa a todos cuando cambia la sesión. |
 | **Inyección de dependencias** | `TiendaApp(api: …, ubicacion: …)` y `ServicioUbicacion` (`ubicacion.dart`) | Permite probar con un cliente HTTP simulado y un GPS falso (`test/widget_test.dart`), sin depender del dispositivo. |
 
 ## Separación cliente/servidor (Proyecto 2)

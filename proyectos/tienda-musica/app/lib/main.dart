@@ -11,11 +11,12 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final configuracion = ConfiguracionServidor();
   final url = await configuracion.cargar();
-  runApp(TiendaApp(api: RumboApi(baseUrl: url), alCambiarServidor: configuracion.guardar));
+  runApp(TiendaApp(api: RumboApi(baseUrl: url), alCambiarServidor: configuracion.guardar, almacen: AlmacenSesion()));
 }
 
 class TiendaApp extends StatefulWidget {
-  const TiendaApp({super.key, this.api, this.ubicacion, this.alCambiarServidor});
+  const TiendaApp({super.key, this.api, this.ubicacion, this.alCambiarServidor, this.almacen});
+  final AlmacenSesion? almacen;
   final RumboApi? api;
   final ServicioUbicacion? ubicacion;
   final Future<void> Function(String)? alCambiarServidor;
@@ -25,7 +26,13 @@ class TiendaApp extends StatefulWidget {
 }
 
 class _TiendaAppState extends State<TiendaApp> {
-  late final Tienda tienda = Tienda(widget.api ?? RumboApi(), ubicacion: widget.ubicacion, alCambiarServidor: widget.alCambiarServidor);
+  late final Tienda tienda = Tienda(widget.api ?? RumboApi(), ubicacion: widget.ubicacion, alCambiarServidor: widget.alCambiarServidor, almacen: widget.almacen);
+
+  @override
+  void initState() {
+    super.initState();
+    tienda.restaurarSesion();
+  }
 
   @override
   Widget build(BuildContext context) {

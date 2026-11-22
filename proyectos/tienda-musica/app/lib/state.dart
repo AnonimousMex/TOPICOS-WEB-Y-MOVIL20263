@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'api.dart';
+import 'configuracion_servidor.dart';
 import 'ubicacion.dart';
 
 class LineaCarrito {
@@ -22,10 +23,54 @@ class MensajeChat {
 
 /// Estado global: carrito y conversación del asistente (se conservan al navegar).
 class Tienda extends ChangeNotifier {
-  Tienda(this.api, {ServicioUbicacion? ubicacion, this.alCambiarServidor}) : ubicacion = ubicacion ?? UbicacionReal();
+  Tienda(this.api, {ServicioUbicacion? ubicacion, this.alCambiarServidor, AlmacenSesion? almacen}) : ubicacion = ubicacion ?? UbicacionReal(), _almacen = almacen;
   final RumboApi api;
   final ServicioUbicacion ubicacion;
   final Future<void> Function(String)? alCambiarServidor;
+  final AlmacenSesion? _almacen;
+
+  // ----- cuenta y sesión
+  Usuario? usuario;
+  bool get conSesion => usuario != null;
+
+  Future<void> _fijarSesion(Sesion s) async {
+    api.token = s.token;
+    usuario = s.usuario;
+    correoCliente = s.usuario.correo;
+    await _almacen?.guardar(s.token);
+    notifyListeners();
+  }
+
+  Future<void> iniciarSesion(String correo, String contrasena) async => _fijarSesion(await api.login(correo, contrasena));
+  Future<void> registrarse(String nombre, String correo, String contrasena) async => _fijarSesion(await api.registro(nombre, correo, contrasena));
+
+  Future<void> cerrarSesion() async {
+    try {
+      await api.logout(); // revoca el token en el servidor
+    } on ApiException {/* aunque falle la red, se cierra localmente */}
+    api.token = null;
+    usuario = null;
+    correoCliente = '';
+    await _almacen?.guardar(null);
+    notifyListeners();
+  }
+
+  /// Al abrir la app: si hay un token guardado, el servidor confirma que sigue vigente.
+  Future<void> restaurarSesion() async {
+    final token = await _almacen?.leer();
+    if (token == null) return;
+    api.token = token;
+    try {
+      usuario = await api.yo();
+      correoCliente = usuario!.correo;
+    } on ApiException catch (e) {
+      if (e.status == 401) {
+        api.token = null;
+        await _almacen?.guardar(null);
+      }
+    }
+    notifyListeners();
+  }
 
   Future<void> cambiarServidor(String url) async {
     final normalizada = normalizarUrlServidor(url);

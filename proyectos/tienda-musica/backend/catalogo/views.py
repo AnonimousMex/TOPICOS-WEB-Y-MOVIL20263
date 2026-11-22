@@ -11,11 +11,11 @@ from django.views.decorators.http import require_GET, require_POST
 
 from . import asistente as asistente_servicio
 from .datos_catalogo import CIUDADES
-from . import correos, pagos
+from . import autenticacion, correos, pagos
 from .envios import entradas_desde_producto
 from .geo import en_cobertura, resolver_ubicacion
 from .imagenes import logo_de, mini_de
-from .models import Compra, ConsultaAsistente, Pedido, Producto
+from .models import Auditoria, Compra, ConsultaAsistente, Pedido, Producto
 from .recomendador import metricas_modelo, recomendar
 from .validacion import EntradaInvalida, validar_envio
 
@@ -222,7 +222,11 @@ def checkout(request):
     """Compra del carrito: valida, cobra (simulado), crea un pedido con folio por línea y manda el correo.
 
     Todo o nada: si una línea no tiene stock o el pago se rechaza, no se crea nada ni se toca el inventario.
+    Requiere sesión iniciada: la compra queda ligada a la cuenta y el correo de confirmación va al de la cuenta.
     """
+    usuario = autenticacion.usuario_de(request)
+    if not usuario:
+        return JsonResponse({"error": "Inicia sesión para comprar.", "codigo": "NO_AUTORIZADO"}, status=401)
     try:
         datos = _cuerpo(request)
         lineas = datos.get("lineas")
@@ -231,11 +235,7 @@ def checkout(request):
         cliente = str(datos.get("cliente", "")).strip()
         if len(cliente) < 2:
             raise EntradaInvalida({"cliente": "Escribe tu nombre."})
-        correo = str(datos.get("correo", "")).strip()
-        try:
-            validate_email(correo)
-        except ValidationError:
-            raise EntradaInvalida({"correo": "Escribe un correo válido para enviarte la confirmación."})
+        correo = usuario.email  # el correo sale de la cuenta: no se puede mandar la confirmación a otra persona
         try:
             numero, marca = pagos.validar_tarjeta(datos.get("tarjeta"))
         except pagos.PagoInvalido as e:
@@ -259,7 +259,7 @@ def checkout(request):
             except pagos.PagoRechazado as e:
                 return JsonResponse({"error": "Pago rechazado", "mensaje": e.mensaje, "campos": {"tarjeta": e.mensaje}}, status=402)
             compra = Compra.objects.create(
-                cliente=cliente, correo=correo, destino=destino_nombre, lat_aprox=lat, lon_aprox=lon,
+                usuario=usuario, cliente=cliente, correo=correo, destino=destino_nombre, lat_aprox=lat, lon_aprox=lon,
                 subtotal_mxn=subtotal, embalaje_mxn=embalaje, total_mxn=subtotal + embalaje, pago_estado=cobro["estado"],
                 pago_marca=cobro["marca"], pago_ultimos4=cobro["ultimos4"], pago_referencia=cobro["referencia"],
             )
@@ -294,6 +294,10 @@ def pedido_detalle(request, folio):
 
 
 def _es_admin(request):
+    """Administrador = usuario con rol ADMIN (is_staff) o, por compatibilidad, el token interno del asistente."""
+    usuario = autenticacion.usuario_de(request)
+    if usuario and usuario.is_staff:
+        return True
     token = request.headers.get("X-Tesitura-Token", "")
     return bool(settings.TOKEN_ADMIN) and token == settings.TOKEN_ADMIN
 
@@ -310,8 +314,10 @@ def asistente(request):
         return _error({"mensaje": "Escribe un mensaje."})
     if len(mensaje) > 500:
         return _error({"mensaje": "Máximo 500 caracteres."})
-    contexto = asistente_servicio.Peticion(
-        sesion=str(datos.get("sesion", ""))[:40], correo=str(datos.get("correo", "")).strip().lower(), admin=_es_admin(request))
+    usuario = autenticacion.usuario_de(request)
+    # Con sesión iniciada el correo es el de la cuenta (verificado por el servidor), no el que escriba el cliente.
+    correo = usuario.email if usuario else str(datos.get("correo", "")).strip().lower()
+    contexto = asistente_servicio.Peticion(sesion=str(datos.get("sesion", ""))[:40], correo=correo, admin=_es_admin(request))
     return JsonResponse(asistente_servicio.responder(mensaje, contexto))
 
 
@@ -352,3 +358,77 @@ def asistente_metricas(request):
 @require_GET
 def modelos(request):
     return JsonResponse({"recomendador": metricas_modelo(), "asistente": asistente_servicio.metricas_asistente()})
+
+
+# ---------- cuentas, sesión y auditoría ----------
+
+def _ip(request):
+    return request.META.get("REMOTE_ADDR", "")
+
+
+def _sesion_json(usuario, token):
+    return JsonResponse({"token": token, "usuario": autenticacion.usuario_json(usuario)})
+
+
+@csrf_exempt
+@require_POST
+def registro(request):
+    try:
+        usuario, token = autenticacion.registrar(_cuerpo(request), _ip(request))
+    except EntradaInvalida as e:
+        return _error(e.errores, 409 if "correo" in e.errores and "Ya existe" in str(e.errores["correo"]) else 400)
+    return JsonResponse({"token": token, "usuario": autenticacion.usuario_json(usuario)}, status=201)
+
+
+@csrf_exempt
+@require_POST
+def login(request):
+    try:
+        usuario, token = autenticacion.iniciar_sesion(_cuerpo(request), _ip(request))
+    except EntradaInvalida as e:
+        return _error(e.errores)
+    except autenticacion.NoAutorizado as e:
+        return JsonResponse({"error": e.mensaje, "codigo": e.codigo}, status=e.status)
+    return _sesion_json(usuario, token)
+
+
+@csrf_exempt
+@require_POST
+def logout(request):
+    autenticacion.cerrar_sesion(request)
+    return JsonResponse({"ok": True})
+
+
+@require_GET
+def yo(request):
+    usuario = autenticacion.usuario_de(request)
+    if not usuario:
+        return JsonResponse({"error": "Sesión inválida o vencida.", "codigo": "NO_AUTORIZADO"}, status=401)
+    return JsonResponse({"usuario": autenticacion.usuario_json(usuario)})
+
+
+@require_GET
+def mis_compras(request):
+    usuario = autenticacion.usuario_de(request)
+    if not usuario:
+        return JsonResponse({"error": "Inicia sesión para ver tus compras.", "codigo": "NO_AUTORIZADO"}, status=401)
+    compras = usuario.compras.prefetch_related("pedidos__producto").order_by("-id")[:30]
+    return JsonResponse({"compras": [{
+        "referencia": c.referencia, "total_mxn": float(c.total_mxn), "destino": c.destino, "creada": c.creado.isoformat(),
+        "pedidos": [_pedido_json(p) for p in c.pedidos.all()],
+    } for c in compras]})
+
+
+@require_GET
+def auditoria(request):
+    """Bitácora de accesos. Solo ADMIN."""
+    usuario = autenticacion.usuario_de(request)
+    if not usuario:
+        return JsonResponse({"error": "Inicia sesión.", "codigo": "NO_AUTORIZADO"}, status=401)
+    if not usuario.is_staff:
+        return JsonResponse({"error": "Solo el administrador puede ver la bitácora.", "codigo": "PROHIBIDO"}, status=403)
+    filas = Auditoria.objects.all()[:100]
+    return JsonResponse({"registros": [{
+        "id": a.request_id, "usuario": a.usuario, "rol": a.rol, "metodo": a.metodo, "ruta": a.ruta, "status": a.status,
+        "ip": a.ip, "duracion_ms": a.duracion_ms, "fecha": a.creado.isoformat(),
+    } for a in filas]})

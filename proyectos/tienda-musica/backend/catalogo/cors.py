@@ -14,6 +14,7 @@ class CorsMiddleware:
         if request.path.startswith("/img/") and response.status_code == 200:
             response["Cache-Control"] = "public, max-age=86400"  # las fotos no cambian: no volver a pedirlas al desplazarse
         response["Access-Control-Allow-Origin"] = "*"
-        response["Access-Control-Allow-Headers"] = "Content-Type, X-Tesitura-Token"
+        response["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Tesitura-Token"
+        response["Access-Control-Expose-Headers"] = "X-Request-Id"
         response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
         return response

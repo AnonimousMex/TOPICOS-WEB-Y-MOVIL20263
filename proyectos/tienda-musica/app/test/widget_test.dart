@@ -64,7 +64,14 @@ class _Falso {
           if (ruta.endsWith('/envio/')) return _json({'entradas': {}, ..._premium});
           if (ruta.endsWith('/recomendar/')) return _json({'entradas': {}, ..._premium});
           if (ruta.endsWith('/pedidos/')) return _json({'folio': 'MUS-2026-000009', 'estado': 'registrado', 'producto': null, 'destino': '', 'cantidad': 1, 'recomendacion': _premium}, 201);
+          if (ruta.endsWith('/auth/login/') || ruta.endsWith('/auth/registro/')) {
+            final c = jsonDecode(r.body) as Map<String, dynamic>;
+            if (c['contrasena'] == 'Mala12345') return _json({'error': 'Correo o contraseña incorrectos.', 'codigo': 'NO_AUTORIZADO'}, 401);
+            return _json({'token': 'tok-123', 'usuario': {'id': 1, 'nombre': c['nombre'] ?? 'Diego', 'correo': c['correo'], 'rol': 'CLIENTE'}}, ruta.endsWith('/registro/') ? 201 : 200);
+          }
+          if (ruta.endsWith('/auth/logout/')) return _json({'ok': true});
           if (ruta.endsWith('/checkout/')) {
+            if (r.headers['Authorization'] != 'Bearer tok-123') return _json({'error': 'Inicia sesión para comprar.'}, 401);
             final tarjeta = jsonDecode(r.body)['tarjeta'] as Map<String, dynamic>;
             if ((tarjeta['numero'] as String).endsWith('0002')) {
               return _json({'error': 'Pago rechazado', 'mensaje': 'Tu banco rechazó la tarjeta.', 'campos': {'tarjeta': 'Tu banco rechazó la tarjeta.'}}, 402);
@@ -99,6 +106,16 @@ Future<_Falso> _abrir(WidgetTester t, {bool caido = false, bool ubicacionFalla =
   await t.pumpWidget(TiendaApp(api: f.api, ubicacion: _UbicacionFalsa(falla: ubicacionFalla)));
   await t.pumpAndSettle();
   return f;
+}
+
+Future<void> _iniciarSesion(WidgetTester t, {String clave = 'Clave1234'}) async {
+  await t.tap(find.byKey(const Key('ingresar')));
+  await t.pumpAndSettle();
+  await t.enterText(find.byKey(const Key('login-correo')), 'diego@ejemplo.com');
+  await t.enterText(find.byKey(const Key('login-clave')), clave);
+  await t.pumpAndSettle();
+  await t.tap(find.byKey(const Key('login-enviar')));
+  await t.pumpAndSettle();
 }
 
 Future<void> _abrirProducto(WidgetTester t) async {
@@ -165,6 +182,7 @@ void main() {
 
   testWidgets('comprar: correo, ubicación elegida, tarjeta de prueba, folio y aviso del correo', (t) async {
     final f = await _abrir(t);
+    await _iniciarSesion(t);
     await _abrirProducto(t);
     await _elegirMonterrey(t);
     await t.tap(find.byKey(const Key('comprar-ahora')));
@@ -173,7 +191,6 @@ void main() {
     // sin datos todavía no se puede pagar
     expect(t.widget<FilledButton>(find.byKey(const Key('confirmar-compra'))).onPressed, isNull);
     await t.enterText(find.byKey(const Key('nombre')), 'Diego');
-    await t.enterText(find.byKey(const Key('correo')), 'diego@ejemplo.com');
     await t.ensureVisible(find.byKey(const Key('rellenar-prueba')));
     await t.tap(find.byKey(const Key('rellenar-prueba')));
     await t.pumpAndSettle();
@@ -193,12 +210,12 @@ void main() {
 
   testWidgets('pago rechazado muestra el motivo y no cambia de pantalla', (t) async {
     await _abrir(t);
+    await _iniciarSesion(t);
     await _abrirProducto(t);
     await _elegirMonterrey(t);
     await t.tap(find.byKey(const Key('comprar-ahora')));
     await t.pumpAndSettle();
     await t.enterText(find.byKey(const Key('nombre')), 'Diego');
-    await t.enterText(find.byKey(const Key('correo')), 'diego@ejemplo.com');
     await t.enterText(find.byKey(const Key('tarjeta-numero')), '4000000000000002');
     await t.enterText(find.byKey(const Key('tarjeta-titular')), 'DIEGO RIVERA');
     await t.enterText(find.byKey(const Key('tarjeta-vence')), '1230');
@@ -210,6 +227,32 @@ void main() {
     expect(find.byKey(const Key('error-compra')), findsOneWidget);
     expect(find.textContaining('Tu banco rechazó la tarjeta'), findsOneWidget);
     expect(find.byKey(const Key('folio')), findsNothing);
+  });
+
+  testWidgets('sin sesión no se puede pagar: pide iniciar sesión', (t) async {
+    await _abrir(t);
+    await _abrirProducto(t);
+    await _elegirMonterrey(t);
+    await t.tap(find.byKey(const Key('comprar-ahora')));
+    await t.pumpAndSettle();
+    expect(find.byKey(const Key('login-para-pagar')), findsOneWidget);
+    expect(t.widget<FilledButton>(find.byKey(const Key('confirmar-compra'))).onPressed, isNull);
+  });
+
+  testWidgets('login: contraseña incorrecta muestra el error; correcta abre el menú de cuenta y se puede cerrar sesión', (t) async {
+    await _abrir(t);
+    await _iniciarSesion(t, clave: 'Mala12345');
+    expect(find.byKey(const Key('error-login')), findsOneWidget);
+    await t.enterText(find.byKey(const Key('login-clave')), 'Clave1234');
+    await t.pumpAndSettle();
+    await t.tap(find.byKey(const Key('login-enviar')));
+    await t.pumpAndSettle();
+    expect(find.byKey(const Key('menu-cuenta')), findsOneWidget);
+    await t.tap(find.byKey(const Key('menu-cuenta')));
+    await t.pumpAndSettle();
+    await t.tap(find.byKey(const Key('cerrar-sesion')));
+    await t.pumpAndSettle();
+    expect(find.byKey(const Key('ingresar')), findsOneWidget);
   });
 
   testWidgets('usar mi ubicación: se convierte en destino y cotiza el envío', (t) async {

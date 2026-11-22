@@ -33,9 +33,10 @@ String? resolverImagen(String? ruta) {
 }
 
 class ApiException implements Exception {
-  ApiException(this.mensaje, {this.campos = const {}});
+  ApiException(this.mensaje, {this.campos = const {}, this.status = 0});
   final String mensaje;
   final Map<String, String> campos;
+  final int status;
   @override
   String toString() => mensaje;
 }
@@ -313,6 +314,33 @@ class RespuestaAsistente {
 }
 
 /// Facade: el resto de la app no conoce HTTP ni JSON, solo estos métodos.
+class Usuario {
+  const Usuario({required this.id, required this.nombre, required this.correo, required this.rol});
+  final int id;
+  final String nombre, correo, rol; // rol: CLIENTE | ADMIN
+  bool get esAdmin => rol == 'ADMIN';
+  factory Usuario.fromJson(Map<String, dynamic> j) => Usuario(id: j['id'] as int, nombre: j['nombre'] as String, correo: j['correo'] as String, rol: j['rol'] as String);
+}
+
+class Sesion {
+  const Sesion(this.token, this.usuario);
+  final String token;
+  final Usuario usuario;
+}
+
+class CompraResumen {
+  const CompraResumen({required this.referencia, required this.total, required this.destino, required this.pedidos});
+  final String referencia, destino;
+  final double total;
+  final List<PedidoRegistrado> pedidos;
+}
+
+class RegistroAuditoria {
+  const RegistroAuditoria({required this.usuario, required this.rol, required this.metodo, required this.ruta, required this.status, required this.ip, required this.fecha});
+  final String usuario, rol, metodo, ruta, ip, fecha;
+  final int status;
+}
+
 class RumboApi {
   RumboApi({String? baseUrl, http.Client? cliente})
       : _baseUrl = baseUrl ?? urlBasePorDefecto(),
@@ -328,6 +356,9 @@ class RumboApi {
   }
 
   final http.Client _http;
+
+  /// Token de la sesión iniciada; se manda en `Authorization: Bearer` en cada llamada. Lo fija `Tienda`.
+  String? token;
 
   Future<Map<String, dynamic>> _pedir(Future<http.Response> Function() llamada) async {
     final http.Response r;
@@ -347,12 +378,13 @@ class RumboApi {
     if (r.statusCode >= 400) {
       final campos = (cuerpo['campos'] as Map?)?.map((k, v) => MapEntry('$k', '$v')) ?? <String, String>{};
       final detalle = campos.values.isNotEmpty ? campos.values.first : null;
-      throw ApiException(detalle ?? (cuerpo['error'] as String?) ?? 'Error ${r.statusCode}', campos: campos);
+      throw ApiException(detalle ?? (cuerpo['error'] as String?) ?? 'Error ${r.statusCode}', campos: campos, status: r.statusCode);
     }
     return cuerpo;
   }
 
-  Map<String, String> get _json => {'Content-Type': 'application/json'};
+  Map<String, String> get _json => {'Content-Type': 'application/json', if (token != null) 'Authorization': 'Bearer $token'};
+  Map<String, String> get _auth => {if (token != null) 'Authorization': 'Bearer $token'};
 
   Future<List<Producto>> productos([Filtro filtro = const Filtro()]) async {
     final c = await _pedir(() => _http.get(Uri.parse('$baseUrl/productos/').replace(queryParameters: filtro.toQuery())));
@@ -415,6 +447,37 @@ class RumboApi {
   Future<RespuestaAsistente> preguntar(String mensaje, {String sesion = '', String correo = ''}) async {
     final c = await _pedir(() => _http.post(Uri.parse('$baseUrl/asistente/'), headers: _json, body: jsonEncode({'mensaje': mensaje, 'sesion': sesion, 'correo': correo})));
     return RespuestaAsistente.fromJson(c);
+  }
+
+  // ----- cuentas y sesión
+  Future<Sesion> registro(String nombre, String correo, String contrasena) async {
+    final c = await _pedir(() => _http.post(Uri.parse('$baseUrl/auth/registro/'), headers: _json, body: jsonEncode({'nombre': nombre, 'correo': correo, 'contrasena': contrasena})));
+    return Sesion(c['token'] as String, Usuario.fromJson(c['usuario']));
+  }
+
+  Future<Sesion> login(String correo, String contrasena) async {
+    final c = await _pedir(() => _http.post(Uri.parse('$baseUrl/auth/login/'), headers: _json, body: jsonEncode({'correo': correo, 'contrasena': contrasena})));
+    return Sesion(c['token'] as String, Usuario.fromJson(c['usuario']));
+  }
+
+  Future<Usuario> yo() async => Usuario.fromJson((await _pedir(() => _http.get(Uri.parse('$baseUrl/auth/yo/'), headers: _auth)))['usuario']);
+
+  Future<void> logout() async {
+    await _pedir(() => _http.post(Uri.parse('$baseUrl/auth/logout/'), headers: _json));
+  }
+
+  Future<List<CompraResumen>> misCompras() async {
+    final c = await _pedir(() => _http.get(Uri.parse('$baseUrl/mis-compras/'), headers: _auth));
+    return (c['compras'] as List)
+        .map((x) => CompraResumen(referencia: x['referencia'], total: (x['total_mxn'] as num).toDouble(), destino: x['destino'] ?? '', pedidos: (x['pedidos'] as List).map((p) => PedidoRegistrado.fromJson(p)).toList()))
+        .toList();
+  }
+
+  Future<List<RegistroAuditoria>> auditoria() async {
+    final c = await _pedir(() => _http.get(Uri.parse('$baseUrl/auditoria/'), headers: _auth));
+    return (c['registros'] as List)
+        .map((a) => RegistroAuditoria(usuario: a['usuario'] ?? '', rol: a['rol'] ?? '', metodo: a['metodo'], ruta: a['ruta'], status: a['status'], ip: a['ip'] ?? '', fecha: a['fecha']))
+        .toList();
   }
 
   Future<void> feedback(int consultaId, int valor) async {

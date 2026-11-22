@@ -17,4 +17,10 @@ urlpatterns = [
     path("asistente/feedback/", views.asistente_feedback),
     path("asistente/metricas/", views.asistente_metricas),
     path("modelos/", views.modelos),
+    path("auth/registro/", views.registro),
+    path("auth/login/", views.login),
+    path("auth/logout/", views.logout),
+    path("auth/yo/", views.yo),
+    path("mis-compras/", views.mis_compras),
+    path("auditoria/", views.auditoria),
 ]

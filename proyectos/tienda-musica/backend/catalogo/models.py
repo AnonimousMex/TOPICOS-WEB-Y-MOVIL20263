@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -46,6 +47,7 @@ class Compra(models.Model):
     """Una compra del carrito: agrupa pedidos (uno por producto), el pago simulado y el correo."""
 
     referencia = models.CharField(max_length=20, unique=True, blank=True)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, related_name="compras")
     cliente = models.CharField(max_length=80)
     correo = models.EmailField()
     destino = models.CharField(max_length=40)
@@ -141,3 +143,38 @@ class Pedido(models.Model):
 
     def __str__(self):
         return self.folio
+
+
+class Sesion(models.Model):
+    """Token de acceso de un usuario. Se guarda solo su hash SHA-256: si se filtra la base, los tokens no sirven."""
+
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="sesiones")
+    token_hash = models.CharField(max_length=64, unique=True)
+    expira = models.DateTimeField()
+    ip = models.CharField(max_length=45, blank=True)
+    creado = models.DateTimeField(auto_now_add=True)
+
+
+class IntentosLogin(models.Model):
+    """Contador de fallos por usuario para bloquear la cuenta 15 minutos tras 5 intentos (como en Rumbo)."""
+
+    usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="intentos")
+    fallos = models.PositiveSmallIntegerField(default=0)
+    bloqueado_hasta = models.DateTimeField(null=True, blank=True)
+
+
+class Auditoria(models.Model):
+    """Bitácora: quién hizo qué, desde dónde y qué respondió el servidor (equivale a AuditLog de Rumbo)."""
+
+    request_id = models.CharField(max_length=12)
+    usuario = models.CharField(max_length=150, blank=True)
+    rol = models.CharField(max_length=10, blank=True)
+    metodo = models.CharField(max_length=7)
+    ruta = models.CharField(max_length=200)
+    status = models.PositiveSmallIntegerField()
+    ip = models.CharField(max_length=45, blank=True)
+    duracion_ms = models.PositiveIntegerField(default=0)
+    creado = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-id"]
