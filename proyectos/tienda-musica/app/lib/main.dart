@@ -11,11 +11,12 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final configuracion = ConfiguracionServidor();
   final url = await configuracion.cargar();
-  runApp(TiendaApp(api: RumboApi(baseUrl: url), alCambiarServidor: configuracion.guardar, almacen: AlmacenSesion()));
+  runApp(TiendaApp(api: RumboApi(baseUrl: url), alCambiarServidor: configuracion.guardar, almacen: AlmacenSesion(), chatHabilitado: const bool.fromEnvironment('CHAT', defaultValue: true)));
 }
 
 class TiendaApp extends StatefulWidget {
-  const TiendaApp({super.key, this.api, this.ubicacion, this.alCambiarServidor, this.almacen});
+  const TiendaApp({super.key, this.api, this.ubicacion, this.alCambiarServidor, this.almacen, this.chatHabilitado = true});
+  final bool chatHabilitado;
   final AlmacenSesion? almacen;
   final RumboApi? api;
   final ServicioUbicacion? ubicacion;
@@ -26,7 +27,7 @@ class TiendaApp extends StatefulWidget {
 }
 
 class _TiendaAppState extends State<TiendaApp> {
-  late final Tienda tienda = Tienda(widget.api ?? RumboApi(), ubicacion: widget.ubicacion, alCambiarServidor: widget.alCambiarServidor, almacen: widget.almacen);
+  late final Tienda tienda = Tienda(widget.api ?? RumboApi(), ubicacion: widget.ubicacion, alCambiarServidor: widget.alCambiarServidor, almacen: widget.almacen, chatHabilitado: widget.chatHabilitado);
 
   @override
   void initState() {

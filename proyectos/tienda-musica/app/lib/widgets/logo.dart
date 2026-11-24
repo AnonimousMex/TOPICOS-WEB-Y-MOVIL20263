@@ -31,13 +31,14 @@ class MarcaTesitura extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final texto = claro ? Colors.white : tinta;
-    return Row(mainAxisSize: MainAxisSize.min, children: [
+    // FittedBox: en celulares estrechos el nombre se reduce un poco en lugar de desbordarse.
+    return FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Row(mainAxisSize: MainAxisSize.min, children: [
       LogoTesitura(tam: tam),
       SizedBox(width: tam * 0.28),
       Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
         Text(nombreTienda.toUpperCase(), style: TextStyle(fontSize: tam * 0.5, fontWeight: FontWeight.w800, letterSpacing: tam * 0.09, color: texto, height: 1.05)),
         Text('MÚSICA E INSTRUMENTOS', style: TextStyle(fontSize: tam * 0.2, fontWeight: FontWeight.w600, letterSpacing: tam * 0.05, color: doomBrillo, height: 1.2)),
       ]),
-    ]);
+    ]));
   }
 }

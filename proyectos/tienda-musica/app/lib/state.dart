@@ -23,11 +23,15 @@ class MensajeChat {
 
 /// Estado global: carrito y conversación del asistente (se conservan al navegar).
 class Tienda extends ChangeNotifier {
-  Tienda(this.api, {ServicioUbicacion? ubicacion, this.alCambiarServidor, AlmacenSesion? almacen}) : ubicacion = ubicacion ?? UbicacionReal(), _almacen = almacen;
+  Tienda(this.api, {ServicioUbicacion? ubicacion, this.alCambiarServidor, AlmacenSesion? almacen, this.chatHabilitado = true}) : ubicacion = ubicacion ?? UbicacionReal(), _almacen = almacen;
   final RumboApi api;
   final ServicioUbicacion ubicacion;
   final Future<void> Function(String)? alCambiarServidor;
   final AlmacenSesion? _almacen;
+
+  /// Interruptor del asistente: con `false` (flutter build web --dart-define=CHAT=false) desaparecen el botón y el panel de chat.
+  /// Nada más depende del chat, así que catálogo, recomendador, carrito y cuenta funcionan igual.
+  final bool chatHabilitado;
 
   // ----- cuenta y sesión
   Usuario? usuario;

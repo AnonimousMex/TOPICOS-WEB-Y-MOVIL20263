@@ -42,8 +42,8 @@ class _UbicacionFalsa implements ServicioUbicacion {
 }
 
 class _Falso {
-  _Falso({this.caido = false});
-  final bool caido;
+  _Falso({this.caido = false, this.chatCaido = false});
+  final bool caido, chatCaido;
   final List<Uri> llamadas = [];
   final List<Map<String, dynamic>> cuerpos = [];
 
@@ -82,6 +82,7 @@ class _Falso {
               'subtotal_mxn': 69990.0, 'embalaje_mxn': 299.0, 'total_mxn': 70289.0,
             }, 201);
           }
+          if (chatCaido && ruta.contains('/asistente/')) return _json({'error': 'El asistente no está disponible por ahora.', 'codigo': 'ASISTENTE_NO_DISPONIBLE'}, 503);
           if (ruta.endsWith('/asistente/feedback/')) return _json({'ok': true});
           if (ruta.endsWith('/asistente/')) {
             final m = jsonDecode(r.body)['mensaje'] as String;
@@ -98,12 +99,12 @@ class _Falso {
       );
 }
 
-Future<_Falso> _abrir(WidgetTester t, {bool caido = false, bool ubicacionFalla = false, Size tamano = const Size(1280, 3200)}) async {
+Future<_Falso> _abrir(WidgetTester t, {bool caido = false, bool chatCaido = false, bool chatHabilitado = true, bool ubicacionFalla = false, Size tamano = const Size(1280, 3200)}) async {
   t.view.physicalSize = tamano;
   t.view.devicePixelRatio = 1;
   addTearDown(t.view.reset);
-  final f = _Falso(caido: caido);
-  await t.pumpWidget(TiendaApp(api: f.api, ubicacion: _UbicacionFalsa(falla: ubicacionFalla)));
+  final f = _Falso(caido: caido, chatCaido: chatCaido);
+  await t.pumpWidget(TiendaApp(api: f.api, chatHabilitado: chatHabilitado, ubicacion: _UbicacionFalsa(falla: ubicacionFalla)));
   await t.pumpAndSettle();
   return f;
 }
@@ -275,6 +276,27 @@ void main() {
     await t.pumpAndSettle();
     expect(find.byKey(const Key('error-ubicacion')), findsOneWidget);
     expect(find.byKey(const Key('destino')), findsOneWidget); // sigue pudiendo elegir una ciudad
+  });
+
+  testWidgets('si el servidor del asistente falla, el chat avisa y la tienda sigue funcionando', (t) async {
+    await _abrir(t, chatCaido: true);
+    await t.tap(find.byKey(const Key('abrir-chat')));
+    await t.pumpAndSettle();
+    await t.enterText(find.byKey(const Key('mensaje')), 'hola');
+    await t.tap(find.byKey(const Key('enviar')));
+    await t.pumpAndSettle();
+    expect(find.textContaining('El asistente no está disponible'), findsOneWidget);
+    // el chat falló pero el resto no: se puede abrir un producto y agregarlo al carrito
+    await _abrirProducto(t);
+    expect(find.byKey(const Key('comprar-ahora')), findsOneWidget);
+  });
+
+  testWidgets('con el chat deshabilitado no hay botón ni panel, y el catálogo funciona igual', (t) async {
+    await _abrir(t, chatHabilitado: false);
+    expect(find.byKey(const Key('abrir-chat')), findsNothing);
+    await _abrirProducto(t);
+    expect(find.byKey(const Key('comprar-ahora')), findsOneWidget);
+    expect(find.byKey(const Key('abrir-chat')), findsNothing);
   });
 
   testWidgets('chat: responde, manda sesión, muestra productos, califica y remite al recomendador', (t) async {

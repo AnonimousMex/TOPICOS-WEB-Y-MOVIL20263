@@ -59,7 +59,8 @@ class CompraPage extends StatelessWidget {
                   ]),
                 ),
               const SizedBox(height: 18),
-              OutlinedButton.icon(key: const Key('preguntar-asistente'), icon: const Icon(Icons.chat_bubble_outline, size: 18), label: const Text('Preguntar al asistente por mi pedido'), onPressed: () => _preguntar(context)),
+              if (TiendaScope.of(context).chatHabilitado)
+                OutlinedButton.icon(key: const Key('preguntar-asistente'), icon: const Icon(Icons.chat_bubble_outline, size: 18), label: const Text('Preguntar al asistente por mi pedido'), onPressed: () => _preguntar(context)),
               const SizedBox(height: 10),
               FilledButton(onPressed: () => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const HomePage()), (r) => false), child: const Text('Seguir comprando')),
             ]),

@@ -25,7 +25,7 @@ class Marco extends StatelessWidget {
     final t = TiendaScope.of(context);
     final ancho = MediaQuery.sizeOf(context).width;
     final alto = MediaQuery.sizeOf(context).height;
-    final panelFlotante = t.chatAbierto && ancho >= 700;
+    final panelFlotante = t.chatHabilitado && t.chatAbierto && ancho >= 700;
     return Scaffold(
       backgroundColor: fondo,
       body: SafeArea(
@@ -36,7 +36,7 @@ class Marco extends StatelessWidget {
             const _Categorias(),
             Expanded(child: child),
           ]),
-          if (ancho >= 700)
+          if (t.chatHabilitado && ancho >= 700)
             Positioned(
               right: 16,
               bottom: 16,
@@ -52,7 +52,8 @@ class Marco extends StatelessWidget {
                     : const SizedBox.shrink(key: ValueKey('sin-panel')),
               ),
             ),
-          Positioned(
+          if (t.chatHabilitado)
+            Positioned(
             right: 16,
             bottom: 16,
             child: AnimatedSwitcher(
