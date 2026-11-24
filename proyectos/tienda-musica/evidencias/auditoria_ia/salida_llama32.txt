@@ -1,0 +1,38 @@
+**Análisis del proyecto**
+
+**Hallazgos**
+
+1. **Modelo .joblib en el servidor**: Alta severidad. El modelo .joblib se almacena en el servidor, lo que puede generar riesgos de seguridad y escalabilidad.
+2. **Falta de secretos en el código**: Alta severidad. La falta de secretos en el código expone la aplicación a ataques de inyección de código y otras vulnerabilidades de seguridad.
+3. **No se reescriben los archivos**: Baja severidad. No se reescriben los archivos, lo que puede generar problemas de escalabilidad y mantenimiento.
+4. **Falta de auditoría**: Baja severidad. No se realiza auditoría en la aplicación, lo que puede generar problemas de seguridad y cumplimiento.
+5. **No se verifica la integridad de los datos**: Baja severidad. No se verifica la integridad de los datos, lo que puede generar problemas de precisión y confiabilidad.
+
+**Archivo sospechoso**
+
+* **cors.py**: El archivo cors.py parece ser un middleware de CORS mínimo, pero no se verifica si se está utilizando correctamente.
+
+**Evidencia**
+
+* La aplicación utiliza Django como framework, lo que es una buena opción para desarrollar aplicaciones web.
+* La aplicación utiliza SQLite como base de datos, lo que es una buena opción para desarrollar aplicaciones pequeñas.
+* La aplicación utiliza API JSON para la comunicación con el servidor, lo que es una buena opción para desarrollar aplicaciones web.
+
+**Riesgo**
+
+* El modelo .joblib se almacena en el servidor, lo que puede generar riesgos de seguridad y escalabilidad.
+* La falta de secretos en el código expone la aplicación a ataques de inyección de código y otras vulnerabilidades de seguridad.
+* No se reescriben los archivos, lo que puede generar problemas de escalabilidad y mantenimiento.
+
+**Cómo verificarlo en 5 minutos**
+
+1. Verificar la seguridad del modelo .joblib y asegurarse de que se utilice correctamente.
+2. Verificar la configuración de la aplicación para asegurarse de que se utilicen secretos adecuados.
+3. Verificar la integridad de los datos y asegurarse de que se utilicen técnicas de verificación de integridad.
+4. Verificar la configuración de CORS y asegurarse de que se utilice correctamente.
+5. Realizar una auditoría rápida de la aplicación para identificar posibles problemas de seguridad y cumplimiento.
+
+**Contradicciones**
+
+* El enunciado del proyecto dice que "el modelo .joblib vive en el servidor, el mismo front sirve web y móvil, sin secretos en el código". Sin embargo, el análisis anterior identifica problemas de seguridad relacionados con el modelo .joblib y la falta de secretos en el código.
+

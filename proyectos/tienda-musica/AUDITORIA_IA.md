@@ -1,46 +1,48 @@
 # Auditoría del proyecto con IA
 
-Estado honesto: este informe tiene una parte hecha y una parte **pendiente de ejecutar con un modelo local**.
+Fecha: 2026-11-24. Evidencia en `evidencias/auditoria_ia/` (prompt con el paquete de contexto y la salida completa del modelo local).
 
 ## 1. Herramientas y modelos
-| Herramienta | Modelo | Local o nube | Estado |
+| Herramienta | Modelo | Local o nube | Qué hizo |
 |---|---|---|---|
-| Revisión asistida con Claude Code | Claude | nube (de pago) | **hecha**: hallazgos de la sección 3, verificados a mano en el código |
-| Ollama | `llama3.2` (y opcional `qwen2.5-coder:7b`) | local | **pendiente**: no estaba instalado en la máquina; ver sección 6 |
-| Segunda IA (Gemini en AI Studio u otra gratuita) | — | nube | **pendiente** |
+| Ollama 0.40.18 (instalado con Homebrew) | `llama3.2` (3B, 2.0 GB) | **local** | IA A: auditó el paquete de contexto (`ollama run llama3.2`) |
+| Claude Code | Claude | nube (de pago) | IA B: revisó el código completo y verificó cada hallazgo a mano |
+
+No se usó un modelo de código mayor (`qwen2.5-coder:7b`) por espacio y tiempo; queda como mejora.
 
 ## 2. Qué se le pasó y qué se omitió
-Se pasó: dominio (tienda de instrumentos, recomendador de embalaje), arquitectura en una frase (monolito Django + API JSON + Flutter web/Android), lista de endpoints, árbol de archivos y fragmentos de `settings.py`, `cors.py`, `views.py` y `api.dart`.
-Se omitió: `backend/.env`, la base `db.sqlite3`, el historial de Git, keystores y cualquier credencial.
+Se pasó (≈6 KB): dominio y arquitectura en una frase, lista de endpoints, árbol de archivos y fragmentos de `settings.py`, `cors.py`, `api.dart` y `pagos.py`.
+Se omitió: `backend/.env`, `db.sqlite3`, historial de Git, keystores y credenciales. La `SECRET_KEY` que aparece es el valor de desarrollo `django-insecure-…` del repositorio.
 
-## 3. Hallazgos verificados en el código
-| # | Hallazgo | Severidad | Dónde | ¿Confirmado? | Qué se hizo |
-|---|---|---|---|---|---|
-| 1 | `DEBUG = True`, `SECRET_KEY` en el código y `ALLOWED_HOSTS = ['*']` | alta | `backend/tienda/settings.py:23-28` | sí | declarado como valores de desarrollo; sin cambiar |
-| 2 | `@csrf_exempt` en 11 vistas | media | `backend/catalogo/views.py` | sí (es API con token en cabecera, no cookies) | declarado |
-| 3 | CORS abierto (`*`) | media | `backend/catalogo/cors.py:16` | sí | declarado; para desarrollo |
-| 4 | Sin idempotencia en el pago | media | `views.py` (`checkout`) | sí | pendiente |
-| 5 | Sin verificación de correo ni recuperación de contraseña | media | cuentas | sí | pendiente |
-| 6 | Token en almacenamiento del navegador, no cookie httpOnly | media | `app/lib` (`AlmacenSesion`) | sí | declarado |
-| 7 | Dataset sintético: las métricas (0.767 / 0.805 / 0.78) no son rendimiento real | media | `ml/` | sí | declarado en las láminas |
-| 8 | `localhost` en la app | baja | `app/lib/api.dart:15` | parcial: es solo el valor por defecto en web; el APK se compila con `API_URL=10.0.2.2` | sin cambio |
+## 3. Tabla de hallazgos (IA A contra IA B y contra el código)
+| Hallazgo | IA A (llama3.2) | IA B (Claude) | ¿Lo vimos en el código? | Qué haremos |
+|---|---|---|---|---|
+| `DEBUG=True`, `SECRET_KEY` fija y `ALLOWED_HOSTS=['*']` | no lo vio | sí | **sí**, `tienda/settings.py:23-28` | declarar: valores de desarrollo |
+| CORS abierto `*` | lo señaló solo como «archivo sospechoso», sin decir por qué | sí | **sí**, `catalogo/cors.py:16` | declarar |
+| `@csrf_exempt` en 11 vistas | no | sí | **sí**, `views.py` (API con token en cabecera) | declarar |
+| Sin idempotencia en el pago | no | sí | **sí**, `checkout` | pendiente |
+| Sin verificación de correo | no | sí | **sí** | pendiente |
+| Token en almacenamiento del navegador | no | sí | **sí**, `AlmacenSesion` | declarar |
+| Dataset sintético: métricas no son rendimiento real | no | sí | **sí**, `ml/` | declarado |
+| `localhost` en la app | no | sí (parcial) | **parcial**: solo valor por defecto en web; la APK usa `10.0.2.2` | sin cambio |
 
-## 4. Falsos positivos (a completar con la salida real del modelo local)
-Estos son los que un modelo pequeño suele inventar en este tipo de repo; **hay que anotar aquí los que realmente salgan y refutarlos con archivo**:
-- «El modelo `.joblib` va dentro del APK»: falso; `GUIA_DEFENSA.md` §13 y `app/lib` no lo cargan, vive en el servidor.
-- «Hay microservicios/gateway»: falso; es un monolito Django (`backend/manage.py`, una sola app `catalogo`).
-- «El número de tarjeta se guarda»: falso; `catalogo/pagos.py` valida y descarta número y CVV (docstring línea 6; `tests.py` prueba solo tarjetas de prueba).
+## 4. Falsos positivos de la IA A (refutados con el código)
+1. **«El modelo .joblib en el servidor es riesgo alto de seguridad y escalabilidad.»** Falso: que el modelo viva en el servidor es el requisito del curso y lo que evita meterlo en la APK. El archivo pesa 33 KB y solo lo carga el servidor (`catalogo/recomendador.py`).
+2. **«Falta de auditoría: no se realiza auditoría en la aplicación.»** Falso: existe el modelo `Auditoria`, el `AuditoriaMiddleware` (`catalogo/auditoria.py:13`, activado en `settings.py:45`) y el endpoint `/api/auditoria/` solo para ADMIN.
+3. **«No se verifica la integridad de los datos.»** Falso: `catalogo/validacion.py` rechaza valores fuera de rango (por ejemplo `peso_kg` entre 0.05 y 200) con HTTP 400.
+4. **«Falta de secretos en el código expone a inyección.»** Confundido: no es un hallazgo real; el hallazgo verdadero es lo contrario, una `SECRET_KEY` fija (ver tabla), que el modelo no detectó.
+5. **«No se reescriben los archivos» como hallazgo:** ruido; repitió una instrucción del prompt como si fuera un problema.
+
+Lectura: un modelo de 3B local sirve para obtener una lista inicial, pero inventa y omite; sin verificación en el código, imprime alucinaciones. Los hallazgos reales salieron de leer los archivos.
 
 ## 5. Cambios posteriores
-Los hallazgos 1 a 6 son decisiones de alcance (proyecto académico): se explican, no se arreglan. Antes de la demo: `git pull`, `flutter analyze` y prueba de humo (recomendación, folio, chat, web y APK).
+Los hallazgos reales son decisiones de alcance (proyecto académico): se explican y se declaran, no se arreglan antes de la demo. Pendientes con motivo: idempotencia y verificación de correo (alcance); cookie httpOnly (requiere cambiar el cliente); un modelo de código mayor (espacio).
 
-## 6. Cómo completar la auditoría local
+## 6. Cómo repetirla
 ```bash
-brew install ollama        # o instalador de ollama.com
+brew install ollama
+ollama serve &              # o brew services start ollama
 ollama pull llama3.2
-ollama run llama3.2        # pegar el prompt de abajo + el paquete de contexto
+ollama run llama3.2 < evidencias/auditoria_ia/prompt_y_paquete.txt
 ```
-Prompt: *«Audita este proyecto. Da hallazgos numerados con severidad (alta/media/baja), archivo sospechoso, evidencia, riesgo y cómo verificarlo en 5 minutos. Separa hecho con evidencia de hipótesis. No reescribas ni inventes archivos. Cierra con 5 comprobaciones manuales antes de la demo.»*
-Después: repetir con otra IA, cruzar en una tabla (Hallazgo · IA A · IA B · ¿Lo vimos en el código? · Qué haremos) y anotar al menos dos falsos positivos en la sección 4.
-
-Fecha de esta versión: 2026-11-24.
+Antes de la demo: `git pull`, `flutter analyze` y prueba de humo (recomendación, folio, chat, web y APK). Prueba de clon limpio hecha el 2026-11-24: `git clone` + `pip install -r requirements.txt` + `manage.py test` = 81 pruebas OK.

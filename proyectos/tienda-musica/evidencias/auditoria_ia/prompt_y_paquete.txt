@@ -1,0 +1,187 @@
+Audita este proyecto. Da hallazgos numerados con severidad (alta/media/baja), archivo sospechoso, evidencia, riesgo y cómo verificarlo en 5 minutos. Separa "hecho con evidencia" de "hipótesis". Señala contradicciones con este enunciado: el modelo .joblib vive en el servidor, el mismo front sirve web y móvil, sin secretos en el código. No reescribas el proyecto y no inventes archivos. Cierra con 5 comprobaciones manuales antes de la demo. Responde en español.
+
+PROYECTO: Tesitura, tienda de instrumentos musicales. Un recomendador decide el nivel de embalaje/seguro (basico/reforzado/premium) por producto y ciudad. Arquitectura: monolito Django + SQLite con API JSON; cliente Flutter para web y Android; modelo .joblib (arbol de decision) en el servidor.
+
+ENDPOINTS:
+    path("productos/", views.productos),
+    path("productos/<int:pk>/", views.producto_detalle),
+    path("facetas/", views.facetas),
+    path("destinos/", views.destinos),
+    path("recomendar/", views.recomendar_vista),
+    path("envio/", views.envio),
+    path("pedidos/", views.pedidos),
+    path("checkout/", views.checkout),
+    path("pedidos/<str:folio>/", views.pedido_detalle),
+    path("ubicacion/", views.ubicacion),
+    path("asistente/", views.asistente),
+    path("asistente/feedback/", views.asistente_feedback),
+    path("asistente/metricas/", views.asistente_metricas),
+    path("modelos/", views.modelos),
+    path("auth/registro/", views.registro),
+    path("auth/login/", views.login),
+    path("auth/logout/", views.logout),
+    path("auth/yo/", views.yo),
+    path("mis-compras/", views.mis_compras),
+    path("auditoria/", views.auditoria),
+
+ARCHIVOS:
+backend/catalogo/__init__.py
+backend/catalogo/admin.py
+backend/catalogo/apps.py
+backend/catalogo/asistente.py
+backend/catalogo/auditoria.py
+backend/catalogo/autenticacion.py
+backend/catalogo/correos.py
+backend/catalogo/cors.py
+backend/catalogo/datos_catalogo.py
+backend/catalogo/envios.py
+backend/catalogo/geo.py
+backend/catalogo/imagenes.py
+backend/catalogo/models.py
+backend/catalogo/niveles.py
+backend/catalogo/pagos.py
+backend/catalogo/recomendador.py
+backend/catalogo/reglas.py
+backend/catalogo/tests.py
+backend/catalogo/urls.py
+backend/catalogo/validacion.py
+backend/catalogo/views.py
+
+app/lib:
+api.dart
+configuracion_servidor.dart
+main.dart
+pages
+state.dart
+theme.dart
+ubicacion.dart
+widgets
+
+app/lib/pages:
+carrito_page.dart
+compra_page.dart
+cuenta_page.dart
+home_page.dart
+listado_page.dart
+producto_page.dart
+recomendar_page.dart
+
+backend/ml:
+__pycache__
+datos
+entrenar_asistente.py
+entrenar_recomendador.py
+generar_dataset.py
+modelos
+probar_modelo.py
+reportes
+usar_modelo.py
+
+=== settings.py (extracto) ===
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-3yp^815-sf65#nwc93j7n45r%xo7h54s)w=%gb-!n$vq#pqugb'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'catalogo',
+]
+
+MIDDLEWARE = [
+    'catalogo.cors.CorsMiddleware',
+    'catalogo.auditoria.AuditoriaMiddleware',
+
+=== cors.py ===
+"""Middleware mínimo de CORS para que Flutter web (otro puerto) pueda llamar a la API."""
+from django.http import HttpResponse
+
+
+class CorsMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if request.method == "OPTIONS":
+            response = HttpResponse(status=204)
+        else:
+            response = self.get_response(request)
+        if request.path.startswith("/img/") and response.status_code == 200:
+            response["Cache-Control"] = "public, max-age=86400"  # las fotos no cambian: no volver a pedirlas al desplazarse
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Tesitura-Token"
+        response["Access-Control-Expose-Headers"] = "X-Request-Id"
+        response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        return response
+
+=== api.dart (extracto) ===
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+
+/// URL base: se puede cambiar al compilar (--dart-define=API_URL=...) o desde la app.
+/// En el emulador Android, 10.0.2.2 es la Mac; en web y escritorio, localhost.
+String urlBasePorDefecto() {
+  const definida = String.fromEnvironment('API_URL');
+  if (definida.isNotEmpty) return definida;
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+    return 'http://10.0.2.2:8000/api';
+  }
+  return 'http://localhost:8000/api';
+}
+
+/// Origen del servidor (sin /api): las imágenes llegan como rutas relativas (/img/...).
+String origenServidor = '';
+
+String normalizarUrlServidor(String valor) {
+  final uri = Uri.tryParse(valor.trim());
+  if (uri == null || !{'http', 'https'}.contains(uri.scheme) || uri.host.isEmpty || uri.userInfo.isNotEmpty || uri.hasQuery || uri.hasFragment) {
+    throw const FormatException('Escribe una dirección http:// o https:// sin usuario, parámetros ni fragmentos.');
+  }
+  final path = uri.path.replaceAll(RegExp(r'/+$'), '');
+  return uri.replace(path: path.isEmpty ? '/api' : path).toString();
+}
+
+String? resolverImagen(String? ruta) {
+
+=== pagos.py (extracto) ===
+"""Pasarela de pago SIMULADA (no mueve dinero).
+
+Reglas de seguridad de esta práctica:
+  * Solo se aceptan TARJETAS DE PRUEBA (como el modo de pruebas de Stripe). Un número real se rechaza,
+    para que nadie acostumbre a escribir tarjetas reales en una demostración.
+  * El número completo y el CVV se validan y se descartan: nunca se guardan ni se escriben en logs.
+    Solo se conserva la marca y los últimos 4 dígitos.
+"""
+import re
+import secrets
+from datetime import date
+
+
+class PagoInvalido(Exception):
+    def __init__(self, campos):
+        self.campos = campos
+
+
+class PagoRechazado(Exception):
+    def __init__(self, mensaje):
