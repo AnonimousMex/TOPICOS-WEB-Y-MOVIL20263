@@ -4,9 +4,9 @@
 
 Catálogo de instrumentos con backend Django/SQLite y cliente Flutter para web y Android. El recomendador decide el nivel de embalaje y seguro (`basico`, `reforzado`, `premium`); el asistente entrenado consulta productos y folios y utiliza un corpus propio para orientación de compra y cuidados.
 
-**[Descargar Tesitura para Android](https://github.com/AnonimousMex/TOPICOS-WEB-Y-MOVIL20263/releases/download/tesitura-v1.0.1/Tesitura-Android.apk)**
+**[Descargar Tesitura para Android](https://github.com/AnonimousMex/TOPICOS-WEB-Y-MOVIL20263/releases/download/tesitura-v1.1.0/Tesitura-Android.apk)**
 
-La APK se configura con la API de la Mac en `http://192.168.101.28:18000/api`. El teléfono debe estar en la misma red; la URL puede cambiarse con el botón de configuración del encabezado y se conserva al volver a abrir la aplicación.
+La APK 1.1.0 se compila con `--dart-define=API_URL=http://10.0.2.2:8001/api` (el emulador de Android ve la Mac como 10.0.2.2); en un teléfono físico se usa la IP de la Mac. El teléfono debe estar en la misma red; la URL puede cambiarse con el botón de configuración del encabezado y se conserva al volver a abrir la aplicación.
 
 ## Instalación
 
@@ -94,3 +94,22 @@ Fotos y logos de Wikimedia Commons; las imágenes de marca o referencia se ident
 - Roles `CLIENTE` y `ADMIN` (`manage.py crear_admin correo`). Pagar exige sesión; `GET /api/mis-compras/` lista las compras de la cuenta; `GET /api/auditoria/` (bitácora: usuario, rol, ruta, estado, IP) solo para ADMIN.
 - Código: `backend/catalogo/autenticacion.py`, `auditoria.py`; Flutter: `app/lib/pages/cuenta_page.dart`, `state.dart`.
 - Para estudiar y defender el proyecto: [GUIA_DEFENSA.md](GUIA_DEFENSA.md).
+
+
+## Construir y actualizar la APK
+
+```bash
+cd app
+flutter pub get
+flutter build apk --release --dart-define=API_URL=http://10.0.2.2:8001/api
+# salida: build/app/outputs/flutter-apk/app-release.apk
+adb install -r build/app/outputs/flutter-apk/app-release.apk
+```
+
+La versión sale de `pubspec.yaml` (`1.1.0+3`: nombre visible + versionCode). `build/`, `.apk`, keystores y `.env` no se suben a Git; la APK se publica como release y su SHA-256 está en `evidencias/apk.json`. Está firmada con la clave de depuración y permite HTTP (`usesCleartextTraffic`) porque el servidor de pruebas es HTTP.
+
+## Uso de IA en este proyecto
+
+- **Desarrollo:** el código, las pruebas y la documentación se hicieron con ayuda de Claude Code (asistente de IA de pago, en la nube) bajo la dirección del autor, que revisó y ejecutó cada cambio. Ver `DISENO.md`.
+- **Datos y entrenamiento propios:** el dataset sintético (`backend/ml/generar_dataset.py`), el entrenamiento y los `.joblib` se generan con scripts del repositorio, no vienen de ningún servicio externo.
+- **Auditoría con IA:** ver `AUDITORIA_IA.md`.
