@@ -1,8 +1,8 @@
 {
   "archivo": "Tesitura-Android.apk",
   "paquete": "mx.tienda.tienda_musica",
-  "version": "1.0.1",
-  "version_code": 2,
+  "version": "1.1.0",
+  "version_code": 3,
   "arquitecturas": [
     "arm64-v8a",
     "armeabi-v7a",
@@ -10,9 +10,9 @@
   ],
   "tipo": "release",
   "firma": "clave de prácticas Android (debug)",
-  "api": "http://192.168.101.28:18000/api",
-  "bytes": 53722732,
-  "sha256": "96d53f72790f67e717e33351a827def59e5c7bb3a35898bc80c5a1dbc9e7961c",
-  "compilado": "2026-11-16T14:56:16.540948+00:00",
-  "descarga": "https://github.com/AnonimousMex/TOPICOS-WEB-Y-MOVIL20263/releases/download/tesitura-v1.0.1/Tesitura-Android.apk"
+  "api": "http://10.0.2.2:8001/api",
+  "bytes": 54018024,
+  "sha256": "e42e94364e6a776dcab083e7db5e9acfe3cb71630a56f36aa372e2df0f0c49a9",
+  "compilado": "2026-11-24T21:36:01.375468+00:00",
+  "descarga": "https://github.com/AnonimousMex/TOPICOS-WEB-Y-MOVIL20263/releases/download/tesitura-v1.1.0/Tesitura-Android.apk"
 }

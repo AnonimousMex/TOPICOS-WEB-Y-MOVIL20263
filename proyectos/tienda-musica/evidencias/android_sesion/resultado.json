@@ -1,0 +1,28 @@
+{
+  "api": "http://10.0.2.2:8001/api",
+  "pasos": {
+    "catalogo": "ok",
+    "clave_debil_rechazada": true,
+    "registro": "android.1795399911372@ejemplo.com",
+    "embalaje": "ok",
+    "folio": "MUS-2026-000010",
+    "mis_compras": 1,
+    "chat_folio": "Tu pedido MUS-2026-000010 (Guitarra eléctrica Squier Affinity Stratocaster) está en estado «registrado». Embalaje: premium, envío a Monterrey.",
+    "sin_sesion_401": true
+  },
+  "plataforma": "android",
+  "capturas": [
+    "01_catalogo",
+    "02_login",
+    "03_clave_debil",
+    "03b_tras_registrar",
+    "04_sesion",
+    "05a_destino",
+    "05_embalaje",
+    "06_pago",
+    "07_folio",
+    "08_chat_folio"
+  ],
+  "resultado": "correcto",
+  "fecha": "2026-11-23T02:12:27.618736Z"
+}
