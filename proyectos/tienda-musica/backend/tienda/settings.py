@@ -148,4 +148,6 @@ EMAIL_HOST_USER = os.environ.get("TESITURA_SMTP_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("TESITURA_SMTP_PASSWORD", "")
 EMAIL_USE_TLS = os.environ.get("TESITURA_SMTP_TLS", "1") == "1"
 DEFAULT_FROM_EMAIL = os.environ.get("TESITURA_SMTP_FROM", "Tesitura <no-responder@tesitura.local>")
+# Interruptor del asistente: TESITURA_ASISTENTE=off lo apaga (responde 503) sin afectar catálogo, recomendador, compras ni cuentas.
+ASISTENTE_ACTIVO = os.environ.get("TESITURA_ASISTENTE", "on").strip().lower() != "off"
 TOKEN_ADMIN = os.environ.get("TESITURA_ADMIN_TOKEN", "")  # permite ver métricas del asistente y documentos internos

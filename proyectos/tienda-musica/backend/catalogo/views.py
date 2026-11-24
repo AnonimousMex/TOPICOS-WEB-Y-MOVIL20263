@@ -9,7 +9,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 
-from . import asistente as asistente_servicio
 from .datos_catalogo import CIUDADES
 from . import autenticacion, correos, pagos
 from .envios import entradas_desde_producto
@@ -293,6 +292,21 @@ def pedido_detalle(request, folio):
         return JsonResponse({"error": "Folio no encontrado"}, status=404)
 
 
+def _servicio_asistente():
+    """El asistente es opcional: se importa al usarlo para que, si falta o está roto, el resto de la API siga igual."""
+    if not settings.ASISTENTE_ACTIVO:
+        return None
+    try:
+        from . import asistente
+        return asistente
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _asistente_no_disponible():
+    return JsonResponse({"error": "El asistente no está disponible por ahora. Puedes seguir comprando y usar el recomendador de embalaje.", "codigo": "ASISTENTE_NO_DISPONIBLE"}, status=503)
+
+
 def _es_admin(request):
     """Administrador = usuario con rol ADMIN (is_staff) o, por compatibilidad, el token interno del asistente."""
     usuario = autenticacion.usuario_de(request)
@@ -314,17 +328,25 @@ def asistente(request):
         return _error({"mensaje": "Escribe un mensaje."})
     if len(mensaje) > 500:
         return _error({"mensaje": "Máximo 500 caracteres."})
+    servicio = _servicio_asistente()
+    if servicio is None:
+        return _asistente_no_disponible()
     usuario = autenticacion.usuario_de(request)
     # Con sesión iniciada el correo es el de la cuenta (verificado por el servidor), no el que escriba el cliente.
     correo = usuario.email if usuario else str(datos.get("correo", "")).strip().lower()
-    contexto = asistente_servicio.Peticion(sesion=str(datos.get("sesion", ""))[:40], correo=correo, admin=_es_admin(request))
-    return JsonResponse(asistente_servicio.responder(mensaje, contexto))
+    contexto = servicio.Peticion(sesion=str(datos.get("sesion", ""))[:40], correo=correo, admin=_es_admin(request))
+    try:
+        return JsonResponse(servicio.responder(mensaje, contexto))
+    except Exception:  # noqa: BLE001  (modelo ausente, corpus dañado…: el asistente falla solo, no la tienda)
+        return _asistente_no_disponible()
 
 
 @csrf_exempt
 @require_POST
 def asistente_feedback(request):
     """👍/👎 sobre una respuesta (capa de observabilidad)."""
+    if not settings.ASISTENTE_ACTIVO:
+        return _asistente_no_disponible()
     try:
         datos = _cuerpo(request)
         valor = int(datos.get("valor"))
@@ -357,7 +379,12 @@ def asistente_metricas(request):
 
 @require_GET
 def modelos(request):
-    return JsonResponse({"recomendador": metricas_modelo(), "asistente": asistente_servicio.metricas_asistente()})
+    servicio = _servicio_asistente()
+    try:
+        metricas_chat = servicio.metricas_asistente() if servicio else None
+    except Exception:  # noqa: BLE001
+        metricas_chat = None
+    return JsonResponse({"recomendador": metricas_modelo(), "asistente": metricas_chat})
 
 
 # ---------- cuentas, sesión y auditoría ----------

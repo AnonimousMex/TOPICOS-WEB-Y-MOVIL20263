@@ -600,3 +600,46 @@ class CuentasTests(Base):
         token = self.post("/api/auth/login/", {"correo": "jefe@ejemplo.com", "contrasena": "Admin1234"}).json()["token"]
         self.assertEqual(self.client.get("/api/asistente/metricas/").status_code, 403)
         self.assertEqual(self.client.get("/api/asistente/metricas/", **self.con(token)).status_code, 200)
+
+
+class AsistenteCaidoTests(Base):
+    """Si el chatbot se apaga o se rompe, todo lo demás sigue funcionando (y por qué: no comparte nada con él)."""
+
+    def comprobar_tienda_viva(self):
+        self.assertEqual(self.client.get("/api/productos/").status_code, 200)
+        self.assertEqual(self.client.get("/api/facetas/").status_code, 200)
+        r = self.post("/api/envio/", {"producto_id": self.pid("Roland FP-10"), "cantidad": 1, "destino": "Guadalajara"})
+        self.assertEqual(r.status_code, 200)
+        self.assertIn("nivel_final", r.json())
+        self.assertEqual(self.client.get("/api/modelos/").json()["recomendador"] is not None, True)
+        self.assertEqual(self.post("/api/recomendar/", FORMULARIO).status_code, 200)
+        self.assertEqual(self.post("/api/auth/registro/", {"nombre": "Ana", "correo": f"a{id(self)}@ejemplo.com", "contrasena": "Clave1234"}).status_code, 201)
+
+    @override_settings(ASISTENTE_ACTIVO=False)
+    def test_apagado_responde_503_claro_y_la_tienda_sigue(self):
+        r = self.post("/api/asistente/", {"mensaje": "hola"})
+        self.assertEqual(r.status_code, 503)
+        self.assertEqual(r.json()["codigo"], "ASISTENTE_NO_DISPONIBLE")
+        self.assertEqual(self.post("/api/asistente/feedback/", {"consulta_id": 1, "valor": 1}).status_code, 503)
+        self.comprobar_tienda_viva()
+
+    def test_si_el_modelo_falla_en_ejecucion_responde_503_y_la_tienda_sigue(self):
+        with mock.patch("catalogo.asistente.responder", side_effect=FileNotFoundError("Falta el modelo")):
+            r = self.post("/api/asistente/", {"mensaje": "hola"})
+        self.assertEqual(r.status_code, 503)
+        self.comprobar_tienda_viva()
+
+    def test_si_el_modulo_ni_siquiera_se_puede_importar_la_tienda_sigue(self):
+        with mock.patch("catalogo.views._servicio_asistente", return_value=None):
+            self.assertEqual(self.post("/api/asistente/", {"mensaje": "hola"}).status_code, 503)
+            self.comprobar_tienda_viva()
+
+    def test_sin_asistente_se_puede_comprar_de_principio_a_fin(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        with override_settings(ASISTENTE_ACTIVO=False), mock.patch.object(correos, "CARPETA", Path(tmp.name)):
+            token = self.post("/api/auth/registro/", {"nombre": "Ana", "correo": "compra@ejemplo.com", "contrasena": "Clave1234"}).json()["token"]
+            r = self.post("/api/checkout/", {"cliente": "Ana", "destino": "Guadalajara", "tarjeta": TARJETA,
+                                              "lineas": [{"producto_id": self.pid("Shure SM58"), "cantidad": 1}]}, HTTP_AUTHORIZATION="Bearer " + token)
+            self.assertEqual(r.status_code, 201)
+            self.assertTrue(r.json()["pedidos"][0]["folio"].startswith("MUS-"))
