@@ -19,7 +19,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py cargar_datos
-python manage.py runserver 0.0.0.0:18000
+python manage.py runserver 8001
 ```
 
 En otra terminal:
@@ -27,19 +27,19 @@ En otra terminal:
 ```bash
 cd app
 flutter pub get
-flutter run -d chrome --dart-define=API_URL=http://192.168.101.28:18000/api
+flutter run -d chrome --dart-define=API_URL=http://localhost:8001/api
 # Android: emulador configurado
-flutter run -d emulator-5580 --dart-define=API_URL=http://192.168.101.28:18000/api
+flutter run -d emulator-5554 --dart-define=API_URL=http://10.0.2.2:8001/api
 ```
 
-Web y APK comparten `http://192.168.101.28:18000/api` en esta entrega. Los pedidos se guardan en la misma base SQLite: un folio creado desde web se puede consultar en Android. El backend y la Mac deben permanecer encendidos; si cambia la IP de la Mac, hay que actualizar la URL en ambos clientes. Los cambios de datos se consultan en el servidor; los cambios del código Flutter requieren recompilar web y reinstalar la APK.
+Web y APK usan el mismo servidor (`localhost:8001` en la web, `10.0.2.2:8001` en el emulador). Los pedidos se guardan en la misma base SQLite: un folio creado desde web se puede consultar en Android. El backend y la Mac deben permanecer encendidos; en un teléfono físico se usa la IP de la Mac y la URL se cambia desde el icono del servidor. Los cambios de datos se consultan en el servidor; los cambios del código Flutter requieren recompilar web y reinstalar la APK.
 
-Para servir la compilación web local en `http://192.168.101.28:18090`:
+Para servir la compilación web local en `http://localhost:8090`:
 
 ```bash
 cd app
-flutter build web --dart-define=API_URL=http://192.168.101.28:18000/api
-python3 servir_web.py 18090 --aislado
+flutter build web --wasm --pwa-strategy=none --dart-define=API_URL=http://localhost:8001/api
+python3 servir_web.py 8090 --aislado
 ```
 
 ## Modelos y reglas
@@ -93,7 +93,7 @@ Fotos y logos de Wikimedia Commons; las imágenes de marca o referencia se ident
 - `POST /api/auth/registro/`, `/api/auth/login/`, `/api/auth/logout/`, `GET /api/auth/yo/`: token `Bearer` (se guarda solo su SHA-256, vence a los 7 días); contraseñas con hash PBKDF2; bloqueo de 15 min tras 5 fallos.
 - Roles `CLIENTE` y `ADMIN` (`manage.py crear_admin correo`). Pagar exige sesión; `GET /api/mis-compras/` lista las compras de la cuenta; `GET /api/auditoria/` (bitácora: usuario, rol, ruta, estado, IP) solo para ADMIN.
 - Código: `backend/catalogo/autenticacion.py`, `auditoria.py`; Flutter: `app/lib/pages/cuenta_page.dart`, `state.dart`.
-- Para estudiar y defender el proyecto: [GUIA_DEFENSA.md](GUIA_DEFENSA.md).
+- Documentación técnica por temas: [docs/](docs/README.md).
 
 
 ## Construir y actualizar la APK

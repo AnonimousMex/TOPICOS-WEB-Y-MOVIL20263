@@ -38,6 +38,6 @@ Producto, Pedido (folio, usuario, nivel, total), Compra, Correo, ConsultaAsisten
 Inicio y catálogo, detalle con ciudad y embalaje, carrito, compra con tarjeta de prueba, folio, Mis compras, cuenta (login/registro), chat.
 
 ## Decisiones
-- Monolito Django + SQLite: un solo servidor; no se justifican microservicios (ver `GUIA_DEFENSA.md`).
+- Monolito Django + SQLite: un solo servidor; no se justifican microservicios.
 - Pago simulado: solo tarjetas de prueba, nunca se guarda número ni CVV.
 - El asistente no decide embalaje; si se apaga (`TESITURA_ASISTENTE=off`), el resto sigue funcionando.
