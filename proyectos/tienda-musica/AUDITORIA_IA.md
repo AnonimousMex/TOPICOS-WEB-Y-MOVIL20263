@@ -6,6 +6,7 @@ Fecha: 2026-11-24. Evidencia en `evidencias/auditoria_ia/` (prompt con el paquet
 | Herramienta | Modelo | Local o nube | Qué hizo |
 |---|---|---|---|
 | Ollama 0.40.18 (instalado con Homebrew) | `llama3.2` (3B, 2.0 GB) | **local** | IA A: auditó el paquete de contexto (`ollama run llama3.2`) |
+| Ollama + RAG propio (`rag_local.py`) | `llama3.2` | **local** | Segunda pasada: recupera fragmentos del código y se los pasa al modelo (sección 7) |
 | Claude Code | Claude | nube (de pago) | IA B: revisó el código completo y verificó cada hallazgo a mano |
 
 No se usó un modelo de código mayor (`qwen2.5-coder:7b`) por espacio y tiempo; queda como mejora.
@@ -46,3 +47,23 @@ ollama pull llama3.2
 ollama run llama3.2 < evidencias/auditoria_ia/prompt_y_paquete.txt
 ```
 Antes de la demo: `git pull`, `flutter analyze` y prueba de humo (recomendación, folio, chat, web y APK). Prueba de clon limpio hecha el 2026-11-24: `git clone` + `pip install -r requirements.txt` + `manage.py test` = 81 pruebas OK.
+
+## 7. Segunda pasada: RAG local sobre el código
+Para no depender de un resumen escrito a mano, `evidencias/auditoria_ia/rag_local.py` indexa el código (273 fragmentos de 40 líneas, solo `.py`, `.dart`, `.kts`, `.xml` y `.yaml`), recupera los 5 más parecidos a cada pregunta con TF-IDF y se los pasa a `llama3.2`. Salida completa y fragmentos recuperados: [`salida_rag_llama32.md`](evidencias/auditoria_ia/salida_rag_llama32.md).
+
+Primer intento descartado: se habían indexado también los `.md` y el sistema recuperó mi propia documentación, que ya contiene las respuestas; no era una auditoría. Se repitió solo con código.
+
+| Pregunta | ¿Recuperó el archivo correcto? | Respuesta del modelo | Lo que dice el código | Resultado |
+|---|---|---|---|---|
+| Configuración insegura de Django | no (`settings.py` no apareció) | «no hay evidencia» | `DEBUG=True`, `ALLOWED_HOSTS=['*']` en `settings.py` | falso negativo (recuperación) |
+| Secretos en el código | no | «no hay evidencia» | `SECRET_KEY` fija en `settings.py:23` | falso negativo (recuperación) |
+| CORS | no (`cors.py` no apareció) | habla de «capas» del asistente, sin relación | `Access-Control-Allow-Origin: *` en `cors.py:16` | respuesta inventada |
+| Contraseñas y token | sí (`autenticacion.py`) | «no hay evidencia» | PBKDF2 y SHA-256 del token, descritos en el propio archivo | falso negativo (modelo) |
+| Cobro doble en checkout | sí (`views.py`) | «no hay evidencia» | no hay idempotencia | coincide, aunque por no encontrar nada |
+| Tarjeta y CVV guardados | sí (`pagos.py`) | «no hay evidencia» | `pagos.py` descarta número y CVV | falso negativo (modelo) |
+| `.joblib` o corpus en la app | no concluyente | «no hay evidencia» | no están en `app/` | no concluyente |
+| Rutas con sesión o ADMIN | sí (`views.py`, `auditoria.py`) | «no hay evidencia» | `/api/auditoria/` exige ADMIN | falso negativo (modelo) |
+
+**Conclusión honesta:** el RAG no encontró ningún hallazgo real. Falló de dos maneras: la **recuperación** (TF-IDF compara palabras, y «inseguro» no se parece a `DEBUG = True`, así que no trajo `settings.py`) y el **modelo** (con el archivo correcto delante, un modelo de 3B respondió «no hay evidencia»). Los hallazgos reales de la sección 3 siguen viniendo de leer los archivos.
+
+**Qué mejoraría:** recuperar con embeddings en vez de TF-IDF (por ejemplo `nomic-embed-text` en Ollama) y usar un modelo mayor (`qwen2.5-coder:7b` o `llama3.1:8b`); no se hizo por tiempo y espacio. Para repetir: `ollama serve`, `ollama pull llama3.2` y `backend/.venv/bin/python evidencias/auditoria_ia/rag_local.py`.
